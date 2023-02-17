@@ -27,3 +27,13 @@ class TestPart(unittest.TestCase):
         actual = self.guitar1.instrument
         expected = ""
         self.assertEqual(actual, expected)
+
+    def test_has_notes(self):
+        actual = self.guitar1.notes
+        expected = ""
+        self.assertEqual(actual, expected)
+
+    def test_has_id(self):
+        actual = self.guitar1.id
+        expected = None
+        self.assertEqual(actual, expected)
