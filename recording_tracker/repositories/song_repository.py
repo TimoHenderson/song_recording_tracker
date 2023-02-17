@@ -1,5 +1,6 @@
 from db.run_sql import run_sql
 from models.song import Song
+import repositories.part_repository as part_repository
 
 # Create
 def save(song):
@@ -17,7 +18,7 @@ def select_all():
     sql = "SELECT * FROM songs"
     results = run_sql(sql)
     for row in results:
-        song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
+        song = build_song(row)
         songs.append(song)
     return songs
 
@@ -29,7 +30,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
+        song = build_song(row)
     return song
 
 
@@ -50,3 +51,10 @@ def delete(id):
     sql = "DELETE FROM songs WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+
+def build_song(row):
+    parts = part_repository.select_all_with_song(row["id"])
+    return Song(
+        row["title"], row["artist"], row["album"], row["notes"], row["id"], parts
+    )

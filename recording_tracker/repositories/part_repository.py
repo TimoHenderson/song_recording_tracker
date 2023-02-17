@@ -16,14 +16,7 @@ def select_all():
     sql = "SELECT * FROM parts"
     results = run_sql(sql)
     for row in results:
-        part = Part(
-            row["name"],
-            row["status"],
-            row["song_id"],
-            row["instrument"],
-            row["notes"],
-            row["id"],
-        )
+        part = build_part(row)
         parts.append(part)
     return parts
 
@@ -35,15 +28,19 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        part = Part(
-            row["name"],
-            row["status"],
-            row["song_id"],
-            row["instrument"],
-            row["notes"],
-            row["id"],
-        )
+        part = build_part(row)
     return part
+
+
+def select_all_with_song(song_id):
+    parts = []
+    sql = "SELECT * FROM parts WHERE song_id = %s"
+    values = [song_id]
+    results = run_sql(sql, values)
+    for row in results:
+        part = build_part(row)
+        parts.append(part)
+    return parts
 
 
 # Update
@@ -72,3 +69,14 @@ def delete(id):
     sql = "DELETE FROM parts WHERE id = %s"
     values = [id]
     run_sql(sql, values)
+
+
+def build_part(row):
+    return Part(
+        row["name"],
+        row["status"],
+        row["song_id"],
+        row["instrument"],
+        row["notes"],
+        row["id"],
+    )

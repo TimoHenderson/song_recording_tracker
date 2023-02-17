@@ -23,8 +23,18 @@ def print_parts():
 # song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
 # song_repository.save(song3)
 
+# song1 = Song(
+#     "The Jester",
+#     "The Purple Felts",
+#     "The Jester's Game",
+#     "This needs more parts",
+# )
+# song_repository.save(song1)
 
 # print_songs()
+
+
+breakpoint()
 
 # song3.title = "XBGER"
 # song_repository.update(song3)
@@ -39,25 +49,33 @@ def print_parts():
 # song_repository.delete(9)
 # print_songs()
 
-guitar1 = Part("Verse Chords", 5, 1)
-part_repository.save(guitar1)
+# guitar1 = Part("guitar1", 5, 1)
+# part_repository.save(guitar1)
+# guitar2 = Part("Guitar 2", 5, 1)
+# part_repository.save(guitar2)
+# guitar3 = Part("Guitar 3", 5, 2)
+# part_repository.save(guitar3)
 
-print_parts()
+# got_guitar = song_repository.select(1)
 
-print(part_repository.select(2).__dict__)
+# [print(part.__dict__) for part in part_repository.select_all_with_song(got_guitar.id)]
 
-guitar1.name = "Egg"
-part_repository.update(guitar1)
+# print_parts()
+
+# print(part_repository.select(2).__dict__)
+
+# guitar1.name = "Egg"
+# part_repository.update(guitar1)
 
 
-print()
-print_parts()
+# print()
+# print_parts()
 
-part_repository.delete(3)
+# part_repository.delete(3)
 
-print()
-print_parts()
+# print()
+# print_parts()
 
-part_repository.delete_all()
-print()
-print_parts()
+# part_repository.delete_all()
+# print()
+# print_parts()
