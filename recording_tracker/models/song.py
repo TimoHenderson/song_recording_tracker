@@ -5,3 +5,4 @@ from dataclasses import dataclass
 class Song:
     title: str
     artist: str
+    album: str

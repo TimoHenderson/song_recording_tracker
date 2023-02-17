@@ -4,7 +4,7 @@ from models.song import Song
 
 class TestSong(unittest.TestCase):
     def setUp(self):
-        self.song3 = Song("SDKMN", "The Purple Felts")
+        self.song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
 
     def test_has_title(self):
         actual = self.song3.title
@@ -14,4 +14,9 @@ class TestSong(unittest.TestCase):
     def test_has_artist(self):
         actual = self.song3.artist
         expected = "The Purple Felts"
+        self.assertEqual(actual, expected)
+
+    def test_has_album(self):
+        actual = self.song3.album
+        expected = "The Jester's Game"
         self.assertEqual(actual, expected)
