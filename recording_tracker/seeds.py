@@ -16,8 +16,11 @@ song_repository.save(song3)
 
 print_songs()
 
-song = song_repository.select(1)
-print(song.__dict__)
+# song = song_repository.select(1)
+# print(song.__dict__)
 
-song_repository.delete_all()
+# song_repository.delete_all()
+# print_songs()
+
+song_repository.delete(9)
 print_songs()
