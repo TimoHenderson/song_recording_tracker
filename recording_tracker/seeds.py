@@ -45,3 +45,9 @@ part_repository.save(guitar1)
 print_parts()
 
 print(part_repository.select(2).__dict__)
+
+guitar1.name = "Egg"
+part_repository.update(guitar1)
+
+print()
+print_parts()

@@ -43,5 +43,19 @@ def select(id):
             row["notes"],
             row["id"],
         )
-
     return part
+
+
+# Update
+def update(part):
+    sql = """UPDATE parts SET (name,status,song_id,instrument,notes) 
+            = (%s,%s,%s,%s,%s) WHERE id = %s"""
+    values = [
+        part.name,
+        part.status,
+        part.song_id,
+        part.instrument,
+        part.notes,
+        part.id,
+    ]
+    run_sql(sql, values)
