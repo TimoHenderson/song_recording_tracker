@@ -20,3 +20,8 @@ class TestSong(unittest.TestCase):
         actual = self.song3.album
         expected = "The Jester's Game"
         self.assertEqual(actual, expected)
+
+    def test_has_notes(self):
+        actual = self.song3.notes
+        expected = ""
+        self.assertEqual(actual, expected)

@@ -6,3 +6,4 @@ class Song:
     title: str
     artist: str
     album: str
+    notes: str = ""
