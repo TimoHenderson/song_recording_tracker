@@ -31,3 +31,9 @@ def select(id):
         row = results[0]
         song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
     return song
+
+
+# Delete
+def delete_all():
+    sql = "DELETE FROM songs"
+    run_sql(sql)
