@@ -25,3 +25,8 @@ class TestSong(unittest.TestCase):
         actual = self.song3.notes
         expected = ""
         self.assertEqual(actual, expected)
+
+    def test_has_parts(self):
+        actual = self.song3.parts
+        expected = []
+        self.assertEqual(actual, expected)

@@ -1,9 +1,10 @@
-from dataclasses import dataclass
+from models.part import Part
 
 
-@dataclass
 class Song:
-    title: str
-    artist: str
-    album: str
-    notes: str = ""
+    def __init__(self, title, artist, album, notes="", parts=[]):
+        self.title = title
+        self.artist = artist
+        self.album = album
+        self.notes = notes
+        self.parts = parts
