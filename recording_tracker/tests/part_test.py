@@ -6,7 +6,8 @@ from models.song import Song
 class TestPart(unittest.TestCase):
     def setUp(self):
         self.song1 = ("The Jester", "The Purple Felts", "The Jester's Game")
-        self.guitar1 = Part("Verse Chords", 5)
+        self.guitar1 = Part("Verse Chords", 5, 1)
+        # breakpoint()
 
     def test_has_name(self):
         actual = self.guitar1.name
@@ -18,9 +19,9 @@ class TestPart(unittest.TestCase):
         expected = 5
         self.assertEqual(actual, expected)
 
-    def test_has_song(self):
-        actual = self.guitar1.song
-        expected = None
+    def test_has_song_id(self):
+        actual = self.guitar1.song_id
+        expected = 1
         self.assertEqual(actual, expected)
 
     def test_has_instrument(self):

@@ -4,6 +4,7 @@ from models.song import Song
 
 class TestSong(unittest.TestCase):
     def setUp(self):
+        # breakpoint()
         self.song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
 
     def test_has_title(self):
@@ -27,7 +28,14 @@ class TestSong(unittest.TestCase):
         self.assertEqual(actual, expected)
 
     def test_has_parts(self):
+        # breakpoint()
         actual = self.song3.parts
+        expected = []
+        self.assertEqual(actual, expected)
+
+    def test_has_parts_local(self):
+        # breakpoint()
+        actual = Song("ELP", "Tarkus", "Egg").parts
         expected = []
         self.assertEqual(actual, expected)
 
