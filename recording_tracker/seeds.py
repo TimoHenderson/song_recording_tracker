@@ -12,8 +12,16 @@ def print_songs():
         print("No songs")
 
 
-song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
-song_repository.save(song3)
+def print_parts():
+    parts = part_repository.select_all()
+    if parts:
+        [print(part.__dict__) for part in parts]
+    else:
+        print("No parts")
+
+
+# song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
+# song_repository.save(song3)
 
 
 # print_songs()
@@ -33,3 +41,5 @@ song_repository.save(song3)
 
 guitar1 = Part("Verse Chords", 5, 1)
 part_repository.save(guitar1)
+
+print_parts()
