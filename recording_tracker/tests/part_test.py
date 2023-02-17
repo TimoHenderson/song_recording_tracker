@@ -22,3 +22,8 @@ class TestPart(unittest.TestCase):
         actual = self.guitar1.song
         expected = None
         self.assertEqual(actual, expected)
+
+    def test_has_instrument(self):
+        actual = self.guitar1.instrument
+        expected = ""
+        self.assertEqual(actual, expected)

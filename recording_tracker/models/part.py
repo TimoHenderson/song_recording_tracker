@@ -1,5 +1,6 @@
 class Part:
-    def __init__(self, name, status, song=None):
+    def __init__(self, name, status, instrument="", song=None):
         self.name = name
         self.status = status
-        self.song = None
+        self.song = song
+        self.instrument = instrument
