@@ -57,9 +57,8 @@ def update(part):
     ]
     run_sql(sql, values)
 
-    # Delete
 
-
+# Delete
 def delete_all():
     sql = "DELETE FROM parts"
     run_sql(sql)
@@ -71,6 +70,7 @@ def delete(id):
     run_sql(sql, values)
 
 
+# Builder
 def build_part(row):
     return Part(
         row["name"],

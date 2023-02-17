@@ -11,7 +11,6 @@ def save(song):
     song.id = results[0]["id"]
 
 
-# TODO update to add part getting
 # Read
 def select_all():
     songs = []
@@ -53,6 +52,7 @@ def delete(id):
     run_sql(sql, values)
 
 
+# Builder
 def build_song(row):
     parts = part_repository.select_all_with_song(row["id"])
     return Song(
