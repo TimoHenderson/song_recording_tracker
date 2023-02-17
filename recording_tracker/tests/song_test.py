@@ -57,7 +57,12 @@ class TestSong(unittest.TestCase):
         expected = None
         self.assertEqual(actual, expected)
 
-    def test_can_get_overall_completion(self):
+    def test_can_get_overall_completion__with_parts(self):
         actual = self.song1.get_completion()
         expected = 80
+        self.assertEqual(actual, expected)
+
+    def test_can_get_overall_completion__no_parts(self):
+        actual = self.song3.get_completion()
+        expected = 0
         self.assertEqual(actual, expected)
