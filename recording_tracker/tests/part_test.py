@@ -7,7 +7,6 @@ class TestPart(unittest.TestCase):
     def setUp(self):
         self.song1 = ("The Jester", "The Purple Felts", "The Jester's Game")
         self.guitar1 = Part("Verse Chords", 5, 1)
-        # breakpoint()
 
     def test_has_name(self):
         actual = self.guitar1.name

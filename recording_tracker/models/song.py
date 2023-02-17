@@ -10,8 +10,18 @@ class Song:
         self.parts = parts
         self.id = id
 
-    def add_part(self, part):
-        self.parts.append(part)
+    def get_completion(self):
+        if self.parts == []:
+            completion = 0
+        else:
+            total = 0
+            for part in self.parts:
+                total += part.status
+            num_parts = len(self.parts)
+            possible = num_parts * 5
+            completion = total / possible * 100
+
+        return completion
 
     def __repr__(self):
         return f"{self.title}, {self.artist}"
