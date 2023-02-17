@@ -37,3 +37,8 @@ class TestPart(unittest.TestCase):
         actual = self.guitar1.id
         expected = None
         self.assertEqual(actual, expected)
+
+    def test_get_status_string(self):
+        actual = self.guitar1.get_status_str()
+        expected = "Take!"
+        self.assertEqual(actual, expected)
