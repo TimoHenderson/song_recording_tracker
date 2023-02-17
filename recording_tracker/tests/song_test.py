@@ -30,3 +30,8 @@ class TestSong(unittest.TestCase):
         actual = self.song3.parts
         expected = []
         self.assertEqual(actual, expected)
+
+    def test_has_id(self):
+        actual = self.song3.id
+        expected = None
+        self.assertEqual(actual, expected)
