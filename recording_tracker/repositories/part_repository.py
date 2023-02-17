@@ -59,3 +59,16 @@ def update(part):
         part.id,
     ]
     run_sql(sql, values)
+
+    # Delete
+
+
+def delete_all():
+    sql = "DELETE FROM parts"
+    run_sql(sql)
+
+
+def delete(id):
+    sql = "DELETE FROM parts WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)

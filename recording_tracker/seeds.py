@@ -49,5 +49,15 @@ print(part_repository.select(2).__dict__)
 guitar1.name = "Egg"
 part_repository.update(guitar1)
 
+
+print()
+print_parts()
+
+part_repository.delete(3)
+
+print()
+print_parts()
+
+part_repository.delete_all()
 print()
 print_parts()
