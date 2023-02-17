@@ -11,3 +11,6 @@ song_repository.save(song3)
 
 songs = song_repository.select_all()
 print_songs()
+
+song = song_repository.select(2)
+print(song.__dict__)

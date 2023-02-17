@@ -20,3 +20,14 @@ def select_all():
         song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
         songs.append(song)
     return songs
+
+
+def select(id):
+    song = None
+    sql = "SELECT * FROM songs WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
+    return song
