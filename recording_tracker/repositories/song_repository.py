@@ -33,6 +33,13 @@ def select(id):
     return song
 
 
+# Update
+def update(song):
+    sql = "UPDATE songs SET (title, artist, album, notes) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [song.title, song.artist, song.album, song.notes, song.id]
+    run_sql(sql, values)
+
+
 # Delete
 def delete_all():
     sql = "DELETE FROM songs"
