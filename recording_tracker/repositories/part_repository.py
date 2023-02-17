@@ -26,3 +26,22 @@ def select_all():
         )
         parts.append(part)
     return parts
+
+
+def select(id):
+    part = None
+    sql = "SELECT * FROM parts WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        part = Part(
+            row["name"],
+            row["status"],
+            row["song_id"],
+            row["instrument"],
+            row["notes"],
+            row["id"],
+        )
+
+    return part

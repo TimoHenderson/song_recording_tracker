@@ -43,3 +43,5 @@ guitar1 = Part("Verse Chords", 5, 1)
 part_repository.save(guitar1)
 
 print_parts()
+
+print(part_repository.select(2).__dict__)
