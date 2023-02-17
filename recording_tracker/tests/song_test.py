@@ -16,9 +16,9 @@ class TestSong(unittest.TestCase):
             "The Jester",
             "The Purple Felts",
             "The Jester's Game",
-            parts=self.parts1,
-            notes="This needs more parts",
-            id=1,
+            "This needs more parts",
+            1,
+            self.parts1,
         )
 
     def test_has_title(self):

@@ -10,7 +10,13 @@ def save(song):
     song.id = results[0]["id"]
 
 
+# TODO update to add part getting
 # Read
-# def select_all():
-#     sql = "SELECT * FROM songs"
-#     results = run_sql(sql)
+def select_all():
+    songs = []
+    sql = "SELECT * FROM songs"
+    results = run_sql(sql)
+    for row in results:
+        song = Song(row["title"], row["artist"], row["album"], row["notes"], row["id"])
+        songs.append(song)
+    return songs

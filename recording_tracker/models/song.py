@@ -2,7 +2,7 @@ from models.part import Part
 
 
 class Song:
-    def __init__(self, title, artist, album, parts=[], notes="", id=None):
+    def __init__(self, title, artist, album, notes="", id=None, parts=[]):
         self.title = title
         self.artist = artist
         self.album = album
