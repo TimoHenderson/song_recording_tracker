@@ -2,6 +2,6 @@
 {% block content %}
 {% for part in parts %}
 <p><a href="parts/{{ part.id }}">{{ part.__dict__ }}</a></p>
-<a href="parts/{{ part.id }}/edit">Edit</a>
+<a href="/parts/{{ part.id }}/edit">Edit</a>
 {% endfor %}
 {% endblock content %}
