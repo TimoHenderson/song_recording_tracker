@@ -39,3 +39,12 @@ def create():
 def edit(id):
     song = song_repository.select(id)
     return render_template("songs/edit.html", song=song)
+
+
+# Update
+@songs_blueprint.route("/songs/<id>/update", methods=["POST"])
+def update(id):
+    form = request.form
+    song = Song(form["title"], form["artist"], form["album"], form["notes"], id=id)
+    song_repository.update(song)
+    return redirect(f"/songs/{id}")
