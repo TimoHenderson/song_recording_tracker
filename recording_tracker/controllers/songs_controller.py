@@ -5,8 +5,15 @@ from flask import Blueprint
 
 songs_blueprint = Blueprint("songs", __name__)
 
-
+# View all
 @songs_blueprint.route("/songs")
 def show_all():
     songs = song_repository.select_all()
     return render_template("songs/index.html", songs=songs)
+
+
+# View One
+@songs_blueprint.route("/songs/<id>")
+def show(id):
+    song = song_repository.select(id)
+    return render_template("songs/show.html", song=song)

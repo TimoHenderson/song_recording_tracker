@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for song in songs %}
-<p>{{ song.__dict__ }}</p>
+<p><a href="songs/{{ song.id }}">{{ song.__dict__ }}</a></p>
 {% endfor %}
 {% endblock content %}
