@@ -17,3 +17,9 @@ def show_all():
 def show(id):
     song = song_repository.select(id)
     return render_template("songs/show.html", song=song)
+
+
+# View One
+@songs_blueprint.route("/songs/new")
+def new():
+    return render_template("songs/new.html")
