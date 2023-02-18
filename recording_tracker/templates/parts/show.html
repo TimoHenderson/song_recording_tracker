@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Part</h2>
+{{ part.__dict__ }}
+<a href="/pars/{{ part.id }}/edit">Edit</a>
+<a href="/pars/{{ part.id }}/delete">Delete</a>
+{% endblock content %}

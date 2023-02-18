@@ -10,3 +10,10 @@ parts_blueprint = Blueprint("parts", __name__)
 def show_all():
     parts = part_repository.select_all()
     return render_template("parts/index.html", parts=parts)
+
+
+# View One
+@parts_blueprint.route("/parts/<id>")
+def show(id):
+    part = part_repository.select(id)
+    return render_template("parts/show.html", part=part)
