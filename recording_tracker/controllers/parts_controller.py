@@ -25,3 +25,13 @@ def new():
     song_id = request.form["song_id"]
     song = song_repository.select(song_id)
     return render_template("parts/new.html", song=song)
+
+
+# Create
+@parts_blueprint.route("/parts", methods=["POST"])
+def create():
+    form = request.form
+    song_id = form["song_id"]
+    new_part = Part(form["name"], 0, song_id, form["instrument"], form["notes"])
+    part_repository.save(new_part)
+    return redirect(f"/songs/{song_id}")
