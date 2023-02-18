@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for part in parts %}
+<p><a href="parts/{{ part.id }}">{{ part.__dict__ }}</a></p>
+{% endfor %}
+{% endblock content %}

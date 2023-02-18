@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect
+from flask import Blueprint, render_template, request, redirect
 from repositories import song_repository
 from models.song import Song
-from flask import Blueprint
 
 songs_blueprint = Blueprint("songs", __name__)
 
