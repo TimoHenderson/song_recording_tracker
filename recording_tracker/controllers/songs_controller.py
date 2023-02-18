@@ -48,3 +48,10 @@ def update(id):
     song = Song(form["title"], form["artist"], form["album"], form["notes"], id=id)
     song_repository.update(song)
     return redirect(f"/songs/{id}")
+
+
+# Delete
+@songs_blueprint.route("/songs/<id>/delete")
+def delete(id):
+    song = song_repository.select(id)
+    return render_template("songs/delete.html", song=song)

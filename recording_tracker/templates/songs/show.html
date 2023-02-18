@@ -2,4 +2,5 @@
 {% block content %}
 {{ song.__dict__ }}
 <a href="/songs/{{ song.id }}/edit">Edit</a>
+<a href="/songs/{{ song.id }}/delete">Delete</a>
 {% endblock content %}
