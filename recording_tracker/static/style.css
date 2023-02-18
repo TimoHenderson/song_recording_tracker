@@ -1,3 +1,40 @@
+:root {
+    --darkest: #2a2438;
+    --darker: #352f44;
+    --dark: #5c5470;
+    --light: #dbd8e3;
+    --text-color: white;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    background-color: var(--light);
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color)
+}
+
 header {
-    background-color: blanchedalmond;
+    background-color: var(--darkest);
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: var(--dark);
+}
+
+nav>div {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    align-items: center;
+    padding: 0.8rem;
 }
