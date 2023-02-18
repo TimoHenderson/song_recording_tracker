@@ -21,8 +21,13 @@
         </div>
         {% include 'songs/widgets/completion.html' %}
         <div class="song-parts-container">
-            <p>Parts - {{ len(song.parts) }}
+            <p>Parts - {{ song.get_num_parts() }}
             </p>
+            <div class="part-meters-container">
+                {% for part in song.parts %}
+                {% include 'songs/widgets/part-meter.html' %}
+                {% endfor %}
+            </div>
         </div>
     </a>
 

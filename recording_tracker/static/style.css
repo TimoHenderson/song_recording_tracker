@@ -67,4 +67,33 @@ hr {
     align-items: center;
 }
 
+.part-meters-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100px;
+    gap: 2px;
+    background-color: black;
+    padding: 2px;
+}
+
+.single-part-meter {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 40px;
+
+}
+
+.part-meter {
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.part-meter-on {
+    background-color: green;
+}
+
 .completion-bar {}
