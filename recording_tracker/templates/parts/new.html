@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>New Part for {{ song.title }} by {{ song.artist }}</h2>
+<form action="/parts" method="post">
+    <input type="hidden" name="song_id" value="{{ song.id }}">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" required>
+    </div>
+    <div>
+        <label for="instrument">Instrument: </label>
+        <input type="text" name="instrument" id="instrument" required>
+    </div>
+    <div>
+        <label for="notes">Notes: </label>
+        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="Add Part">
+    </div>
+</form>
+{% endblock content %}

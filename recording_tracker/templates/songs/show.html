@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
 {{ song.__dict__ }}
+<form action="/parts/new" method="post">
+    <input type="hidden" name="song_id" value="{{ song.id }}">
+    <input type="submit" value="Add Part">
+</form>
+
 <a href="/songs/{{ song.id }}/edit">Edit</a>
 <a href="/songs/{{ song.id }}/delete">Delete</a>
 {% endblock content %}

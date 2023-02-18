@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-from repositories import part_repository
+from repositories import part_repository, song_repository
 from models.part import Part
 
 
@@ -17,3 +17,11 @@ def show_all():
 def show(id):
     part = part_repository.select(id)
     return render_template("parts/show.html", part=part)
+
+
+# New
+@parts_blueprint.route("/parts/new", methods=["POST"])
+def new():
+    song_id = request.form["song_id"]
+    song = song_repository.select(song_id)
+    return render_template("parts/new.html", song=song)
