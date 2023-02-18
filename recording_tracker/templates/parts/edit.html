@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Edit Part for {{ song.title }} by {{ song.artist }}</h2>
+<form action="/parts" method="post">
+    <input type="hidden" name="song_id" value="{{ song.id }}">
+    <div>
+        <label for="name">Name: </label>
+        <input type="text" name="name" id="name" value="{{ part.name }}" required>
+    </div>
+    <div>
+        <label for="instrument">Instrument: </label>
+        <input type="text" name="instrument" id="instrument" value="{{ part.instrument }}" required>
+    </div>
+    {% include 'parts/widgets/status-select.html' %}
+    <div>
+        <label for="notes">Notes: </label>
+        <textarea name="notes" id="notes" cols="30" rows="10" value="{{ part.notes }}"></textarea>
+    </div>
+    <div>
+        <input type="submit" value="update Part">
+    </div>
+</form>
+<form action="/parts/{{ part.id }}">
+    <input type="submit" value="Cancel">
+</form>
+{% endblock content %}

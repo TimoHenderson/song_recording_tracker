@@ -20,9 +20,8 @@ def show(id):
 
 
 # New
-@parts_blueprint.route("/parts/new", methods=["POST"])
-def new():
-    song_id = request.form["song_id"]
+@parts_blueprint.route("/songs/<song_id>/parts/new")
+def new(song_id):
     song = song_repository.select(song_id)
     return render_template("parts/new.html", song=song)
 
@@ -35,3 +34,11 @@ def create():
     new_part = Part(form["name"], 0, song_id, form["instrument"], form["notes"])
     part_repository.save(new_part)
     return redirect(f"/songs/{song_id}")
+
+
+# Edit
+@parts_blueprint.route("/parts/<id>/edit", methods=["POST"])
+def edit(id):
+    part = part_repository.select(id)
+    song = song_repository.select(part.song_id)
+    return render_template("parts/edit.html", part=part, song=song)
