@@ -8,4 +8,5 @@ songs_blueprint = Blueprint("songs", __name__)
 
 @songs_blueprint.route("/songs")
 def show_all():
-    return "Hello Songs"
+    songs = song_repository.select_all()
+    return render_template("songs/index.html", songs=songs)
