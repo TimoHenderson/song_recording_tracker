@@ -1,6 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for song in songs %}
-<p><a href="songs/{{ song.id }}">{{ song.__dict__ }}</a></p>
-{% endfor %}
+
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            <h2>All Songs</h2>
+            <a href="/songs/new">Add New</a>
+        </div>
+        <hr>
+    </div>
+
+    {% for song in songs %}
+
+
+    <p><a href="songs/{{ song.id }}">{{ song.__dict__ }}</a></p>
+
+
+    {% endfor %}
+</main>
 {% endblock content %}
