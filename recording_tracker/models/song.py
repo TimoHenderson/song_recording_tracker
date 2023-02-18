@@ -16,7 +16,7 @@ class Song:
             total = sum(part.status for part in self.parts)
             possible = len(self.parts) * 5
             completion = total / possible * 100
-        return completion
+        return int(completion)
 
     def __repr__(self):
         return f"{self.title}, {self.artist}"

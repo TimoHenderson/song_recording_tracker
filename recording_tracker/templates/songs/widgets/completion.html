@@ -1,0 +1,12 @@
+<div class="song-completion">
+    {% set completion = song.get_completion() %}
+    {% set completion_bar = (completion/100)*120 %}
+    <p>Completion - {{ completion }}%</p>
+
+    <div class="completion-bar-container">
+        <div class="completion-bar-background">
+            <img class="completion-bar" src="{{ url_for('static', filename='img/Solid_green.png') }}"
+                width="{{completion_bar}}" height="10" alt="{{ completion }}">
+        </div>
+    </div>
+</div>

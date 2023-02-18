@@ -57,3 +57,14 @@ nav>div {
 hr {
     color: white;
 }
+
+.completion-bar-background {
+    background-color: grey;
+    height: 10px;
+    width: 120px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.completion-bar {}

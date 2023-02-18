@@ -13,7 +13,18 @@
     {% for song in songs %}
 
 
-    <p><a href="songs/{{ song.id }}">{{ song.__dict__ }}</a></p>
+    <a href="songs/{{ song.id }}">
+        <div class="song-details">
+            <h3>{{ song.title }}</h3>
+            <p>by {{ song.artist }}</p>
+            <p>{{ song.album }}</p>
+        </div>
+        {% include 'songs/widgets/completion.html' %}
+        <div class="song-parts-container">
+            <p>Parts - {{ len(song.parts) }}
+            </p>
+        </div>
+    </a>
 
 
     {% endfor %}
