@@ -66,3 +66,8 @@ class TestSong(unittest.TestCase):
         actual = self.song3.get_completion()
         expected = 0
         self.assertEqual(actual, expected)
+
+    def test_can_get_num_of_parts(self):
+        actual = self.song1.get_num_parts()
+        expected = 2
+        self.assertEqual(actual, expected)
