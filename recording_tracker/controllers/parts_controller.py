@@ -67,3 +67,10 @@ def confirm_delete(id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
     return render_template("parts/delete.html", part=part, song=song)
+
+
+# Actually Delete
+@parts_blueprint.route("/parts/<id>/delete", methods=["POST"])
+def delete(id):
+    part_repository.delete(id)
+    return redirect("/parts")
