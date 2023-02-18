@@ -59,3 +59,11 @@ def update(id):
     )
     part_repository.update(part)
     return redirect(f"/parts/{id}")
+
+
+# Delete Confirm
+@parts_blueprint.route("/parts/<id>/delete")
+def confirm_delete(id):
+    part = part_repository.select(id)
+    song = song_repository.select(part.song_id)
+    return render_template("parts/delete.html", part=part, song=song)

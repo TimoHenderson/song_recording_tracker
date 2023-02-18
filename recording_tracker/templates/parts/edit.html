@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Edit Part for {{ song.title }} by {{ song.artist }}</h2>
-<form action="/songs/{{ song.id }}/parts/{{ part.id }}/update" method="post">
+<form action="/parts/{{ part.id }}/update" method="post">
     <input type="hidden" name="song_id" value="{{ song.id }}">
     <div>
         <label for="name">Name: </label>
