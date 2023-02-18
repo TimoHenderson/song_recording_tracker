@@ -37,7 +37,7 @@ def create():
 
 
 # Edit
-@parts_blueprint.route("/parts/<id>/edit", methods=["POST"])
+@parts_blueprint.route("/parts/<id>/edit")
 def edit(id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
