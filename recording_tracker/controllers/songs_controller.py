@@ -50,8 +50,15 @@ def update(id):
     return redirect(f"/songs/{id}")
 
 
-# Delete
+# Delete Confirm
 @songs_blueprint.route("/songs/<id>/delete")
-def delete(id):
+def confirm_delete(id):
     song = song_repository.select(id)
     return render_template("songs/delete.html", song=song)
+
+
+# Actually Delete
+@songs_blueprint.route("/songs/<id>/delete", methods=["POST"])
+def delete(id):
+    song_repository.delete(id)
+    return redirect("/songs")
