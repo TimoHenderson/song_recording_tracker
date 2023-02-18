@@ -19,7 +19,15 @@ def show(id):
     return render_template("songs/show.html", song=song)
 
 
-# View One
+# New
 @songs_blueprint.route("/songs/new")
 def new():
     return render_template("songs/new.html")
+
+
+@songs_blueprint.route("/songs", methods=["POST"])
+def create():
+    form = request.form
+    new_song = Song(form["title"], form["artist"], form["album"], form["notes"])
+    song_repository.save(new_song)
+    return redirect("/songs")
