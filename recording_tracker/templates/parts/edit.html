@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Edit Part for {{ song.title }} by {{ song.artist }}</h2>
-<form action="/parts/{{ part.id }}/update" method="post">
+<form action="/songs/{{ part.song_id }}/parts/{{ part.id }}/update" method="post">
     <input type="hidden" name="song_id" value="{{ song.id }}">
     <div>
         <label for="name">Name: </label>
@@ -20,7 +20,7 @@
         <input type="submit" value="update Part">
     </div>
 </form>
-<form action="/parts/{{ part.id }}">
+<form action="/songs/{{ part.song_id }}/parts/{{ part.id }}">
     <input type="submit" value="Cancel">
 </form>
 {% endblock content %}

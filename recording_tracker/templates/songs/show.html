@@ -13,11 +13,7 @@
 
     <div class="card-list part-card-list">
         {% for part in song.parts %}
-        <div class="card part-card">
-            <h3>{{ part.name }}</h3>
-            <p>{{ part.instrument }}</p>
-            <p>{{ part.get_status_str() }}</p>
-        </div>
+        {% include '/parts/components/part-card.html' %}
         {% endfor %}
     </div>
 </main>

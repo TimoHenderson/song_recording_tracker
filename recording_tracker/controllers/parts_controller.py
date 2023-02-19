@@ -13,8 +13,8 @@ def show_all():
 
 
 # View One
-@parts_blueprint.route("/parts/<id>")
-def show(id):
+@parts_blueprint.route("/songs/<song_id>/parts/<id>")
+def show(song_id, id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
     return render_template("parts/show.html", part=part, song=song)
@@ -28,26 +28,25 @@ def new_part(song_id):
 
 
 # Create
-@parts_blueprint.route("/parts", methods=["POST"])
-def create():
+@parts_blueprint.route("/songs/<song_id>/parts", methods=["POST"])
+def create(song_id):
     form = request.form
-    song_id = form["song_id"]
     new_part = Part(form["name"], 0, song_id, form["instrument"], form["notes"])
     part_repository.save(new_part)
     return redirect(f"/songs/{song_id}")
 
 
 # Edit
-@parts_blueprint.route("/parts/<id>/edit")
-def edit(id):
+@parts_blueprint.route("/songs/<song_id>/parts/<id>/edit")
+def edit(song_id, id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
     return render_template("parts/edit.html", part=part, song=song)
 
 
 # Update
-@parts_blueprint.route("/parts/<id>/update", methods=["POST"])
-def update(id):
+@parts_blueprint.route("/songs/<song_id>/parts/<id>/update", methods=["POST"])
+def update(song_id, id):
     form = request.form
     part = Part(
         form["name"],
@@ -58,19 +57,19 @@ def update(id):
         id,
     )
     part_repository.update(part)
-    return redirect(f"/parts/{id}")
+    return redirect(f"/songs/{song_id}/parts/{id}")
 
 
 # Delete Confirm
-@parts_blueprint.route("/parts/<id>/delete")
-def confirm_delete(id):
+@parts_blueprint.route("/songs/<song_id>/parts/<id>/delete")
+def confirm_delete(song_id, id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
     return render_template("parts/delete.html", part=part, song=song)
 
 
 # Actually Delete
-@parts_blueprint.route("/parts/<id>/delete", methods=["POST"])
-def delete(id):
+@parts_blueprint.route("/songs/<song_id>/parts/<id>/delete", methods=["POST"])
+def delete(song_id, id):
     part_repository.delete(id)
     return redirect("/parts")
