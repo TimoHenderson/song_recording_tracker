@@ -7,17 +7,17 @@
 
 
         {% for part in song.parts %}
-        <div class="single-part-meter">
-            <div class="part-meter {% if part.status >= 5 %}part-meter-on{% endif %}"></div>
-            <div class="part-meter {% if part.status >= 4 %}part-meter-on{% endif %}"></div>
-            <div class="part-meter {% if part.status >= 3 %}part-meter-on{% endif %}"></div>
-            <div class="part-meter {% if part.status >= 2 %}part-meter-on{% endif %}"></div>
-            <div class="part-meter {% if part.status >= 1 %}part-meter-on{% endif %}"></div>
+        <div class="part-meter">
+            <div class="meter-chunk {% if part.status >= 5 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if part.status >= 4 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if part.status >= 3 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if part.status >= 2 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if part.status >= 1 %}meter-chunk-on{% endif %}"></div>
         </div>
         {% endfor %}
         {% else %}
-        <div class="single-part-meter">
-            <div class="part-meter"></div>
+        <div class="meter">
+            <div class="meter-chunk"></div>
         </div>
         {% endif %}
     </div>

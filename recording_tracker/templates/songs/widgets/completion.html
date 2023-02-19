@@ -4,9 +4,13 @@
     <p>Completion - {{ completion }}%</p>
 
     <div class="completion-bar-container">
-        <div class="completion-bar-background">
-            <img class="completion-bar" src="{{ url_for('static', filename='img/Solid_green.png') }}"
-                width="{{completion_bar}}" height="10" alt="{{ completion }}">
+
+        <div class="completion-meter">
+            {% for i in range(5,105,5) %}
+            <div class="meter-chunk {% if completion >=i %}meter-chunk-on{% endif %}"></div>
+            {% endfor %}
         </div>
+
+
     </div>
 </div>

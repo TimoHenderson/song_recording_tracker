@@ -81,8 +81,8 @@ hr {
 }
 
 .song-completion {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     justify-content: center;
     align-items: center;
     gap: 1rem;
@@ -92,13 +92,15 @@ hr {
     margin: 0;
 }
 
-.completion-bar-background {
-    background-color: grey;
-    height: 10px;
-    width: 120px;
+
+
+.completion-meter {
     display: flex;
-    justify-content: flex-start;
-    align-items: center;
+
+    width: 100px;
+    margin: auto;
+    height: 1rem;
+    /* height: 60px; */
 }
 
 .song-parts-container {
@@ -118,7 +120,7 @@ hr {
     padding: 2px;
 }
 
-.single-part-meter {
+.part-meter {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -127,13 +129,13 @@ hr {
 
 }
 
-.part-meter {
+.meter-chunk {
     background-color: rgba(0, 128, 0, 0.345);
     width: 100%;
     height: 100%;
 
 }
 
-.part-meter-on {
+.meter-chunk-on {
     background-color: green;
 }
