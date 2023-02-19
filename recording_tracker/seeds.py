@@ -22,8 +22,21 @@ def print_parts():
         print("No parts")
 
 
+def print_instruments():
+    instruments = instrument_repository.select_all()
+    if instruments:
+        [print(instrument.__dict__) for instrument in instruments]
+    else:
+        print("No instruments")
+
+
 guitar = Instrument("Guitar", "fa-guitar")
 instrument_repository.save(guitar)
+
+drum = Instrument("Drums", "fa-drum")
+instrument_repository.save(drum)
+
+print_instruments()
 # song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
 # song_repository.save(song3)
 
