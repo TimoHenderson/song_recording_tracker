@@ -9,7 +9,7 @@
 body {
     font-family: 'Architects Daughter';
     color: var(--text-color);
-    background-color: var(--darker);
+    background-color: var(--light);
 }
 
 a {
@@ -58,6 +58,40 @@ hr {
     color: white;
 }
 
+.card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 90%;
+    margin: auto;
+    gap: 1rem;
+}
+
+.song-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: rgb(35, 35, 35);
+
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-style: ridge;
+    border-color: silver;
+    border-radius: 1rem;
+}
+
+.song-completion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.song-completion>p {
+    margin: 0;
+}
+
 .completion-bar-background {
     background-color: grey;
     height: 10px;
@@ -67,11 +101,18 @@ hr {
     align-items: center;
 }
 
+.song-parts-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
 .part-meters-container {
     display: flex;
     justify-content: center;
     align-items: end;
-    width: 100px;
+    width: 100%;
     gap: 2px;
     background-color: black;
     padding: 2px;
@@ -81,12 +122,13 @@ hr {
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 40px;
+    margin: auto;
+    height: 60px;
 
 }
 
 .part-meter {
-
+    background-color: rgba(0, 128, 0, 0.345);
     width: 100%;
     height: 100%;
 
@@ -95,5 +137,3 @@ hr {
 .part-meter-on {
     background-color: green;
 }
-
-.completion-bar {}

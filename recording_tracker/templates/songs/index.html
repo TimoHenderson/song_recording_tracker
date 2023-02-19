@@ -10,28 +10,22 @@
         <hr>
     </div>
 
-    {% for song in songs %}
-
-
-    <a href="songs/{{ song.id }}">
-        <div class="song-details">
-            <h3>{{ song.title }}</h3>
-            <p>by {{ song.artist }}</p>
-            <p>{{ song.album }}</p>
-        </div>
-        {% include 'songs/widgets/completion.html' %}
-        <div class="song-parts-container">
-            <p>Parts - {{ song.get_num_parts() }}
-            </p>
-            <div class="part-meters-container">
-                {% for part in song.parts %}
-                {% include 'songs/widgets/part-meter.html' %}
-                {% endfor %}
-            </div>
-        </div>
-    </a>
-
-
-    {% endfor %}
+    <div class="card-list">
+        {% for song in songs %}
+        <article>
+            <a href="songs/{{ song.id }}">
+                <div class="song-card">
+                    <div class="song-details">
+                        <h3>{{ song.title }}</h3>
+                        <p>by {{ song.artist }}</p>
+                        <p>{{ song.album }}</p>
+                    </div>
+                    {% include 'songs/widgets/completion.html' %}
+                    {% include 'songs/widgets/part-meter.html' %}
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
 </main>
 {% endblock content %}
