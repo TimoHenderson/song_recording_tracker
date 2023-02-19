@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ song.__dict__ }}
-<!-- <form action="/parts/new" method="post">
-    <input type="hidden" name="song_id" value="{{ song.id }}">
-    <input type="submit" value="Add Part">
-</form> -->
-<a href="/songs/{{ song.id }}/parts/new">New Part</a>
-<a href="/songs/{{ song.id }}/edit">Edit</a>
-<a href="/songs/{{ song.id }}/delete">Delete</a>
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            {% include 'songs/components/song-card.html' %}
+        </div>
+        <a href="/songs/{{ song.id }}/parts/new">New Part</a>
+        <a href="/songs/{{ song.id }}/edit">Edit</a>
+        <a href="/songs/{{ song.id }}/delete">Delete</a>
+        <hr>
+    </div>
+
+    <div class="card-list part-card-list">
+        {% for part in song.parts %}
+        <div class="card part-card">
+            <h3>{{ part.name }}</h3>
+            <p>{{ part.instrument }}</p>
+            <p>{{ part.get_status_str() }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+
 {% endblock content %}

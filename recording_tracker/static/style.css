@@ -59,25 +59,41 @@ hr {
 }
 
 .card-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+
     width: 90%;
     margin: auto;
     gap: 1rem;
 }
 
-.song-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+.card {
     background-color: rgb(35, 35, 35);
-
-    justify-content: space-between;
     padding-left: 1rem;
     padding-right: 1rem;
     border-style: ridge;
     border-color: silver;
     border-radius: 1rem;
+}
+
+.song-card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.song-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+
+}
+
+.part-card-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.part-card {
+    width: 10rem;
 }
 
 .song-completion {
