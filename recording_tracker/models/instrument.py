@@ -5,3 +5,4 @@ from dataclasses import dataclass
 class Instrument:
     name: str
     icon: str
+    id: int = None

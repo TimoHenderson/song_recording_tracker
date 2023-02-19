@@ -15,3 +15,8 @@ class TestInstrument(unittest.TestCase):
         actual = self.guitar.icon
         expected = "fa-guitar"
         self.assertEqual(actual, expected)
+
+    def test_has_id(self):
+        actual = self.guitar.id
+        expected = None
+        self.assertEqual(actual, expected)

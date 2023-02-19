@@ -1,7 +1,9 @@
 import repositories.song_repository as song_repository
 import repositories.part_repository as part_repository
+import repositories.instrument_repository as instrument_repository
 from models.song import Song
 from models.part import Part
+from models.instrument import Instrument
 
 
 def print_songs():
@@ -20,6 +22,8 @@ def print_parts():
         print("No parts")
 
 
+guitar = Instrument("Guitar", "fa-guitar")
+instrument_repository.save(guitar)
 # song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
 # song_repository.save(song3)
 
