@@ -14,15 +14,7 @@
         {% for song in songs %}
         <article>
             <a href="songs/{{ song.id }}">
-                <div class="song-card">
-                    <div class="song-details">
-                        <h3>{{ song.title }}</h3>
-                        <p>by {{ song.artist }}</p>
-                        <p>{{ song.album }}</p>
-                    </div>
-                    {% include 'songs/widgets/completion.html' %}
-                    {% include 'songs/widgets/part-meter.html' %}
-                </div>
+                {% include 'songs/components/song-card.html' %}
             </a>
         </article>
         {% endfor %}
