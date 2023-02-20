@@ -21,6 +21,17 @@ def select_all():
     return artists
 
 
+def select(id):
+    artist = None
+    sql = "SELECT * FROM artists WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        artist = build_artist(row)
+    return artist
+
+
 def build_artist(row):
     artist = Artist(row["name"], row["id"])
     return artist
