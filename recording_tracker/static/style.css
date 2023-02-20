@@ -163,8 +163,19 @@ hr {
     src: url(social-media.ttf);
 }
 
+@font-face {
+    font-family: instruments-t;
+    src: url(instruments-t.ttf);
+}
+
+.instrument-icons {
+    font-family: instruments-t;
+    color: red;
+    font-size: 4rem;
+}
+
 .icons {
-    font-family: social-media, arial;
+    font-family: instruments-t;
 }
 
 .icon-select~label {

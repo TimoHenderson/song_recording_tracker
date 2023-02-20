@@ -67,4 +67,24 @@ def delete(id):
 
 
 def get_icons():
-    return ["a", "b", "c", "d", "e", "f"]
+    icon_list = [
+        "e92c",
+        "e923",
+        "e928",
+        "e920",
+        "e912",
+        "e910",
+        "e907",
+        "e91e",
+        "e917",
+        "e91d",
+        "e911",
+        "e927",
+        "e913",
+        "e90f",
+        "e90c",
+        "e915",
+        "e922",
+        "e92b",
+    ]
+    return icon_list

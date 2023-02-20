@@ -15,7 +15,7 @@
             {% for icon in icons %}
             <input type="radio" class="icon-radio" name="icon" id="icon{{ icon }}" value="{{ icon }}" hidden required
                 {%if instrument.icon==icon %} checked {% endif %}>
-            <label for="icon{{ icon }}" class="icons">{{ icon }}</label>
+            <label for="icon{{ icon }}" class="icons">&#x{{ icon }};</label>
             {% endfor %}
         </div>
         <div id="hidden">
@@ -30,4 +30,8 @@
 <form action="/instruments/{{instrument.id}}">
     <input type="submit" value="Cancel">
 </form>
+
+<div class="instrument-icons">
+    &#xe92c;
+</div>
 {% endblock content %}
