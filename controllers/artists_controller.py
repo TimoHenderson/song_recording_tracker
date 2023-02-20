@@ -32,3 +32,20 @@ def create():
     new_artist = Artist(form["name"])
     artist_repository.save(new_artist)
     return redirect("/artists")
+
+
+# Edit
+@artists_blueprint.route("/artists/<id>/edit")
+def edit(id):
+    print(id)
+    artist = artist_repository.select(id)
+    return render_template("artists/edit.html", artist=artist)
+
+
+# Update
+@artists_blueprint.route("/artists/<id>/update", methods=["POST"])
+def update(id):
+    form = request.form
+    artist = Artist(form["name"], id)
+    artist_repository.update(artist)
+    return redirect("/artists")
