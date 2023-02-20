@@ -21,5 +21,16 @@ def select_all():
     return instruments
 
 
+def select(id):
+    instrument = None
+    sql = "SELECT * FROM instruments WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        instrument = build_instrument(row)
+    return instrument
+
+
 def build_instrument(row):
     return Instrument(row["name"], row["icon"], row["id"])
