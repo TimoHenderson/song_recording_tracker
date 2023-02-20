@@ -39,5 +39,17 @@ def update(instrument):
     run_sql(sql, values)
 
 
+# Delete
+def delete(id):
+    sql = "DELETE FROM instruments WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
+def delete_all():
+    sql = "DELETE FROM instruments"
+    run_sql(sql)
+
+
 def build_instrument(row):
     return Instrument(row["name"], row["icon"], row["id"])
