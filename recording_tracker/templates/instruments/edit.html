@@ -27,7 +27,7 @@
         <input type="submit" value="Add Instrument">
     </div>
 </form>
-<form action="{{request.path}}">
+<form action="/instruments/{{instrument.id}}">
     <input type="submit" value="Cancel">
 </form>
 {% endblock content %}

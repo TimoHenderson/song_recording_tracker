@@ -40,7 +40,12 @@ def create():
 def edit(id):
     instrument = instrument_repository.select(id)
     icons = get_icons()
-    return render_template("instruments/edit.html", instrument=instrument, icons=icons)
+    return render_template(
+        "instruments/edit.html",
+        instrument=instrument,
+        icons=icons,
+        request_origin=request.path,
+    )
 
 
 def get_icons():
