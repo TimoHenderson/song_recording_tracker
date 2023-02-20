@@ -8,3 +8,19 @@ def save(artist):
     values = [artist.name]
     results = run_sql(sql, values)
     artist.id = results[0]["id"]
+
+
+# Read
+def select_all():
+    artists = []
+    sql = "SELECT * FROM artists WHERE active = true"
+    results = run_sql(sql)
+    for row in results:
+        artist = build_artist(row)
+        artists.append(artist)
+    return artists
+
+
+def build_artist(row):
+    artist = Artist(row["name"], row["id"])
+    return artist

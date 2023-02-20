@@ -32,7 +32,17 @@ def print_instruments():
         print("No instruments")
 
 
+def print_artists():
+    artists = artist_repository.select_all()
+    if artists:
+        [print(artist.__dict__) for artist in artists]
+    else:
+        print("No Artists")
+
+
 artist1 = Artist("U2")
 artist_repository.save(artist1)
 
-breakpoint()
+print_artists()
+
+# breakpoint()
