@@ -13,7 +13,8 @@ CREATE TABLE songs(
 CREATE TABLE instruments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    icon VARCHAR(255)
+    icon VARCHAR(255),
+    active BOOLEAN DEFAULT true
 );
 
 CREATE TABLE parts(
@@ -22,6 +23,6 @@ CREATE TABLE parts(
     status INT,
     song_id INT REFERENCES songs(id) ON DELETE CASCADE,
     instrument_id INT REFERENCES instruments(id) ON DELETE CASCADE ,
-    notes TEXT
+    notes TEXT 
 );
 

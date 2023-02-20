@@ -39,6 +39,12 @@ def update(instrument):
     run_sql(sql, values)
 
 
+def deactivate(id):
+    sql = "UPDATE instruments SET active = false WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
 # Delete
 def delete(id):
     sql = "DELETE FROM instruments WHERE id = %s"
