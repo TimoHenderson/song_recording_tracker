@@ -47,7 +47,13 @@ artist_repository.save(artist1)
 artist1.name = "Egg"
 artist_repository.update(artist1)
 
-print(artist_repository.select(artist1.id))
-# print_artists()
+print_artists()
+# artist_repository.deactivate(artist1.id)
+artist_repository.delete(11)
+# print(artist_repository.select(artist1.id))
+print_artists()
+artist_repository.delete_all()
+
+print_artists()
 
 # breakpoint()

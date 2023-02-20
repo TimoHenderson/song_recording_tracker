@@ -39,6 +39,24 @@ def update(artist):
     run_sql(sql, values)
 
 
+def deactivate(id):
+    sql = "UPDATE artists SET active = false WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
+# Delete
+def delete(id):
+    sql = "DELETE FROM artists WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
+def delete_all():
+    sql = "DELETE FROM artists"
+    run_sql(sql)
+
+
 def build_artist(row):
     artist = Artist(row["name"], row["id"])
     return artist
