@@ -10,3 +10,10 @@ artists_blueprint = Blueprint("artists", __name__)
 def show_all():
     artists = artist_repository.select_all()
     return render_template("artists/index.html", artists=artists)
+
+
+# View One
+@artists_blueprint.route("/artists/<id>")
+def show(id):
+    artist = artist_repository.select(id)
+    return render_template("artists/show.html", artist=artist)

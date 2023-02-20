@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for artist in artists %}
-<p>{{ artist }}</p>
+<a href="/artists/{{ artist.id }}">
+    <p>{{ artist }}</p>
+</a>
+<a href="/artists/new">New Artist</a>
 {% endfor %}
 {% endblock content %}
