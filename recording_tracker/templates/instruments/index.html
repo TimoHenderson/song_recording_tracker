@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for instrument in instruments %}
+<p>{{ instrument.__dict__ }}</p>
+{% endfor %}
+
+{% endblock content %}
