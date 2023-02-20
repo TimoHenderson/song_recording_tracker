@@ -13,7 +13,7 @@ def save(instrument):
 # Read
 def select_all():
     instruments = []
-    sql = "SELECT * FROM instruments"
+    sql = "SELECT * FROM instruments WHERE active = true"
     results = run_sql(sql)
     for row in results:
         instrument = build_instrument(row)
