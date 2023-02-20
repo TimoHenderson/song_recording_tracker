@@ -6,6 +6,8 @@
     --text-color: white;
 }
 
+
+
 body {
     font-family: 'Architects Daughter';
     color: var(--text-color);
@@ -154,4 +156,52 @@ hr {
 
 .meter-chunk-on {
     background-color: green;
+}
+
+@font-face {
+    font-family: social-media;
+    src: url(social-media.ttf);
+}
+
+.icons {
+    font-family: social-media, arial;
+}
+
+.icon-select~label {
+    color: red;
+    display: none;
+}
+
+.icon-select:checked~label {
+    display: inline;
+}
+
+.icon-radio:checked+label {
+    display: inline;
+    border-style: solid;
+    border-color: white;
+}
+
+.icon-popup {
+    font-size: 4rem;
+}
+
+#hidden {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#hider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+
+}
+
+.hidden-radio {
+    opacity: 0;
 }

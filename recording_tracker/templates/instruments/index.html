@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+<a href="/instruments/new">Add New</a>
 {% for instrument in instruments %}
 <a href="/instruments/{{ instrument.id }}">
     <p>{{ instrument.__dict__ }}</p>

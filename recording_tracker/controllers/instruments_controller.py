@@ -17,3 +17,23 @@ def show_all():
 def show(id):
     instrument = instrument_repository.select(id)
     return render_template("instruments/show.html", instrument=instrument)
+
+
+# New
+@instruments_blueprint.route("/instruments/new")
+def new_instrument():
+    icons = get_icons()
+    return render_template("instruments/new.html", icons=icons)
+
+
+# Create
+@instruments_blueprint.route("/instruments", methods=["POST"])
+def create():
+    form = request.form
+    new_instrument = Instrument(form["name"], form["icon"])
+    instrument_repository.save(new_instrument)
+    return redirect("/instruments")
+
+
+def get_icons():
+    return ["a", "b", "c", "d", "e", "f"]
