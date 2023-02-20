@@ -1,9 +1,11 @@
 import repositories.song_repository as song_repository
 import repositories.part_repository as part_repository
 import repositories.instrument_repository as instrument_repository
+import repositories.artist_repository as artist_repository
 from models.song import Song
 from models.part import Part
 from models.instrument import Instrument
+from models.artist import Artist
 
 
 def print_songs():
@@ -29,5 +31,8 @@ def print_instruments():
     else:
         print("No instruments")
 
+
+artist1 = Artist("U2")
+artist_repository.save(artist1)
 
 breakpoint()

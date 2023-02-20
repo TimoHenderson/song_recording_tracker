@@ -15,7 +15,6 @@ CREATE TABLE songs(
 CREATE TABLE artists(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
-    artist VARCHAR(255),
     active BOOLEAN DEFAULT true
 );
 
