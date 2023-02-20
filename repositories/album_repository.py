@@ -48,6 +48,18 @@ def deactivate(id):
     run_sql(sql, values)
 
 
+# Delete
+def delete(id):
+    sql = "DELETE FROM albums WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
+def delete_all():
+    sql = "DELETE FROM albums"
+    run_sql(sql)
+
+
 def build_album(row):
     artist = artist_repository.select(row["artist_id"])
     album = Album(row["name"], artist, row["id"])

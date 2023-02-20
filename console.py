@@ -53,13 +53,18 @@ def print_albums():
 artist1 = artist_repository.select(1)
 album1 = Album("The eggmen", artist1)
 album_repository.save(album1)
+album_repository.save(album1)
 
-print(album_repository.select(album1.id))
-album1.name = "Fried egg"
-album_repository.update(album1)
-print(album_repository.select(album1.id))
-album_repository.deactivate(album1.id)
-print()
+# print(album_repository.select(album1.id))
+# album1.name = "Fried egg"
+# album_repository.update(album1)
+# print(album_repository.select(album1.id))
+# album_repository.deactivate(album1.id)
+print_albums()
+album_repository.delete(album1.id)
+# print()
+
+# album_repository.delete_all()
 print_albums()
 
 # breakpoint()
