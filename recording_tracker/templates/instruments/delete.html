@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Are you sure you want to delete</h2>
+<p>{{ instrument.__dict__}}</p>
+<form action="/instruments/{{ instrument.id }}/delete" method="post">
+    <input type="submit" value="Delete">
+</form>
+<form action="/instruments">
+    <input type="submit" value="Cancel">
+</form>
+{% endblock content %}

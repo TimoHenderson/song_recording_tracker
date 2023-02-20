@@ -52,5 +52,19 @@ def update(id):
     return redirect("/instruments")
 
 
+# Delete Confirm
+@instruments_blueprint.route("/instruments/<id>/delete")
+def confirm_delete(id):
+    instrument = instrument_repository.select(id)
+    return render_template("instruments/delete.html", instrument=instrument)
+
+
+# Actually Delete
+@instruments_blueprint.route("instruments/<id>/delete", methods=["POST"])
+def delete(song_id, id):
+    instrument_repository.delete(id)
+    return redirect("/instruments")
+
+
 def get_icons():
     return ["a", "b", "c", "d", "e", "f"]

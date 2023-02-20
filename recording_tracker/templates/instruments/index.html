@@ -5,6 +5,9 @@
 <a href="/instruments/{{ instrument.id }}">
     <p>{{ instrument.__dict__ }}</p>
 </a>
+<a href="/instruments/{{ instrument .id }}/edit">Edit</a>
+<a href="/instruments/{{ instrument .id }}/delete">Delete</a>
+
 {% endfor %}
 
 {% endblock content %}
