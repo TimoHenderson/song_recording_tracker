@@ -32,5 +32,12 @@ def select(id):
     return instrument
 
 
+# Update
+def update(instrument):
+    sql = "UPDATE instruments SET (name,icon) = (%s,%s) WHERE id = %s"
+    values = [instrument.name, instrument.icon, instrument.id]
+    run_sql(sql, values)
+
+
 def build_instrument(row):
     return Instrument(row["name"], row["icon"], row["id"])
