@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
 {% for instrument in instruments %}
-<p>{{ instrument.__dict__ }}</p>
+<a href="/instruments/{{ instrument.id }}">
+    <p>{{ instrument.__dict__ }}</p>
+</a>
 {% endfor %}
 
 {% endblock content %}
