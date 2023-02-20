@@ -49,3 +49,17 @@ def update(id):
     artist = Artist(form["name"], id)
     artist_repository.update(artist)
     return redirect("/artists")
+
+
+# Delete Confirm
+@artists_blueprint.route("/artists/<id>/delete")
+def confirm_delete(id):
+    artist = artist_repository.select(id)
+    return render_template("artists/delete.html", artist=artist)
+
+
+# Actually Delete
+@artists_blueprint.route("/artists/<id>/delete", methods=["POST"])
+def delete(id):
+    artist_repository.deactivate(id)
+    return redirect("/artists")
