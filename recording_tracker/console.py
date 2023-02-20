@@ -43,8 +43,11 @@ def print_artists():
 artist1 = Artist("U2")
 artist_repository.save(artist1)
 
-print(artist_repository.select(1))
 
+artist1.name = "Egg"
+artist_repository.update(artist1)
+
+print(artist_repository.select(artist1.id))
 # print_artists()
 
 # breakpoint()
