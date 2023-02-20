@@ -4,11 +4,7 @@ DROP TABLE IF EXISTS albums;
 DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS songs;
 
-CREATE TABLE songs(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
-    notes TEXT
-);
+
 
 
 
@@ -17,7 +13,11 @@ CREATE TABLE artists(
     name VARCHAR(255),
     active BOOLEAN DEFAULT true
 );
-
+CREATE TABLE songs(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    notes TEXT
+);
 CREATE TABLE albums(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),

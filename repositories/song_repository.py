@@ -6,7 +6,7 @@ import repositories.part_repository as part_repository
 def save(song):
     sql = """INSERT INTO songs (title,artist,album,notes) 
             VALUES (%s,%s,%s,%s) RETURNING id"""
-    values = [song.title, song.artist, song.album, song.notes]
+    values = [song.title, song.artist.id, song.album, song.notes]
     results = run_sql(sql, values)
     song.id = results[0]["id"]
 
