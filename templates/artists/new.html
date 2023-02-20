@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>New Artist</h2>
+<form action="/artists" method="post">
+    <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Artist name" required>
+    </div>
+    <div>
+        <input type="submit" value="Add Artist">
+    </div>
+</form>
+<form action="/artists">
+    <input type="submit" value="Cancel">
+</form>
+
+
+{% endblock content %}

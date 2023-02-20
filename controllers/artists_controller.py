@@ -17,3 +17,18 @@ def show_all():
 def show(id):
     artist = artist_repository.select(id)
     return render_template("artists/show.html", artist=artist)
+
+
+# New
+@artists_blueprint.route("/artists/new")
+def new_artist():
+    return render_template("artists/new.html")
+
+
+# Create
+@artists_blueprint.route("/artists", methods=["POST"])
+def create():
+    form = request.form
+    new_artist = Artist(form["name"])
+    artist_repository.save(new_artist)
+    return redirect("/artists")
