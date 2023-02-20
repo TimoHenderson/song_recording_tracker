@@ -55,7 +55,10 @@ album1 = Album("The eggmen", artist1)
 album_repository.save(album1)
 
 print(album_repository.select(album1.id))
-
+album1.name = "Fried egg"
+album_repository.update(album1)
+print(album_repository.select(album1.id))
+album_repository.deactivate(album1.id)
 print()
 print_albums()
 

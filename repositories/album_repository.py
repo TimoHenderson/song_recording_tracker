@@ -35,6 +35,19 @@ def select(id):
     return album
 
 
+# Update
+def update(album):
+    sql = "UPDATE albums SET (name,artist_id) = (%s,%s) WHERE id = %s"
+    values = [album.name, album.artist.id, album.id]
+    run_sql(sql, values)
+
+
+def deactivate(id):
+    sql = "UPDATE albums SET active = false WHERE id = %s"
+    values = [id]
+    run_sql(sql, values)
+
+
 def build_album(row):
     artist = artist_repository.select(row["artist_id"])
     album = Album(row["name"], artist, row["id"])
