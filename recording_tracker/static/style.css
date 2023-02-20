@@ -158,10 +158,7 @@ hr {
     background-color: green;
 }
 
-@font-face {
-    font-family: social-media;
-    src: url(social-media.ttf);
-}
+
 
 @font-face {
     font-family: instruments-t;
