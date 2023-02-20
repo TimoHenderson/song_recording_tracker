@@ -167,8 +167,9 @@ hr {
 
 .instrument-icons {
     font-family: instruments-t;
-    color: red;
+    color: white;
     font-size: 4rem;
+    margin: 0;
 }
 
 .icons {

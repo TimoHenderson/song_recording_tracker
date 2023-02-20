@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect
-from repositories import part_repository, song_repository
+from repositories import part_repository, song_repository, instrument_repository
 from models.part import Part
 
 
@@ -24,14 +24,16 @@ def show(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/new")
 def new_part(song_id):
     song = song_repository.select(song_id)
-    return render_template("parts/new.html", song=song)
+    instruments = instrument_repository.select_all()
+    return render_template("parts/new.html", song=song, instruments=instruments)
 
 
 # Create
 @parts_blueprint.route("/songs/<song_id>/parts", methods=["POST"])
 def create(song_id):
     form = request.form
-    new_part = Part(form["name"], 0, song_id, form["instrument"], form["notes"])
+    instrument = instrument_repository.select(form["instrument_id"])
+    new_part = Part(form["name"], 0, song_id, instrument, form["notes"])
     part_repository.save(new_part)
     return redirect(f"/songs/{song_id}")
 
@@ -41,22 +43,27 @@ def create(song_id):
 def edit(song_id, id):
     part = part_repository.select(id)
     song = song_repository.select(part.song_id)
-    return render_template("parts/edit.html", part=part, song=song)
+    instruments = instrument_repository.select_all()
+    return render_template(
+        "parts/edit.html", part=part, song=song, instruments=instruments
+    )
 
 
 # Update
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/update", methods=["POST"])
 def update(song_id, id):
     form = request.form
+    instrument = instrument_repository.select(form["instrument_id"])
     part = Part(
         form["name"],
         form["status"],
         form["song_id"],
-        form["instrument"],
+        instrument,
         form["notes"],
         id,
     )
     part_repository.update(part)
+
     return redirect(f"/songs/{song_id}/parts/{id}")
 
 

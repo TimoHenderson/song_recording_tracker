@@ -1,7 +1,8 @@
 <div class="card part-card">
     <a href="/songs/{{ part.song_id }}/parts/{{ part.id }}">
         <h3>{{ part.name }}</h3>
-        <p>{{ part.instrument }}</p>
+        <p class="instrument-icons">&#x{{ part.instrument.icon }};</p>
+        <p>{{ part.instrument.name }}</p>
         <p>{{ part.get_status_str() }}</p>
     </a>
 </div>

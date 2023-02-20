@@ -9,7 +9,13 @@
     </div>
     <div>
         <label for="instrument">Instrument: </label>
-        <input type="text" name="instrument" id="instrument" value="{{ part.instrument }}" required>
+        <select name="instrument_id" id="instrument" required>
+            {% for instrument in instruments %}
+            <option value="{{ instrument.id }}" {% if instrument.id==part.instrument.id %} selected {% endif %}>
+                {{ instrument.name }}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     {% include 'parts/widgets/status-select.html' %}
     <div>

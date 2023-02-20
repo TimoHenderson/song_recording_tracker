@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>New Part for {{ song.title }} by {{ song.artist }}</h2>
-<form action="/parts" method="post">
+<form action="/songs/{{ song.id }}/parts" method="post">
     <input type="hidden" name="song_id" value="{{ song.id }}">
     <div>
         <label for="name">Name: </label>
@@ -9,7 +9,14 @@
     </div>
     <div>
         <label for="instrument">Instrument: </label>
-        <input type="text" name="instrument" id="instrument" required>
+        <select name="instrument_id" id="instrument" required>
+            <option value="" disabled selected>Select..</option>
+            {% for instrument in instruments %}
+            <option value="{{ instrument.id }}">
+                {{ instrument.name }}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <label for="notes">Notes: </label>

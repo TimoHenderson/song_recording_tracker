@@ -1,6 +1,6 @@
 from db.run_sql import run_sql
 from models.part import Part
-import instrument_repository as instrument_repository
+import repositories.instrument_repository as instrument_repository
 
 # Create
 def save(part):
