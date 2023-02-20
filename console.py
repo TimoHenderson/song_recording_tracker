@@ -42,7 +42,21 @@ def print_artists():
         print("No Artists")
 
 
+def print_albums():
+    albums = album_repository.select_all()
+    if albums:
+        [print(album.__dict__) for album in albums]
+    else:
+        print("No albums")
+
+
 artist1 = artist_repository.select(1)
 album1 = Album("The eggmen", artist1)
 album_repository.save(album1)
+
+print(album_repository.select(album1.id))
+
+print()
+print_albums()
+
 # breakpoint()
