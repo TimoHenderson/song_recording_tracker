@@ -1,13 +1,30 @@
 DROP TABLE IF EXISTS parts;
 DROP TABLE IF EXISTS instruments;
+DROP TABLE IF EXISTS albums;
+DROP TABLE IF EXISTS artists;
 DROP TABLE IF EXISTS songs;
 
 CREATE TABLE songs(
     id SERIAL PRIMARY KEY,
     title VARCHAR(255),
-    artist VARCHAR(255),
-    album VARCHAR(255),
     notes TEXT
+);
+
+
+
+CREATE TABLE artists(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    artist VARCHAR(255),
+    active BOOLEAN DEFAULT true
+);
+
+CREATE TABLE albums(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    artist_id INT REFERENCES artists(id),
+    notes TEXT,
+    active BOOLEAN DEFAULT true
 );
 
 CREATE TABLE instruments(
@@ -16,6 +33,8 @@ CREATE TABLE instruments(
     icon VARCHAR(255),
     active BOOLEAN DEFAULT true
 );
+
+
 
 CREATE TABLE parts(
     id SERIAL PRIMARY KEY,
