@@ -35,5 +35,13 @@ def create():
     return redirect("/instruments")
 
 
+# Edit
+@instruments_blueprint.route("/instruments/<id>/edit")
+def edit(id):
+    instrument = instrument_repository.select(id)
+    icons = get_icons()
+    return render_template("instruments/edit.html", instrument=instrument, icons=icons)
+
+
 def get_icons():
     return ["a", "b", "c", "d", "e", "f"]

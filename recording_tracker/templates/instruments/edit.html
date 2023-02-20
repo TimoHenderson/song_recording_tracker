@@ -1,20 +1,20 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>New Instrument</h2>
-<form action="/instruments" method="post">
-    <input type="hidden" name="request_origin" value="{{request.path}}">
+<h2>Edit Instrument</h2>
+<form action="/instruments/{{ instrument.id }}/update" method="post">
     <div>
         <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Instrument Name" required>
+        <input type="text" name="name" id="name" value="{{ instrument.name }}" required>
     </div>
     <div>
         <label for="icon-select" class="icon">Select Icon</label>
 
         <div class="icon-popup">
-            <input type="checkbox" name="icon-selector" id="icon-select" class="icon-select" hidden checked>
+            <input type="checkbox" name="icon-selector" id="icon-select" class="icon-select" hidden>
             {% for icon in icons %}
-            <input type="radio" class="icon-radio" name="icon" id="icon{{ icon }}" value="{{ icon }}" hidden required>
+            <input type="radio" class="icon-radio" name="icon" id="icon{{ icon }}" value="{{ icon }}" hidden required
+                {%if instrument.icon==icon %} checked {% endif %}>
             <label for="icon{{ icon }}" class="icons">{{ icon }}</label>
             {% endfor %}
         </div>
@@ -27,7 +27,7 @@
         <input type="submit" value="Add Instrument">
     </div>
 </form>
-<form action="/instruments">
+<form action="{{request.path}}">
     <input type="submit" value="Cancel">
 </form>
 {% endblock content %}
