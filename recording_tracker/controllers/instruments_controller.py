@@ -62,7 +62,7 @@ def confirm_delete(id):
 # Actually Delete
 @instruments_blueprint.route("/instruments/<id>/delete", methods=["POST"])
 def delete(id):
-    instrument_repository.delete(id)
+    instrument_repository.deactivate(id)
     return redirect("/instruments")
 
 
