@@ -40,12 +40,16 @@ def create():
 def edit(id):
     instrument = instrument_repository.select(id)
     icons = get_icons()
-    return render_template(
-        "instruments/edit.html",
-        instrument=instrument,
-        icons=icons,
-        request_origin=request.path,
-    )
+    return render_template("instruments/edit.html", instrument=instrument, icons=icons)
+
+
+# Update
+@instruments_blueprint.route("/instruments/<id>/update", methods=["POST"])
+def update(id):
+    form = request.form
+    instrument = Instrument(form["name"], form["icon"], id)
+    instrument_repository.update(instrument)
+    return redirect("/instruments")
 
 
 def get_icons():
