@@ -1,11 +1,12 @@
 from db.run_sql import run_sql
 from models.part import Part
+import instrument_repository as instrument_repository
 
 # Create
 def save(part):
-    sql = """INSERT INTO parts (name,status,song_id,instrument,notes) 
+    sql = """INSERT INTO parts (name,status,song_id,instrument_id,notes) 
             VALUES (%s,%s,%s,%s,%s) RETURNING id"""
-    values = [part.name, part.status, part.song_id, part.instrument, part.notes]
+    values = [part.name, part.status, part.song_id, part.instrument.id, part.notes]
     results = run_sql(sql, values)
     part.id = results[0]["id"]
 
@@ -45,13 +46,13 @@ def select_all_with_song(song_id):
 
 # Update
 def update(part):
-    sql = """UPDATE parts SET (name,status,song_id,instrument,notes) 
+    sql = """UPDATE parts SET (name,status,song_id,instrument_id,notes) 
             = (%s,%s,%s,%s,%s) WHERE id = %s"""
     values = [
         part.name,
         part.status,
         part.song_id,
-        part.instrument,
+        part.instrument.id,
         part.notes,
         part.id,
     ]
@@ -72,11 +73,12 @@ def delete(id):
 
 # Builder
 def build_part(row):
+    instrument = instrument_repository.select(row["instrument_id"])
     return Part(
         row["name"],
         row["status"],
         row["song_id"],
-        row["instrument"],
+        instrument,
         row["notes"],
         row["id"],
     )
