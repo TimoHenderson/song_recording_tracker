@@ -2,10 +2,12 @@ import repositories.song_repository as song_repository
 import repositories.part_repository as part_repository
 import repositories.instrument_repository as instrument_repository
 import repositories.artist_repository as artist_repository
+import repositories.album_repository as album_repository
 from models.song import Song
 from models.part import Part
 from models.instrument import Instrument
 from models.artist import Artist
+from models.album import Album
 
 
 def print_songs():
@@ -40,20 +42,7 @@ def print_artists():
         print("No Artists")
 
 
-artist1 = Artist("U2")
-artist_repository.save(artist1)
-
-
-artist1.name = "Egg"
-artist_repository.update(artist1)
-
-print_artists()
-# artist_repository.deactivate(artist1.id)
-artist_repository.delete(11)
-# print(artist_repository.select(artist1.id))
-print_artists()
-artist_repository.delete_all()
-
-print_artists()
-
+artist1 = artist_repository.select(1)
+album1 = Album("The eggmen", artist1)
+album_repository.save(album1)
 # breakpoint()
