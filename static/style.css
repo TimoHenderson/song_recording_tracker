@@ -108,7 +108,7 @@ hr {
 }
 
 /* #endregion card */
-/* #region song-completion */
+/* #region meters */
 .song-completion {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -123,23 +123,23 @@ hr {
 
 .completion-meter {
     display: flex;
-
-    width: 100px;
     margin: auto;
     height: 1rem;
+    border-style: ridge;
+    border-color: rgb(49, 49, 49);
+    border-width: 5px;
     /* height: 60px; */
 }
 
-/* #endregion song-completion */
-/* #region parts-meter */
-.song-parts-container {
+
+.child-elements-container {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
 }
 
-.part-meters-container {
+.element-meters-container {
     display: flex;
     justify-content: center;
     align-items: end;
@@ -149,7 +149,7 @@ hr {
     padding: 2px;
 }
 
-.part-meter {
+.element-meter {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -169,7 +169,7 @@ hr {
     background-color: green;
 }
 
-/* #endregion parts-meter */
+/* #endregion child-elements-meter */
 /* #region inst-icons */
 @font-face {
     font-family: instruments-t;

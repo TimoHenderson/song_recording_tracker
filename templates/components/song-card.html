@@ -4,6 +4,10 @@
         <p>by {{ song.album.artist.name }}</p>
         <p>{{ song.album.name }}</p>
     </div>
+    {% set completion = song.get_completion() %}
     {% include 'components/widgets/completion.html' %}
-    {% include 'components/widgets/part-meter.html' %}
+    {% set element_name = "Parts" %}
+    {% set num_elements = song.get_num_parts() %}
+    {% set elements = song.parts_status %}
+    {% include 'components/widgets/child-elements-meter.html' %}
 </div>

@@ -81,7 +81,7 @@ def delete(id):
 def _calculate_song_completion(parts_status):
     completion = 0
     if parts_status:
-        total = sum(status for status in parts_status)
+        total = sum(status * 20 for status in parts_status)
         possible = len(parts_status) * 5
         completion = total / possible * 100
     return int(completion)
@@ -90,5 +90,6 @@ def _calculate_song_completion(parts_status):
 # Builder
 def _build_song(row):
     album = album_repository.select(row["album_id"])
-    parts_status = part_repository.select_all_status_with_song(row["id"])
-    return Song(row["title"], album, parts_status, row["notes"], row["id"])
+    parts_states = part_repository.select_all_status_with_song(row["id"])
+    parts_completion = [state * 20 for state in parts_states]
+    return Song(row["title"], album, parts_completion, row["notes"], row["id"])

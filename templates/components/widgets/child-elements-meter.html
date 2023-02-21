@@ -1,0 +1,19 @@
+<div class="child-elements-container">
+    <p>{{ element_name }} - {{ num_elements }}</p>
+    <div class="element-meters-container">
+        {% if elements %}
+        {% for element in elements %}
+        <div class="element-meter">
+            {% for i in range(5,105,5) %}
+            <div class="meter-chunk {% if element <=i %}meter-chunk-on{% endif %}"></div>
+            {% endfor %}
+
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="element-meter">
+            <div class="meter-chunk"></div>
+        </div>
+        {% endif %}
+    </div>
+</div>

@@ -16,8 +16,7 @@ class Song:
         completion = 0
         if self.parts_status:
             total = sum(status for status in self.parts_status)
-            possible = len(self.parts_status) * 5
-            completion = total / possible * 100
+            completion = total / len(self.parts_status)
         return int(completion)
 
     def get_num_parts(self):
