@@ -1,13 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-<a href="/instruments/new">Add New</a>
-{% for instrument in instruments %}
-<a href="/instruments/{{ instrument.id }}">
-    <p>{{ instrument.__dict__ }}</p>
-</a>
-<a href="/instruments/{{ instrument .id }}/edit">Edit</a>
-<a href="/instruments/{{ instrument .id }}/delete">Delete</a>
-
-{% endfor %}
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            <h2>All Instruments</h2>
+            <a href="/instruments/new">New Album</a>
+        </div>
+        <hr>
+    </div>
+    <a href="/instruments/new">Add New</a>
+    <div class="card-list">
+        {% for instrument in instruments %}
+        <a href="/instruments/{{ instrument.id }}">
+            {% include 'components/cards/instrument-card.html' %}
+        </a>
+        {% endfor %}
+    </div>
+</main>
 
 {% endblock content %}

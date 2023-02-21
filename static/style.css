@@ -181,14 +181,15 @@ hr {
     color: white;
     font-size: 4rem;
     margin: 0;
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
 }
 
-.icons {
-    font-family: instruments-t;
-}
+
 
 .icon-select~label {
-    color: red;
+
     display: none;
 }
 
@@ -200,6 +201,7 @@ hr {
     display: inline;
     border-style: solid;
     border-color: white;
+
 }
 
 .icon-popup {
