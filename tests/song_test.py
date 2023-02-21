@@ -70,3 +70,8 @@ class TestSong(unittest.TestCase):
         actual = self.song1.get_num_parts()
         expected = 3
         self.assertEqual(actual, expected)
+
+    def test_can_get_parts_status_percent(self):
+        actual = self.song1.get_parts_status_percent()
+        expected = [60, 100, 60]
+        self.assertEqual(actual, expected)

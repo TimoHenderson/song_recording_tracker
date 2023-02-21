@@ -95,5 +95,6 @@ def _calculate_album_completion(songs_completion):
 def _build_album(row):
     artist = artist_repository.select(row["artist_id"])
     songs_completion = song_repository.select_all_completion_with_album(row["id"])
+    print(songs_completion)
     album = Album(row["name"], artist, songs_completion, row["id"])
     return album
