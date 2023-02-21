@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ album }}
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            {% include 'albums/components/album-card.html' %}
+            <a href="/albums/new">New Album</a>
+        </div>
+        <hr>
+    </div>
+    <div class="card-list">
+        {% for song in songs %}
+        <article>
+            <a href="/songs/{{ song.id }}">
+                {% include 'songs/components/song-card.html' %}
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}

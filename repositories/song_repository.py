@@ -34,6 +34,18 @@ def select(id):
     return song
 
 
+def select_all_with_album(album_id):
+    songs = []
+    sql = "SELECT * FROM songs WHERE album_id = %s"
+    values = [album_id]
+    results = run_sql(sql, values)
+    for row in results:
+        row = results[0]
+        song = _build_song(row)
+        songs.append(song)
+    return songs
+
+
 def select_all_completion_with_album(album_id):
     songs_completion = []
     sql = "SELECT id FROM songs WHERE album_id = %s"

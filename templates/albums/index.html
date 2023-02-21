@@ -12,15 +12,7 @@
         {% for album in albums %}
         <article>
             <a href="/albums/{{ album.id }}">
-                <div class="card">
-                    <h3>{{ album.name }}</h3>
-                    {% for song_completion in album.songs_completion %}
-                    <p>complete: {{ song_completion }}</p>
-                    {% endfor %}
-                    <p>{{ album.get_completion() }}%</p>
-                    <a href="/albums/{{ album.id }}/edit">Edit</a>
-                    <a href="/albums/{{ album.id }}/delete">Delete</a>
-                </div>
+                {% include 'albums/components/album-card.html' %}
             </a>
         </article>
         {% endfor %}
