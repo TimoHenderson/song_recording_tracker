@@ -48,15 +48,16 @@ def select_all_with_album(album_id):
 
 
 def select_all_completion_with_album(album_id):
-    songs_completion = []
+    songs_completions = []
     sql = "SELECT id FROM songs WHERE album_id = %s"
     values = [album_id]
     results = run_sql(sql, values)
     for row in results:
         parts_status = part_repository.select_all_status_with_song(row["id"])
         song_completion = _calculate_song_completion(parts_status)
-        songs_completion.append(song_completion)
-    return songs_completion
+        songs_completions.append(song_completion)
+    print(songs_completions)
+    return songs_completions
 
 
 # Update

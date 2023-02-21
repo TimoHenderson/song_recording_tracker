@@ -1,13 +1,18 @@
-<!-- Requires completion variable set as int range 0-100 -->
+<!-- Requires completion variable set as int range 0-100  
+    set hide_percent to True and pass in label to replace text-->
 <div class="song-completion">
     {% set width = 150 %}
     {% set completion_bar = (completion/100)*width %}
 
 
 
-    <div>
+    <div>{% if hide_percent %}
+        <p>{{ label }}</p>
+        {% else %}
         <p>Completion - {{ completion }}%</p>
-        <div class="completion-meter" width="{{ width }}">
+        {% endif %}
+
+        <div class="meter completion-meter " width="{{ width }}">
             {% for i in range(5,105,5) %}
             <div class="meter-chunk {% if completion >=i %}meter-chunk-on{% endif %}"></div>
             {% endfor %}

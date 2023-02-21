@@ -3,6 +3,10 @@
         <h3>{{ part.name }}</h3>
         <p class="instrument-icons">&#x{{ part.instrument.icon }};</p>
         <p>{{ part.instrument.name }}</p>
+        {% set completion = part.status*20 %}
+        {% set hide_percent = True %}
+        {% set label = part.get_status_str() %}
+        {% include 'components/widgets/completion.html' %}
         <p>{{ part.get_status_str() }}</p>
     </a>
 </div>

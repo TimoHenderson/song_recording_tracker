@@ -121,13 +121,18 @@ hr {
     margin: 0;
 }
 
+.meter {
+    border-style: ridge;
+    border-color: rgb(46, 45, 45);
+    border-width: 5px;
+    background-color: black;
+}
+
 .completion-meter {
     display: flex;
     margin: auto;
     height: 1rem;
-    border-style: ridge;
-    border-color: rgb(49, 49, 49);
-    border-width: 5px;
+
     /* height: 60px; */
 }
 
@@ -146,12 +151,13 @@ hr {
     width: 100%;
     gap: 2px;
     background-color: black;
-    padding: 2px;
+
 }
 
 .element-meter {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
+
     width: 100%;
     margin: auto;
     height: 60px;
