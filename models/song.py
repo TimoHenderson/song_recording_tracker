@@ -1,6 +1,3 @@
-from models.part import Part
-
-
 class Song:
     def __init__(self, title, artist, album, notes="", id=None, parts=[]):
         self.title = title
