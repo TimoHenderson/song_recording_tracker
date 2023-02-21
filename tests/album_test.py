@@ -38,3 +38,13 @@ class TestAlbum(unittest.TestCase):
         actual = self.album2.songs_completion
         expected = [75, 50]
         self.assertEqual(actual, expected)
+
+    def test_can_get_completion(self):
+        actual = self.album2.get_completion()
+        expected = 62
+        self.assertEqual(actual, expected)
+
+    def test_can_get_num_songs(self):
+        actual = self.album2.get_num_songs()
+        expected = 2
+        self.assertEqual(actual, expected)
