@@ -35,3 +35,35 @@ def create():
     new_album = Album(form["name"], artist)
     album_repository.save(new_album)
     return redirect("/albums")
+
+
+# Edit
+@albums_blueprint.route("/albums/<id>/edit")
+def edit(id):
+    album = album_repository.select(id)
+    artists = artist_repository.select_all()
+    return render_template("albums/edit.html", album=album, artists=artists)
+
+
+# Update
+@albums_blueprint.route("/albums/<id>/update", methods=["POST"])
+def update(id):
+    form = request.form
+    artist = artist_repository.select(form["artist_id"])
+    album = Album(form["name"], artist, id)
+    album_repository.update(album)
+    return redirect("/albums")
+
+
+# Delete Confirm
+@albums_blueprint.route("/albums/<id>/delete")
+def confirm_delete(id):
+    album = album_repository.select(id)
+    return render_template("albums/delete.html", album=album)
+
+
+# Actually Delete
+@albums_blueprint.route("/albums/<id>/delete", methods=["POST"])
+def delete(id):
+    album_repository.deactivate(id)
+    return redirect("/albums")
