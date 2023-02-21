@@ -1,11 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for artist in artists %}
-<a href="/artists/{{ artist.id }}">
-    <p>{{ artist }}</p>
-    <a href="/artists/{{ artist.id }}/edit">Edit</a>
-    <a href="/artists/{{ artist.id }}/delete">Delete</a>
-</a>
-{% endfor %}
-<a href="/artists/new">New Artist</a>
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            <h2>All Songs</h2>
+            <a href="/artists/new">New Artist</a>
+        </div>
+        <hr>
+    </div>
+
+    <div class="card-list">
+        {% for artist in artists %}
+        <a href="/artists/{{ artist.id }}">
+            <div class="card">
+                <h3>{{ artist.name }}</h3>
+                <a href="/artists/{{ artist.id }}/edit">Edit</a>
+                <a href="/artists/{{ artist.id }}/delete">Delete</a>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}

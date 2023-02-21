@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for album in albums %}
-<a href="/albums/{{ album.id }}">
-    <p>{{ album }}</p>
-    <a href="/albums/{{ album.id }}/edit">Edit</a>
-    <a href="/albums/{{ album.id }}/delete">Delete</a>
-</a>
-{% endfor %}
-<a href="/albums/new">New Album</a>
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            <h2>All Albums</h2>
+            <a href="/albums/new">New Album</a>
+        </div>
+        <hr>
+    </div>
+    <div class="card-list">
+        {% for album in albums %}
+        <article>
+            <a href="/albums/{{ album.id }}">
+                <div class="card">
+                    <h3>{{ album.name }}</h3>
+                    <a href="/albums/{{ album.id }}/edit">Edit</a>
+                    <a href="/albums/{{ album.id }}/delete">Delete</a>
+                </div>
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}

@@ -1,14 +1,14 @@
-import dataclasses
-from typing import List
+from dataclasses import dataclass, field
+
 from models.album import Album
 
 
-@dataclasses.dataclass
+@dataclass
 class Song:
 
     title: str
     album: Album
-    parts_status: list[int] = dataclasses.field(default_factory=list)
+    parts_status: list[int] = field(default_factory=list)
     notes: str = ""
     id: int = None
 

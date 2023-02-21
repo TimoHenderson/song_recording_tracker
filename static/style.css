@@ -1,3 +1,4 @@
+/* #region body */
 :root {
     --darkest: #2a2438;
     --darker: #352f44;
@@ -19,6 +20,8 @@ a {
     color: var(--text-color)
 }
 
+/* #endregion */
+/* #region header */
 header {
     background-color: var(--darkest);
     display: flex;
@@ -41,6 +44,8 @@ nav>div {
     padding: 0.8rem;
 }
 
+/* #endregion */
+/* #region page-header */
 .page-header {
 
     width: 100%;
@@ -60,6 +65,8 @@ hr {
     color: white;
 }
 
+/* #endregion page-header */
+/* #region card-list */
 .card-list {
 
     width: 90%;
@@ -67,6 +74,19 @@ hr {
     gap: 1rem;
 }
 
+.song-card-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.part-card-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* #endregion card-list */
+/* #region card */
 .card {
     background-color: rgb(35, 35, 35);
     padding-left: 1rem;
@@ -76,12 +96,6 @@ hr {
     border-radius: 1rem;
 }
 
-.song-card-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
 .song-card {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -89,15 +103,12 @@ hr {
 
 }
 
-.part-card-list {
-    display: flex;
-    flex-wrap: wrap;
-}
-
 .part-card {
     width: 10rem;
 }
 
+/* #endregion card */
+/* #region song-completion */
 .song-completion {
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -110,8 +121,6 @@ hr {
     margin: 0;
 }
 
-
-
 .completion-meter {
     display: flex;
 
@@ -121,6 +130,8 @@ hr {
     /* height: 60px; */
 }
 
+/* #endregion song-completion */
+/* #region parts-meter */
 .song-parts-container {
     display: flex;
     flex-direction: column;
@@ -158,8 +169,8 @@ hr {
     background-color: green;
 }
 
-
-
+/* #endregion parts-meter */
+/* #region inst-icons */
 @font-face {
     font-family: instruments-t;
     src: url(instruments-t.ttf);
@@ -214,3 +225,5 @@ hr {
 .hidden-radio {
     opacity: 0;
 }
+
+/* #endregion inst-icons */

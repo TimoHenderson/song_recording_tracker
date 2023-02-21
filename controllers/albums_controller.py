@@ -15,14 +15,14 @@ def show_all():
 
 # View One
 @albums_blueprint.route("/albums/<id>")
-def show(id):
+def show(artist_id, id):
     album = album_repository.select(id)
     return render_template("albums/show.html", album=album)
 
 
 # New
 @albums_blueprint.route("/albums/new")
-def new_album():
+def new_album(artist):
     artists = artist_repository.select_all()
     return render_template("albums/new.html", artists=artists)
 
