@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, redirect
-from repositories import song_repository
-from repositories import part_repository
+import repositories.song_repository as song_repository
+import repositories.part_repository as part_repository
+import repositories.album_repository as album_repository
 from models.song import Song
 
 songs_blueprint = Blueprint("songs", __name__)
@@ -23,14 +24,16 @@ def show(id):
 # New
 @songs_blueprint.route("/songs/new")
 def new():
-    return render_template("songs/new.html")
+    albums = album_repository.select_all()
+    return render_template("songs/new.html", albums=albums)
 
 
 # Create
 @songs_blueprint.route("/songs", methods=["POST"])
 def create():
     form = request.form
-    new_song = Song(form["title"], form["artist"], form["album"], form["notes"])
+    album = album_repository.select(form["album_id"])
+    new_song = Song(form["title"], album, form["notes"])
     song_repository.save(new_song)
     return redirect("/songs")
 
@@ -39,14 +42,16 @@ def create():
 @songs_blueprint.route("/songs/<id>/edit")
 def edit(id):
     song = song_repository.select(id)
-    return render_template("songs/edit.html", song=song)
+    albums = album_repository.select_all()
+    return render_template("songs/edit.html", song=song, albums=albums)
 
 
 # Update
 @songs_blueprint.route("/songs/<id>/update", methods=["POST"])
 def update(id):
     form = request.form
-    song = Song(form["title"], form["artist"], form["album"], form["notes"], id=id)
+    album = album_repository.select(form["album_id"])
+    song = Song(form["title"], album, form["notes"], id=id)
     song_repository.update(song)
     return redirect(f"/songs/{id}")
 

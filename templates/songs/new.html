@@ -6,12 +6,16 @@
         <input type="text" name="title" id="title" required>
     </div>
     <div>
-        <label for="artist">Artist: </label>
-        <input type="text" name="artist" id="artist" required>
-    </div>
-    <div>
         <label for="album">Album: </label>
-        <input type="text" name="album" id="album">
+
+        <select name="album_id" id="album">
+            <option value="" disabled selected>Select Album</option>
+            {% for album in albums %}
+            <option value="{{ album.id }}">{{ album.name }} by {{
+                album.artist.name }}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <label for="notes">Notes: </label>

@@ -37,7 +37,7 @@ def select(id):
 # Update
 def update(song):
     sql = "UPDATE songs SET (title, album_id, notes) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [song.title, song.album_id, song.notes, song.id]
+    values = [song.title, song.album.id, song.notes, song.id]
     run_sql(sql, values)
 
 

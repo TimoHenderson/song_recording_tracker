@@ -7,12 +7,14 @@
         <input type="text" name="title" id="title" value="{{ song.title }}">
     </div>
     <div>
-        <label for="artist">Artist: </label>
-        <input type="text" name="artist" id="artist" value="{{ song.artist }}">
-    </div>
-    <div>
         <label for="album">Album: </label>
-        <input type="text" name="album" id="album" value="{{ song.album }}">
+        <select name="album_id" id="album">
+            {% for album in albums %}
+            <option value="{{ album.id }}" {% if album.id==song.album.id %} selected {% endif %}>{{ album.name }} by {{
+                album.artist.name }}
+            </option>
+            {% endfor %}
+        </select>
     </div>
     <div>
         <label for="notes">Notes: </label>
