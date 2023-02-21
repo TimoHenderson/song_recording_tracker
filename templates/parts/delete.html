@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Are you sure you want to delete</h2>
-<p>{% include 'parts/components/part-card.html' %}</p>
+<p>{% include 'components/part-card.html' %}</p>
 <p>from {{part.song.title}}</p>
 <form action="/songs/{{ part.song.id }}/parts/{{ part.id }}/delete" method="post">
     <input type="submit" value="Delete">

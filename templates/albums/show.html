@@ -3,7 +3,7 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents">
-            {% include 'albums/components/album-card.html' %}
+            {% include 'components/album-card.html' %}
             <a href="/albums/new">New Album</a>
         </div>
         <hr>
@@ -12,7 +12,7 @@
         {% for song in songs %}
         <article>
             <a href="/songs/{{ song.id }}">
-                {% include 'songs/components/song-card.html' %}
+                {% include 'components/song-card.html' %}
             </a>
         </article>
         {% endfor %}

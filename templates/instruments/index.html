@@ -12,7 +12,7 @@
     <div class="card-list">
         {% for instrument in instruments %}
         <a href="/instruments/{{ instrument.id }}">
-            {% include 'components/cards/instrument-card.html' %}
+            {% include 'components/instrument-card.html' %}
         </a>
         {% endfor %}
     </div>
