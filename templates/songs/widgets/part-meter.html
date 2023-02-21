@@ -1,18 +1,14 @@
 <div class="song-parts-container">
     <p>Parts - {{ song.get_num_parts() }}</p>
     <div class="part-meters-container">
-        {% if song.parts %}
-
-
-
-
-        {% for part in song.parts %}
+        {% if song.parts_status %}
+        {% for status in song.parts_status %}
         <div class="part-meter">
-            <div class="meter-chunk {% if part.status >= 5 %}meter-chunk-on{% endif %}"></div>
-            <div class="meter-chunk {% if part.status >= 4 %}meter-chunk-on{% endif %}"></div>
-            <div class="meter-chunk {% if part.status >= 3 %}meter-chunk-on{% endif %}"></div>
-            <div class="meter-chunk {% if part.status >= 2 %}meter-chunk-on{% endif %}"></div>
-            <div class="meter-chunk {% if part.status >= 1 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if status >= 5 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if status >= 4 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if status >= 3 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if status >= 2 %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if status >= 1 %}meter-chunk-on{% endif %}"></div>
         </div>
         {% endfor %}
         {% else %}

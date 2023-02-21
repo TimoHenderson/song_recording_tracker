@@ -1,8 +1,8 @@
 <div class="card song-card">
     <div class="song-details">
         <h3>{{ song.title }}</h3>
-        <p>by {{ song.artist }}</p>
-        <p>{{ song.album }}</p>
+        <p>by {{ song.album.artist.name }}</p>
+        <p>{{ song.album.name }}</p>
     </div>
     {% include 'songs/widgets/completion.html' %}
     {% include 'songs/widgets/part-meter.html' %}
