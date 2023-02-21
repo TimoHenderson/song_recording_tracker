@@ -23,9 +23,6 @@ class Song:
     def get_num_parts(self):
         return len(self.parts_status)
 
-    def __repr__(self):
-        return f"{self.title}, {self.artist}"
-
 
 # class Song:
 #     def __init__(self, title, artist, album, notes="", parts=[], id=None):
