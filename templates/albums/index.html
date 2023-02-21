@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+{% for album in albums %}
+<a href="/albums/{{ album.id }}">
+    <p>{{ album }}</p>
+    <a href="/albums/{{ album.id }}/edit">Edit</a>
+    <a href="/albums/{{ album.id }}/delete">Delete</a>
+</a>
+{% endfor %}
+<a href="/albums/new">New Album</a>
+{% endblock content %}
