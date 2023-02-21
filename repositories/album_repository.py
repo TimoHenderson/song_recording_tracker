@@ -20,7 +20,7 @@ def select_all():
     sql = "SELECT * FROM albums WHERE active = true"
     results = run_sql(sql)
     for row in results:
-        album = build_album(row)
+        album = _build_album(row)
         albums.append(album)
     return albums
 
@@ -31,7 +31,7 @@ def select_all_with_artist(artist_id):
     values = [artist_id]
     results = run_sql(sql, values)
     for row in results:
-        album = build_album(row)
+        album = _build_album(row)
         albums.append(album)
     return albums
 
@@ -48,14 +48,6 @@ def select_all_completion_with_artist(artist_id):
     return albums_completion
 
 
-def _calculate_album_completion(songs_completion):
-    completion = 0
-    if songs_completion:
-        total = sum(song for song in songs_completion)
-        completion = total / len(songs_completion)
-    return completion
-
-
 def select(id):
     album = None
     sql = "SELECT * FROM albums WHERE id = %s"
@@ -63,7 +55,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        album = build_album(row)
+        album = _build_album(row)
     return album
 
 
@@ -92,7 +84,15 @@ def delete_all():
     run_sql(sql)
 
 
-def build_album(row):
+def _calculate_album_completion(songs_completion):
+    completion = 0
+    if songs_completion:
+        total = sum(song for song in songs_completion)
+        completion = total / len(songs_completion)
+    return completion
+
+
+def _build_album(row):
     artist = artist_repository.select(row["artist_id"])
     songs_completion = song_repository.select_all_completion_with_album(row["id"])
     album = Album(row["name"], artist, songs_completion, row["id"])

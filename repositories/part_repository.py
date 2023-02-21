@@ -19,7 +19,7 @@ def select_all():
     sql = "SELECT * FROM parts"
     results = run_sql(sql)
     for row in results:
-        part = build_part(row)
+        part = _build_part(row)
         parts.append(part)
     return parts
 
@@ -31,7 +31,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        part = build_part(row)
+        part = _build_part(row)
     return part
 
 
@@ -41,7 +41,7 @@ def select_all_with_song(song_id):
     values = [song_id]
     results = run_sql(sql, values)
     for row in results:
-        part = build_part(row)
+        part = _build_part(row)
         parts.append(part)
     return parts
 
@@ -84,7 +84,7 @@ def delete(id):
 
 
 # Builder
-def build_part(row):
+def _build_part(row):
     instrument = instrument_repository.select(row["instrument_id"])
     song = song_repository.select(row["song_id"])
     return Part(

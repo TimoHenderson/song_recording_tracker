@@ -16,7 +16,7 @@ def select_all():
     sql = "SELECT * FROM instruments WHERE active = true"
     results = run_sql(sql)
     for row in results:
-        instrument = build_instrument(row)
+        instrument = _build_instrument(row)
         instruments.append(instrument)
     return instruments
 
@@ -28,7 +28,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        instrument = build_instrument(row)
+        instrument = _build_instrument(row)
     return instrument
 
 
@@ -57,5 +57,5 @@ def delete_all():
     run_sql(sql)
 
 
-def build_instrument(row):
+def _build_instrument(row):
     return Instrument(row["name"], row["icon"], row["id"])

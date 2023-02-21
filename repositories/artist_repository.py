@@ -17,7 +17,7 @@ def select_all():
     sql = "SELECT * FROM artists WHERE active = true"
     results = run_sql(sql)
     for row in results:
-        artist = build_artist(row)
+        artist = _build_artist(row)
         artists.append(artist)
     return artists
 
@@ -29,7 +29,7 @@ def select(id):
     results = run_sql(sql, values)
     if results:
         row = results[0]
-        artist = build_artist(row)
+        artist = _build_artist(row)
     return artist
 
 
@@ -58,7 +58,7 @@ def delete_all():
     run_sql(sql)
 
 
-def build_artist(row):
+def _build_artist(row):
     albums_completion = album_repository.select_all_completion_with_artist(row["id"])
     artist = Artist(row["name"], albums_completion, row["id"])
     return artist
