@@ -42,11 +42,8 @@ def create(song_id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/edit")
 def edit(song_id, id):
     part = part_repository.select(id)
-    song = song_repository.select(part.song_id)
     instruments = instrument_repository.select_all()
-    return render_template(
-        "parts/edit.html", part=part, song=song, instruments=instruments
-    )
+    return render_template("parts/edit.html", part=part, instruments=instruments)
 
 
 # Update
@@ -54,10 +51,11 @@ def edit(song_id, id):
 def update(song_id, id):
     form = request.form
     instrument = instrument_repository.select(form["instrument_id"])
+    song = song_repository.select(song_id)
     part = Part(
         form["name"],
         form["status"],
-        form["song_id"],
+        song,
         instrument,
         form["notes"],
         id,

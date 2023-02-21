@@ -11,6 +11,12 @@ from models.album import Album
 
 
 def run_seeds():
+    part_repository.delete_all()
+    instrument_repository.delete_all()
+    song_repository.delete_all()
+    album_repository.delete_all()
+    artist_repository.delete_all()
+
     # Artists
 
     artist1 = Artist("The Purple Felts")
