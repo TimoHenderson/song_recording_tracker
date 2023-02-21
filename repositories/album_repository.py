@@ -1,6 +1,7 @@
 from db.run_sql import run_sql
 from models.album import Album
 import repositories.artist_repository as artist_repository
+import repositories.song_repository as song_repository
 
 
 # Create
@@ -62,5 +63,6 @@ def delete_all():
 
 def build_album(row):
     artist = artist_repository.select(row["artist_id"])
-    album = Album(row["name"], artist, row["id"])
+    songs_completion = song_repository.select_all_completion_with_album(row["id"])
+    album = Album(row["name"], artist, songs_completion, row["id"])
     return album
