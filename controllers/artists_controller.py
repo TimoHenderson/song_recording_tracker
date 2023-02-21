@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect
 from repositories import artist_repository
+from repositories import album_repository
 from models.artist import Artist
 
 
@@ -16,7 +17,8 @@ def show_all():
 @artists_blueprint.route("/artists/<id>")
 def show(id):
     artist = artist_repository.select(id)
-    return render_template("artists/show.html", artist=artist)
+    albums = album_repository.select_all_with_artist(id)
+    return render_template("artists/show.html", artist=artist, albums=albums)
 
 
 # New

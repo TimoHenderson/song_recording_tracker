@@ -3,7 +3,7 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents">
-            <h2>All Songs</h2>
+            <h2>All Artists</h2>
             <a href="/artists/new">New Artist</a>
         </div>
         <hr>
@@ -12,11 +12,7 @@
     <div class="card-list">
         {% for artist in artists %}
         <a href="/artists/{{ artist.id }}">
-            <div class="card">
-                <h3>{{ artist.name }}</h3>
-                <a href="/artists/{{ artist.id }}/edit">Edit</a>
-                <a href="/artists/{{ artist.id }}/delete">Delete</a>
-            </div>
+            {% include 'artists/components/artist-card.html' %}
         </a>
         {% endfor %}
     </div>

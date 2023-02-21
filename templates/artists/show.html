@@ -1,4 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ artist }}
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            {% include 'artists/components/artist-card.html' %}
+            <a href="/artists/new">New Album</a>
+        </div>
+        <hr>
+    </div>
+    <div class="card-list">
+        {% for album in albums %}
+        <article>
+            <a href="/albums/{{ album.id }}">
+                {% include 'albums/components/album-card.html' %}
+            </a>
+        </article>
+        {% endfor %}
+    </div>
+</main>
 {% endblock content %}

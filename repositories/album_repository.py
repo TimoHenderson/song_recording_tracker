@@ -25,6 +25,17 @@ def select_all():
     return albums
 
 
+def select_all_with_artist(artist_id):
+    albums = []
+    sql = "SELECT * FROM albums WHERE active = true AND artist_id = %s"
+    values = [artist_id]
+    results = run_sql(sql, values)
+    for row in results:
+        album = build_album(row)
+        albums.append(album)
+    return albums
+
+
 def select(id):
     album = None
     sql = "SELECT * FROM albums WHERE id = %s"
