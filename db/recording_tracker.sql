@@ -13,11 +13,7 @@ CREATE TABLE artists(
     name VARCHAR(255),
     active BOOLEAN DEFAULT true
 );
-CREATE TABLE songs(
-    id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
-    notes TEXT
-);
+
 CREATE TABLE albums(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
@@ -26,14 +22,19 @@ CREATE TABLE albums(
     active BOOLEAN DEFAULT true
 );
 
+CREATE TABLE songs(
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(255),
+    album_id INT REFERENCES albums(id),
+    notes TEXT
+);
+
 CREATE TABLE instruments(
     id SERIAL PRIMARY KEY,
     name VARCHAR(255),
     icon VARCHAR(255),
     active BOOLEAN DEFAULT true
 );
-
-
 
 CREATE TABLE parts(
     id SERIAL PRIMARY KEY,

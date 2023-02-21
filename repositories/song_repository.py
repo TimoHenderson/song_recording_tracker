@@ -1,12 +1,13 @@
 from db.run_sql import run_sql
 from models.song import Song
 import repositories.part_repository as part_repository
+import repositories.album_repository as album_repository
 
 # Create
 def save(song):
-    sql = """INSERT INTO songs (title,artist,album,notes) 
-            VALUES (%s,%s,%s,%s) RETURNING id"""
-    values = [song.title, song.artist.id, song.album, song.notes]
+    sql = """INSERT INTO songs (title,album_id,notes) 
+            VALUES (%s,%s,%s) RETURNING id"""
+    values = [song.title, song.album.id, song.notes]
     results = run_sql(sql, values)
     song.id = results[0]["id"]
 
@@ -35,8 +36,8 @@ def select(id):
 
 # Update
 def update(song):
-    sql = "UPDATE songs SET (title, artist, album, notes) = (%s, %s, %s, %s) WHERE id = %s"
-    values = [song.title, song.artist, song.album, song.notes, song.id]
+    sql = "UPDATE songs SET (title, album_id, notes) = (%s, %s, %s, %s) WHERE id = %s"
+    values = [song.title, song.album_id, song.notes, song.id]
     run_sql(sql, values)
 
 
@@ -54,7 +55,6 @@ def delete(id):
 
 # Builder
 def build_song(row):
-    parts = part_repository.select_all_with_song(row["id"])
-    return Song(
-        row["title"], row["artist"], row["album"], row["notes"], row["id"], parts
-    )
+    album = album_repository.select(row["album_id"])
+    parts_status = part_repository.select_all_status_with_song(row["id"])
+    return Song(row["title"], album, parts_status, row["notes"], row["id"])

@@ -46,6 +46,16 @@ def select_all_with_song(song_id):
     return parts
 
 
+def select_all_status_with_song(song_id):
+    parts_status = []
+    sql = "SELECT status FROM parts WHERE song_id = %s"
+    values = [song_id]
+    results = run_sql(sql, values)
+    for row in results:
+        parts_status.append(row["status"])
+    return parts_status
+
+
 # Update
 def update(part):
     sql = """UPDATE parts SET (name,status,song_id,instrument_id,notes) 
