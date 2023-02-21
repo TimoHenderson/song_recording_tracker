@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 <h2>Are you sure you want to delete</h2>
-<p>{{ part.__dict__ }}</p>
-<p>from {{song.name}}</p>
-<form action="/songs/{{ part.song_id }}/parts/{{ part.id }}/delete" method="post">
+<p>{% include 'parts/components/part-card.html' %}</p>
+<p>from {{part.song.title}}</p>
+<form action="/songs/{{ part.song.id }}/parts/{{ part.id }}/delete" method="post">
     <input type="submit" value="Delete">
 </form>
-<form action="/songs/{{ part.song_id }}/parts/{{ part.id }}">
+<form action="/songs/{{ part.song.id}}/parts/{{ part.id }}">
     <input type="submit" value="Cancel">
 </form>
 {% endblock content %}

@@ -70,7 +70,7 @@ def update(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/delete")
 def confirm_delete(song_id, id):
     part = part_repository.select(id)
-    song = song_repository.select(part.song_id)
+    song = song_repository.select(song_id)
     return render_template("parts/delete.html", part=part, song=song)
 
 
