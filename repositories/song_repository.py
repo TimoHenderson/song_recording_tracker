@@ -40,9 +40,10 @@ def select_all_with_album(album_id):
     values = [album_id]
     results = run_sql(sql, values)
     for row in results:
-        row = results[0]
         song = _build_song(row)
         songs.append(song)
+        print(song)
+    print(album_id, ". num_songs:", len(songs))
     return songs
 
 
