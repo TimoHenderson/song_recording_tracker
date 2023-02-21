@@ -32,12 +32,12 @@ class TestArtist(unittest.TestCase):
         expected = [50, 75]
         self.assertEqual(actual, expected)
 
-    # def test_can_get_completion(self):
-    #     actual = self.artist2.get_completion()
-    #     expected = 62
-    #     self.assertEqual(actual, expected)
+    def test_can_get_completion(self):
+        actual = self.artist2.get_completion()
+        expected = 62
+        self.assertEqual(actual, expected)
 
-    # def test_can_get_num_albums(self):
-    #     actual = self.artist2.get_num_albums()
-    #     expected = 2
-    #     self.assertEqual(actual, expected)
+    def test_can_get_num_albums(self):
+        actual = self.artist2.get_num_albums()
+        expected = 2
+        self.assertEqual(actual, expected)

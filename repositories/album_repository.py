@@ -36,6 +36,26 @@ def select_all_with_artist(artist_id):
     return albums
 
 
+def select_all_completion_with_artist(artist_id):
+    albums_completion = []
+    sql = "SELECT id FROM albums WHERE artist_id = %s"
+    values = [artist_id]
+    results = run_sql(sql, values)
+    for row in results:
+        songs_completion = song_repository.select_all_completion_with_album(row["id"])
+        album_completion = _calculate_album_completion(songs_completion)
+        albums_completion.append(album_completion)
+    return albums_completion
+
+
+def _calculate_album_completion(songs_completion):
+    completion = 0
+    if songs_completion:
+        total = sum(song for song in songs_completion)
+        completion = total / len(songs_completion)
+    return completion
+
+
 def select(id):
     album = None
     sql = "SELECT * FROM albums WHERE id = %s"

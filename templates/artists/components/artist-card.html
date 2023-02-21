@@ -1,5 +1,10 @@
 <div class="card">
     <h3>{{ artist.name }}</h3>
+    {% for album_completion in artist.albums_completion %}
+    <p>complete: {{ album_completion }}</p>
+    {% endfor %}
+    <p>{{ artist.get_completion() }}%</p>
     <a href="/artists/{{ artist.id }}/edit">Edit</a>
     <a href="/artists/{{ artist.id }}/delete">Delete</a>
+
 </div>
