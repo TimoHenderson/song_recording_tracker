@@ -1,11 +1,16 @@
+import dataclasses
+from typing import List
+from models.album import Album
+
+
+@dataclasses.dataclass
 class Song:
-    def __init__(self, title, artist, album, notes="", parts=[], id=None):
-        self.title = title
-        self.artist = artist
-        self.album = album
-        self.notes = notes
-        self.parts_status = parts
-        self.id = id
+
+    title: str
+    album: Album
+    parts_status: list[int] = dataclasses.field(default_factory=list)
+    notes: str = ""
+    id: int = None
 
     def get_completion(self):
         completion = 0
@@ -20,3 +25,27 @@ class Song:
 
     def __repr__(self):
         return f"{self.title}, {self.artist}"
+
+
+# class Song:
+#     def __init__(self, title, artist, album, notes="", parts=[], id=None):
+#         self.title = title
+#         self.artist = artist
+#         self.album = album
+#         self.notes = notes
+#         self.parts_status = parts
+#         self.id = id
+
+#     def get_completion(self):
+#         completion = 0
+#         if self.parts_status:
+#             total = sum(status for status in self.parts_status)
+#             possible = len(self.parts_status) * 5
+#             completion = total / possible * 100
+#         return int(completion)
+
+#     def get_num_parts(self):
+#         return len(self.parts_status)
+
+#     def __repr__(self):
+#         return f"{self.title}, {self.artist}"
