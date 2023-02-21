@@ -7,18 +7,13 @@ class TestSong(unittest.TestCase):
     def setUp(self):
 
         self.song3 = Song("SDKMN", "The Purple Felts", "The Jester's Game")
-        self.guitar1 = Part(
-            "Verse Chords", 5, 1, "Guitar", "Excellent part all done", 1
-        )
-        self.drum1 = Part("Full Song", 3, 1, "Drums", "Part could groove more", 2)
-        self.parts1 = [self.guitar1, self.drum1]
+        self.parts_status = [3, 1]
         self.song1 = Song(
             "The Jester",
             "The Purple Felts",
             "The Jester's Game",
             "This needs more parts",
-            1,
-            self.parts1,
+            self.parts_status,
         )
 
     def test_has_title(self):
@@ -43,12 +38,12 @@ class TestSong(unittest.TestCase):
 
     def test_has_parts(self):
         # breakpoint()
-        actual = self.song3.parts
+        actual = self.song3.parts_status
         expected = []
         self.assertEqual(actual, expected)
 
     def test_has_parts_local(self):
-        actual = Song("ELP", "Tarkus", "Egg").parts
+        actual = Song("ELP", "Tarkus", "Egg").parts_status
         expected = []
         self.assertEqual(actual, expected)
 
@@ -59,7 +54,7 @@ class TestSong(unittest.TestCase):
 
     def test_can_get_overall_completion__with_parts(self):
         actual = self.song1.get_completion()
-        expected = 80
+        expected = 40
         self.assertEqual(actual, expected)
 
     def test_can_get_overall_completion__no_parts(self):

@@ -1,22 +1,22 @@
 class Song:
-    def __init__(self, title, artist, album, notes="", id=None, parts=[]):
+    def __init__(self, title, artist, album, notes="", parts=[], id=None):
         self.title = title
         self.artist = artist
         self.album = album
         self.notes = notes
-        self.parts = parts
+        self.parts_status = parts
         self.id = id
 
     def get_completion(self):
         completion = 0
-        if self.parts:
-            total = sum(part.status for part in self.parts)
-            possible = len(self.parts) * 5
+        if self.parts_status:
+            total = sum(status for status in self.parts_status)
+            possible = len(self.parts_status) * 5
             completion = total / possible * 100
         return int(completion)
 
     def get_num_parts(self):
-        return len(self.parts)
+        return len(self.parts_status)
 
     def __repr__(self):
         return f"{self.title}, {self.artist}"
