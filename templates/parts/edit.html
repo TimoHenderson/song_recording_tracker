@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="page-header">
-    <div class="page-header-contents">
+    <div class="page-header-contents page-header-card">
         {% set song = part.song %}
         {% include 'components/song-card.html' %}
     </div>
@@ -9,7 +9,7 @@
 </div>
 <div class="card-list form-card-list">
     <div class="card form-card">
-        <h3>Part</h3>
+        <h2>Part</h2>
         <form class="form-card" action="/songs/{{ part.song.id }}/parts/{{ part.id }}/update" method="post">
             <label for="name">Name: </label>
             <input type="text" name="name" id="name" value="{{ part.name }}" required>
@@ -50,12 +50,13 @@
             <label for="notes">Notes: </label>
             <textarea name="notes" id="notes" cols="30" rows="10" value="{{ part.notes }}"></textarea>
 
-            <div>
-                <input type="submit" value="update Part">
+            <div class="form-row form-row-end">
+                <input type="submit" value="Update Part">
             </div>
         </form>
-        <form action="/songs/{{ part.song.id }}/parts/{{ part.id }}">
-            <input type="submit" value="Cancel">
+        <br>
+        <form class="form-row" action="/songs/{{ part.song.id }}/parts/{{ part.id }}">
+            <input type="submit" value="Back To Song">
         </form>
     </div>
 </div>

@@ -61,6 +61,10 @@ nav>div {
 
 }
 
+.page-header-card {
+    justify-content: center;
+}
+
 hr {
     color: white;
 }
@@ -154,6 +158,10 @@ hr {
     width: 25rem;
 }
 
+.form-card>h2 {
+    text-align: center;
+}
+
 .part-form-card {
     flex-direction: row;
     display: flex;
@@ -168,6 +176,10 @@ hr {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+}
+
+.form-row-end {
+    justify-content: end;
 }
 
 .form-column {
