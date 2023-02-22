@@ -1,6 +1,11 @@
-<div class="card">
+<article class="card instrument-card">
     <p class="instrument-icons">&#x{{ instrument.icon }};</p>
-    <p>{{ instrument.name }}</p>
-    <a href="/instruments/{{ instrument.id }}/edit">Edit</a>
-    <a href="/instruments/{{ instrument.id }}/delete">Delete</a>
-</div>
+    <h3>{{ instrument.name }}</h3>
+    <form class="buttons-form">
+        <button formaction="/instruments/{{ instrument.id }}/edit">Edit</button>
+        <button formaction="/instruments/{{ instrument.id }}/delete">Delete</button>
+    </form>
+</article>
+
+<!-- <a href="/instruments/{{ instrument.id }}/edit" >Edit</a>
+<a href="/instruments/{{ instrument.id }}/delete">Delete</a> -->

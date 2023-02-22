@@ -42,8 +42,6 @@ def select_all_with_album(album_id):
     for row in results:
         song = _build_song(row)
         songs.append(song)
-        print(song)
-    print(album_id, ". num_songs:", len(songs))
     return songs
 
 
@@ -56,7 +54,6 @@ def select_all_completion_with_album(album_id):
         parts_status = part_repository.select_all_status_with_song(row["id"])
         song_completion = _calculate_song_completion(parts_status)
         songs_completions.append(song_completion)
-    print(songs_completions)
     return songs_completions
 
 

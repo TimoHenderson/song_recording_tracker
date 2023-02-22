@@ -68,21 +68,32 @@ hr {
 /* #endregion page-header */
 /* #region card-list */
 .card-list {
-
+    display: flex;
+    flex-wrap: wrap;
     width: 90%;
     margin: auto;
     gap: 1rem;
 }
 
 .song-card-list {
-    display: flex;
+
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
 }
 
 .part-card-list {
-    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
+}
+
+.instrument-card-list {
+
+    flex-wrap: wrap;
+}
+
+
+.form-card-list {
+    justify-content: center;
 }
 
 /* #endregion card-list */
@@ -91,8 +102,10 @@ hr {
     background-color: rgb(35, 35, 35);
     padding-left: 1rem;
     padding-right: 1rem;
+    padding: 1rem;
     border-style: ridge;
     border-color: silver;
+    border-width: 3px;
     border-radius: 1rem;
 }
 
@@ -105,19 +118,81 @@ hr {
 
 .part-card {
     width: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.instrument-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.new-instrument-card {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+}
+
+.new-instrument-card>h3 {
+    margin: 0;
+}
+
+.plus {
+    font-size: 6rem;
+    margin: 0
+}
+
+.form-card {
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 0.5rem;
+    width: 25rem;
+}
+
+.part-form-card {
+    flex-direction: row;
+    display: flex;
+
+    align-items: center;
+    gap: 0.5rem;
+
+}
+
+.form-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.form-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.buttons-form>button {
+    cursor: pointer;
 }
 
 /* #endregion card */
 /* #region meters */
 .song-completion {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
-.song-completion>p {
+.song-completion p {
     margin: 0;
 }
 
@@ -187,12 +262,26 @@ hr {
     color: white;
     font-size: 4rem;
     margin: 0;
-    border-style: solid;
-    border-color: rgba(255, 255, 255, 0);
+    border-style: ridge;
+    border-color: rgb(46, 45, 45);
+    border-width: 5px;
+    background-color: black;
+    padding: 0.3rem;
+
+
     box-sizing: border-box;
 }
 
-
+.fake-button {
+    text-align: center;
+    padding: 1px 6px;
+    background-color: rgb(239, 239, 239);
+    color: black;
+    border-style: outset;
+    border-width: 2px;
+    border-color: rgb(118, 118, 118);
+    box-sizing: border-box;
+}
 
 .icon-select~label {
 
@@ -200,18 +289,24 @@ hr {
 }
 
 .icon-select:checked~label {
-    display: inline;
+    display: block;
 }
 
 .icon-radio:checked+label {
-    display: inline;
-    border-style: solid;
-    border-color: white;
+    display: block;
+
+    border-color: silver;
+
 
 }
 
 .icon-popup {
     font-size: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1 rem;
 }
 
 #hidden {
@@ -234,4 +329,13 @@ hr {
     opacity: 0;
 }
 
+
 /* #endregion inst-icons */
+
+input {
+    text-align: center;
+}
+
+.invisible {
+    opacity: 0
+}

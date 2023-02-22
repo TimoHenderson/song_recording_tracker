@@ -1,7 +1,28 @@
 {% extends 'base.html' %}
 {% block content %}
-{% for part in parts %}
-<p><a href="/songs/{{ part.song.id }}/parts/{{ part.id }}">{% include 'components/part-card.html' %}</a></p>
-<a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/edit">Edit</a>
-{% endfor %}
+<main>
+    <div class="page-header">
+        <div class="page-header-contents">
+            <h2>All Parts</h2>
+            <a href="/parts/new">New Part</a>
+        </div>
+        <hr>
+    </div>
+    <div class="card-list part-card-list">
+
+        {% for part in parts %}
+
+        <a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/edit">
+            {% include 'components/part-card.html' %}
+        </a>
+        {% endfor %}
+        <a href="/parts/new">
+            <div class="card part-card new-instrument-card">
+                <p class="plus">&CirclePlus;
+                <p>
+                <form class="buttons-form"><button formaction="/parts/new">New</button></form>
+            </div>
+        </a>
+    </div>
+</main>
 {% endblock content %}

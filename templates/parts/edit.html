@@ -1,31 +1,62 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Edit Part for {{ part.song.title }} by {{ part.song.album.artist.name }}</h2>
-<form action="/songs/{{ part.song.id }}/parts/{{ part.id }}/update" method="post">
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name" value="{{ part.name }}" required>
+<div class="page-header">
+    <div class="page-header-contents">
+        {% set song = part.song %}
+        {% include 'components/song-card.html' %}
     </div>
-    <div>
-        <label for="instrument">Instrument: </label>
-        <select name="instrument_id" id="instrument" required>
-            {% for instrument in instruments %}
-            <option value="{{ instrument.id }}" {% if instrument.id==part.instrument.id %} selected {% endif %}>
-                {{ instrument.name }}
-            </option>
-            {% endfor %}
-        </select>
+    <hr>
+</div>
+<div class="card-list form-card-list">
+    <div class="card form-card">
+        <h3>Part</h3>
+        <form class="form-card" action="/songs/{{ part.song.id }}/parts/{{ part.id }}/update" method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" value="{{ part.name }}" required>
+            <br>
+
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="instrument">Instrument: </label>
+                    <p class="instrument-icons">&#x{{ part.instrument.icon }};</p>
+                    <select name="instrument_id" id="instrument" required>
+                        {% for instrument in instruments %}
+                        <option value="{{ instrument.id }}" {% if instrument.id==part.instrument.id %} selected {% endif
+                            %}>
+                            {{ instrument.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+
+                </div>
+                <div class="form-column">
+                    <label for="status">Status: </label>
+                    {% set completion = part.status*20 %}
+                    {% set hide_percent = True %}
+                    {% set label = "" %}
+                    {% include 'components/widgets/completion.html' %}
+                    <select name="status" id="status">
+                        <option value="0" {% if part.status==0 %} selected {% endif %}>Not Started</option>
+                        <option value="1" {% if part.status==1 %} selected {% endif %}>Tracking Guides</option>
+                        <option value="2" {% if part.status==2 %} selected {% endif %}>Tracking Part</option>
+                        <option value="3" {% if part.status==3 %} selected {% endif %}>Doing Drop Ins</option>
+                        <option value="4" {% if part.status==4 %} selected {% endif %}>Comping </option>
+                        <option value="5" {% if part.status==5 %} selected {% endif %}>Take!</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <label for="notes">Notes: </label>
+            <textarea name="notes" id="notes" cols="30" rows="10" value="{{ part.notes }}"></textarea>
+
+            <div>
+                <input type="submit" value="update Part">
+            </div>
+        </form>
+        <form action="/songs/{{ part.song.id }}/parts/{{ part.id }}">
+            <input type="submit" value="Cancel">
+        </form>
     </div>
-    {% include 'components/widgets/status-select.html' %}
-    <div>
-        <label for="notes">Notes: </label>
-        <textarea name="notes" id="notes" cols="30" rows="10" value="{{ part.notes }}"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="update Part">
-    </div>
-</form>
-<form action="/songs/{{ part.song.id }}/parts/{{ part.id }}">
-    <input type="submit" value="Cancel">
-</form>
+</div>
 {% endblock content %}

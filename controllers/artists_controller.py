@@ -39,7 +39,6 @@ def create():
 # Edit
 @artists_blueprint.route("/artists/<id>/edit")
 def edit(id):
-    print(id)
     artist = artist_repository.select(id)
     return render_template("artists/edit.html", artist=artist)
 

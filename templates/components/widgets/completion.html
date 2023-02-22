@@ -6,8 +6,14 @@
 
 
 
-    <div>{% if hide_percent %}
+    <div>
+        {% if hide_percent %}
+        {% if label=="" %}
+        <p class="invisible">______________</p>
+        {% else %}
         <p>{{ label }}</p>
+        {% endif %}
+
         {% else %}
         <p>Completion - {{ completion }}%</p>
         {% endif %}
