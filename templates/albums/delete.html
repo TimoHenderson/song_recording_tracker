@@ -1,11 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>Are you sure you want to delete</h2>
-<p>{{ album.__dict__}}</p>
-<form action="/albums/{{ album.id }}/delete" method="post">
-    <input type="submit" value="Delete">
-</form>
-<form action="/albums">
-    <input type="submit" value="Cancel">
-</form>
+<div class="card-list form-card-list">
+    <div class="card card-form delete-form">
+        <h2>Are you sure you want to delete?</h2>
+        <p>{% include 'components/album-card-row.html' %}</p>
+        <div class="confirm-delete">
+            <form action="/albums/{{ album.id }}/delete" method="post">
+                <input type="submit" value="Delete">
+                <input type="hidden" name="artist_id" value="{{ album.artist.id }}">
+            </form>
+            <form action="/albums/{{ album.id }}">
+                <input type="submit" value="Cancel">
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock content %}

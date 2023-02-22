@@ -22,10 +22,10 @@ def show(id):
 
 
 # New
-@songs_blueprint.route("/songs/new")
-def new():
-    albums = album_repository.select_all()
-    return render_template("songs/new.html", albums=albums)
+@songs_blueprint.route("/albums/<album_id>/songs/new")
+def new(album_id):
+    album = album_repository.select(album_id)
+    return render_template("songs/new.html", album=album)
 
 
 # Create

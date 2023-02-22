@@ -1,28 +1,43 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>Edit Album</h2>
-<form action="/albums/{{ album.id }}/update" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="{{ album.name }}" required>
+<div class="page-header">
+    <div class="page-header-contents page-header-card">
+        {% set artist = album.artist %}
+        {% include 'components/artist-card-row.html' %}
     </div>
-    <div>
-        <label for="artist">Artist: </label>
-        <select name="artist_id" id="artist" required>
-            {% for artist in artists %}
-            <option value="{{ artist.id }}" {% if album.artist.id==artist.id %} selected {% endif %}>{{ artist.name }}
-            </option>
-            {% endfor %}
-        </select>
+    <hr>
+</div>
+<div class="card-list form-card-list">
+    <div class="card form-card">
+        <h2>Edit Album</h2>
+        <form class="form-card" action="/albums/{{ album.id }}/update" method="post">
+
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{ album.name }}" required>
+            <label for="artist">Artist: </label>
+            <select name="artist_id" id="artist" required>
+                {% for artist in artists %}
+                <option value="{{ artist.id }}" {% if album.artist.id==artist.id %} selected {% endif %}>{{
+                    artist.name
+                    }}
+                </option>
+                {% endfor %}
+            </select>
+
+            <br>
+            <div class="form-row">
+                <input type="submit" value="Update Album">
+            </div>
+        </form>
+        <form class="form-row" action="/albums/{{ album.id }}/delete">
+            <input type="submit" value="Delete Album">
+        </form>
+        <form class="form-row" action="/albums/{{ album.id }}">
+            <input type="submit" value="Back To Album">
+        </form>
     </div>
-    <div>
-        <input type="submit" value="Update Album">
-    </div>
-</form>
-<form action="/albums">
-    <input type="submit" value="Cancel">
-</form>
+</div>
 
 
 {% endblock content %}

@@ -1,5 +1,4 @@
 <div class="card row-card">
-
     <div class="row-card-col">
         <h3>{{ album.name }}</h3>
         <p>by {{ album.artist.name }}</p>
@@ -9,11 +8,8 @@
         {% set completion = album.get_completion() %}
         {% include 'components/widgets/completion.html' %}
     </div>
-    <div class="row-card-col row-card-end">
-        {% set element_name = "Songs" %}
-        {% set num_elements = album.get_num_songs() %}
-        {% set elements = album.songs_completion %}
-        {% include 'components/widgets/child-elements-meter.html' %}
-    </div>
-
+    {% set element_name = "Songs" %}
+    {% set num_elements = album.get_num_songs() %}
+    {% set elements = album.songs_completion %}
+    {% include 'components/widgets/child-elements-meter.html' %}
 </div>

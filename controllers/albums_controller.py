@@ -52,9 +52,9 @@ def edit(id):
 def update(id):
     form = request.form
     artist = artist_repository.select(form["artist_id"])
-    album = Album(form["name"], artist, id)
+    album = Album(form["name"], artist, id=id)
     album_repository.update(album)
-    return redirect("/albums")
+    return redirect("/albums/" + id)
 
 
 # Delete Confirm
@@ -67,5 +67,6 @@ def confirm_delete(id):
 # Actually Delete
 @albums_blueprint.route("/albums/<id>/delete", methods=["POST"])
 def delete(id):
+    artist_id = request.form["artist_id"]
     album_repository.deactivate(id)
-    return redirect("/albums")
+    return redirect("/artists/" + artist_id)
