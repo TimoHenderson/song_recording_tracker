@@ -5,11 +5,10 @@
         <h2>Are you sure you want to delete?</h2>
         <p>{% include 'components/album-card-row.html' %}</p>
         <div class="confirm-delete">
-            <form action="/albums/{{ album.id }}/delete" method="post">
+            <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
                 <input type="submit" value="Delete">
-                <input type="hidden" name="artist_id" value="{{ album.artist.id }}">
             </form>
-            <form action="/albums/{{ album.id }}">
+            <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
                 <input type="submit" value="Cancel">
             </form>
         </div>

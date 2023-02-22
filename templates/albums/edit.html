@@ -11,7 +11,7 @@
 <div class="card-list form-card-list">
     <div class="card form-card">
         <h2>Edit Album</h2>
-        <form class="form-card" action="/albums/{{ album.id }}/update" method="post">
+        <form class="form-card" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/update" method="post">
 
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" value="{{ album.name }}" required>
@@ -30,10 +30,10 @@
                 <input type="submit" value="Update Album">
             </div>
         </form>
-        <form class="form-row" action="/albums/{{ album.id }}/delete">
+        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
             <input type="submit" value="Delete Album">
         </form>
-        <form class="form-row" action="/albums/{{ album.id }}">
+        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
             <input type="submit" value="Back To Album">
         </form>
     </div>

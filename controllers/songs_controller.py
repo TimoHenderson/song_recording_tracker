@@ -29,13 +29,13 @@ def new(album_id):
 
 
 # Create
-@songs_blueprint.route("/songs", methods=["POST"])
-def create():
+@songs_blueprint.route("/albums/<album_id>/songs", methods=["POST"])
+def create(album_id):
     form = request.form
-    album = album_repository.select(form["album_id"])
+    album = album_repository.select(album_id)
     new_song = Song(form["title"], album, form["notes"])
     song_repository.save(new_song)
-    return redirect("/songs")
+    return redirect(f"/songs/{new_song.id}")
 
 
 # Edit
@@ -64,7 +64,7 @@ def confirm_delete(id):
 
 
 # Actually Delete
-@songs_blueprint.route("/songs/<id>/delete", methods=["POST"])
-def delete(id):
+@songs_blueprint.route("/albums/<album_id>/songs/<id>/delete", methods=["POST"])
+def delete(album_id, id):
     song_repository.delete(id)
-    return redirect("/songs")
+    return redirect(f"/albums/{album_id}")

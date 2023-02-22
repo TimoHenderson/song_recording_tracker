@@ -12,6 +12,6 @@
     {% set elements = album.songs_completion %}
     {% include 'components/widgets/child-elements-meter.html' %}
 
-    <a href="/albums/{{ album.id }}/edit">Edit</a>
-    <a href="/albums/{{ album.id }}/delete">Delete</a>
+    <a href="/artists/{{ album.artist.id }}/albums/{{ album.id }}/edit">Edit</a>
+    <a href="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">Delete</a>
 </div>

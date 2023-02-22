@@ -15,8 +15,8 @@ def show_all():
 
 
 # View One
-@albums_blueprint.route("/albums/<id>")
-def show(id):
+@albums_blueprint.route("/artists/<artist_id>/albums/<id>")
+def show(artist_id, id):
     album = album_repository.select(id)
     songs = song_repository.select_all_with_album(id)
     return render_template("albums/show.html", album=album, songs=songs)
@@ -36,37 +36,36 @@ def create(artist_id):
     artist = artist_repository.select(artist_id)
     new_album = Album(form["name"], artist)
     album_repository.save(new_album)
-    return redirect("/artists/" + artist_id)
+    return redirect(f"/artists/<artist_id>/albums/<album_id>")
 
 
 # Edit
-@albums_blueprint.route("/albums/<id>/edit")
-def edit(id):
+@albums_blueprint.route("/artists/<artist_id>/albums/<id>/edit")
+def edit(artist_id, id):
     album = album_repository.select(id)
     artists = artist_repository.select_all()
     return render_template("albums/edit.html", album=album, artists=artists)
 
 
 # Update
-@albums_blueprint.route("/albums/<id>/update", methods=["POST"])
-def update(id):
+@albums_blueprint.route("/artists/<artist_id>/albums/<id>/update", methods=["POST"])
+def update(artist_id, id):
     form = request.form
     artist = artist_repository.select(form["artist_id"])
     album = Album(form["name"], artist, id=id)
     album_repository.update(album)
-    return redirect("/albums/" + id)
+    return redirect(f"artists/{artist_id}/albums/{id}")
 
 
 # Delete Confirm
-@albums_blueprint.route("/albums/<id>/delete")
-def confirm_delete(id):
+@albums_blueprint.route("/artists/<artist_id>/albums/<id>/delete")
+def confirm_delete(artist_id, id):
     album = album_repository.select(id)
-    return render_template("albums/delete.html", album=album)
+    return render_template(f"artists/{artist_id}albums/delete.html", album=album)
 
 
 # Actually Delete
-@albums_blueprint.route("/albums/<id>/delete", methods=["POST"])
-def delete(id):
-    artist_id = request.form["artist_id"]
+@albums_blueprint.route("/artists/<artist_id>/albums/<id>/delete", methods=["POST"])
+def delete(artist_id, id):
     album_repository.deactivate(id)
-    return redirect("/artists/" + artist_id)
+    return redirect(f"/artists/{artist_id}")

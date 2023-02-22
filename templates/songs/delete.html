@@ -4,11 +4,8 @@
     <div class="card card-form delete-form">
         <h2>Are you sure you want to delete?</h2>
         <p>{% include 'components/song-card-row.html' %}</p>
-        <h3>from</h3>
-        {% set album = song.album %}
-        {% include 'components/album-card-row.html' %}
         <div class="confirm-delete">
-            <form action="/songs/{{ song.id }}/delete" method="post">
+            <form action="/albums/{{ song.album.id }}/songs/{{ song.id }}/delete" method="post">
                 <input type="submit" value="Delete">
             </form>
             <form action="/songs/{{ song.id }}">

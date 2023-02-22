@@ -33,7 +33,7 @@ def create():
     form = request.form
     new_artist = Artist(form["name"])
     artist_repository.save(new_artist)
-    return redirect("/artists")
+    return redirect(f"/artists/{new_artist.id}")
 
 
 # Edit

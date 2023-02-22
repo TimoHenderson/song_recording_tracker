@@ -15,7 +15,7 @@
     <div class="card-list card-list">
         {% for album in albums %}
         <article>
-            <a href="/albums/{{ album.id }}">
+            <a href="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
                 {% include 'components/album-card.html' %}
             </a>
         </article>

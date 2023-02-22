@@ -15,9 +15,7 @@ def show_all():
 # View One
 @parts_blueprint.route("/songs/<song_id>/parts/<id>")
 def show(song_id, id):
-    part = part_repository.select(id)
-    song = song_repository.select(part.song.id)
-    return render_template("parts/show.html", part=part, song=song)
+    return redirect(f"/songs/{song_id}/parts/{id}/edit")
 
 
 # New
