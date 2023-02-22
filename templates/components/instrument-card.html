@@ -1,10 +1,12 @@
 <article class="card instrument-card">
     <p class="instrument-icons">&#x{{ instrument.icon }};</p>
     <h3>{{ instrument.name }}</h3>
+    {% if not hide_buttons%}
     <form class="buttons-form">
         <button formaction="/instruments/{{ instrument.id }}/edit">Edit</button>
         <button formaction="/instruments/{{ instrument.id }}/delete">Delete</button>
     </form>
+    {% endif %}
 </article>
 
 <!-- <a href="/instruments/{{ instrument.id }}/edit" >Edit</a>
