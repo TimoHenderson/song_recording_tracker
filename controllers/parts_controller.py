@@ -78,4 +78,4 @@ def confirm_delete(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/delete", methods=["POST"])
 def delete(song_id, id):
     part_repository.delete(id)
-    return redirect("/parts")
+    return redirect("/songs/" + song_id)

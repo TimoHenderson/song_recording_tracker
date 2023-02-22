@@ -196,6 +196,16 @@ hr {
     text-align: center;
 }
 
+.delete-form {
+    text-align: center
+}
+
+.confirm-delete {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem;
+}
+
 .part-form-card {
     flex-direction: row;
     display: flex;
@@ -223,7 +233,10 @@ hr {
     justify-content: flex-end;
 }
 
+
+
 .buttons-form>button {
+
     cursor: pointer;
 }
 
