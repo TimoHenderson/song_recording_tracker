@@ -2,17 +2,19 @@
 {% block content %}
 <main>
     <div class="page-header">
-        <div class="page-header-contents">
+        <div class="page-header-contents page-header-card">
             {% include 'components/album-card-row.html' %}
 
         </div>
+
+
         <hr>
     </div>
-    <div class="card-list">
+    <div class="card-list card-list-column">
         {% for song in songs %}
         <article>
             <a href="/songs/{{ song.id }}">
-                {% include 'components/song-card.html' %}
+                {% include 'components/song-card-row.html' %}
             </a>
         </article>
         {% endfor %}
