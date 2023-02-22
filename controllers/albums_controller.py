@@ -23,20 +23,20 @@ def show(id):
 
 
 # New
-@albums_blueprint.route("/albums/new")
-def new_album():
-    artists = artist_repository.select_all()
-    return render_template("albums/new.html", artists=artists)
+@albums_blueprint.route("/artists/<artist_id>/albums/new")
+def new_album(artist_id):
+    artist = artist_repository.select(artist_id)
+    return render_template("albums/new.html", artist=artist)
 
 
 # Create
-@albums_blueprint.route("/albums", methods=["POST"])
-def create():
+@albums_blueprint.route("/artists/<artist_id>/albums", methods=["POST"])
+def create(artist_id):
     form = request.form
-    artist = artist_repository.select(form["artist_id"])
+    artist = artist_repository.select(artist_id)
     new_album = Album(form["name"], artist)
     album_repository.save(new_album)
-    return redirect("/albums")
+    return redirect("/artists/" + artist_id)
 
 
 # Edit

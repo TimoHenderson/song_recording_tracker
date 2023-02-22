@@ -47,7 +47,6 @@ def edit(id):
 @artists_blueprint.route("/artists/<id>/update", methods=["POST"])
 def update(id):
     form = request.form
-    print(form["name"])
     artist = Artist(form["name"], id=id)
     artist_repository.update(artist)
     return redirect("/artists")
