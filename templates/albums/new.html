@@ -1,28 +1,32 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>New Artist</h2>
-<form action="/albums" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" placeholder="Album name" required>
+<div class="card-list form-card-list">
+    <div class="card form-card">
+        <h2>New Artist</h2>
+        <form class="form-card" action="/albums" method="post">
+            <div>
+                <label for="name">Name:</label>
+                <input type="text" name="name" id="name" placeholder="Album name" required>
+            </div>
+            <div>
+                <label for="artist">Artist: </label>
+                <select name="artist_id" id="artist" required>
+                    <option value="" selected disabled>Select Artist</option>
+                    {% for artist in artists %}
+                    <option value="{{ artist.id }}">{{ artist.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="Add Album">
+            </div>
+        </form>
+        <form action="/albums">
+            <input type="submit" value="Cancel">
+        </form>
     </div>
-    <div>
-        <label for="artist">Artist: </label>
-        <select name="artist_id" id="artist" required>
-            <option value="" selected disabled>Select Artist</option>
-            {% for artist in artists %}
-            <option value="{{ artist.id }}">{{ artist.name }}</option>
-            {% endfor %}
-        </select>
-    </div>
-    <div>
-        <input type="submit" value="Add Album">
-    </div>
-</form>
-<form action="/albums">
-    <input type="submit" value="Cancel">
-</form>
+</div>
 
 
 {% endblock content %}

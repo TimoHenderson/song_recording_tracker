@@ -9,15 +9,15 @@
             <form><button formaction="/songs/{{ song.id }}/parts/new">New Part</button></form>
             <form><button formaction="/songs/{{ song.id }}/edit">Edit Song</button></form>
             <form><button formaction="/songs/{{ song.id }}/delete">Delete Song</button></form>
-
         </div>
         <hr>
     </div>
 
     <div class="card-list part-card-list">
         {% for part in parts %}
-
-        <a href="/songs/{{song.id}}/parts/{{parts.id}}">{% include '/components/part-card.html' %}</a>
+        <a href="/songs/{{song.id}}/parts/{{parts.id}}">
+            {% include '/components/part-card.html' %}
+        </a>
         {% endfor %}
     </div>
 </main>

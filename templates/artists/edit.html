@@ -1,19 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
+<div class="page-header">
+    <div class="page-header-contents page-header-card">
+        {% include 'components/artist-card-row.html' %}
+    </div>
+    <hr>
+</div>
+<div class="card-list form-card-list">
+    <div class="card form-card">
+        <h2>Edit Artist</h2>
+        <form class="form-card" action="/artists/{{ artist.id }}/update" method="post">
 
-<h2>New Artist</h2>
-<form action="/artists/{{ artist.id }}/update" method="post">
-    <div>
-        <label for="name">Name:</label>
-        <input type="text" name="name" id="name" value="{{ artist.name }}" required>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{ artist.name }}" required>
+            <br>
+            <div class="form-row">
+                <input type="submit" value="Update Artist">
+            </div>
+        </form>
+        <form class="form-row" action="/artists/{{artist.id}}/delete">
+            <input type="submit" value="Delete Artist">
+        </form>
+        <form class="form-row" action="/artists">
+            <input type="submit" value="Back to Artists">
+        </form>
     </div>
-    <div>
-        <input type="submit" value="Update Artist">
-    </div>
-</form>
-<form action="/artists">
-    <input type="submit" value="Cancel">
-</form>
+</div>
 
 
 {% endblock content %}

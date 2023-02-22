@@ -2,9 +2,13 @@
 {% block content %}
 <main>
     <div class="page-header">
-        <div class="page-header-contents">
+        <div class="page-header-contents page-header-card">
             {% include '/components/artist-card-row.html' %}
-            <a href="/artists/new">New Album</a>
+        </div>
+        <div class="page-header-links">
+            <form><button formaction="/artists/{{ artist.id }}/albums/new">New Album</button></form>
+            <form><button formaction="/artists/{{ artist.id }}/edit">Edit Artist</button></form>
+            <form><button formaction="/artists/{{ artist.id }}/delete">Delete Artist</button></form>
         </div>
         <hr>
     </div>
