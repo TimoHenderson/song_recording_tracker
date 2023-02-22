@@ -17,7 +17,7 @@
 
     <div class="card-list part-card-list">
         {% for part in parts %}
-        <a href="/songs/{{song.id}}/parts/{{parts.id}}">
+        <a href="/songs/{{song.id}}/parts/{{part.id}}">
             {% include '/components/part-card.html' %}
         </a>
         {% endfor %}

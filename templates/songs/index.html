@@ -12,7 +12,7 @@
     <div class="card-list card-list-column">
         {% for song in songs %}
         <article>
-            <a href="songs/{{ song.id }}">
+            <a href="/albums/{{ song.album.id }}/songs/{{ song.id }}">
                 {% include 'components/song-card-row.html' %}
             </a>
         </article>
