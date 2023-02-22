@@ -4,12 +4,17 @@
     <div class="page-header">
         <div class="page-header-contents">
             <h2>All Instruments</h2>
-            <a href="/instruments/new">New Instrument</a>
+
         </div>
         <hr>
     </div>
-    <a href="/instruments/new">Add New</a>
-    <div class="card-list instrument-card-list">
+
+    <div class="card-list ">
+        {% for instrument in instruments %}
+        <a href="/instruments/{{ instrument.id }}/edit">
+            {% include 'components/instrument-card.html' %}
+        </a>
+        {% endfor %}
         <a href="/instruments/new">
             <div class="card instrument-card new-instrument-card">
                 <p class="plus">&CirclePlus;
@@ -17,11 +22,6 @@
                 <form class="buttons-form"><button formaction="/instruments/new">Add New</button></form>
             </div>
         </a>
-        {% for instrument in instruments %}
-        <a href="/instruments/{{ instrument.id }}/edit">
-            {% include 'components/instrument-card.html' %}
-        </a>
-        {% endfor %}
     </div>
 </main>
 

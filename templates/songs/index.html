@@ -5,16 +5,15 @@
     <div class="page-header">
         <div class="page-header-contents">
             <h2>All Songs</h2>
-            <a href="/songs/new">Add New</a>
         </div>
         <hr>
     </div>
 
-    <div class="card-list song-card-list">
+    <div class="card-list card-list-column">
         {% for song in songs %}
         <article>
             <a href="songs/{{ song.id }}">
-                {% include 'components/song-card.html' %}
+                {% include 'components/song-card-row.html' %}
             </a>
         </article>
         {% endfor %}

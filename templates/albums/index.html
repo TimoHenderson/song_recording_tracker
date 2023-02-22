@@ -4,15 +4,14 @@
     <div class="page-header">
         <div class="page-header-contents">
             <h2>All Albums</h2>
-            <a href="/albums/new">New Album</a>
         </div>
         <hr>
     </div>
-    <div class="card-list">
+    <div class="card-list card-list-column">
         {% for album in albums %}
         <article>
             <a href="/albums/{{ album.id }}">
-                {% include '/components/album-card.html' %}
+                {% include '/components/album-card-row.html' %}
             </a>
         </article>
         {% endfor %}

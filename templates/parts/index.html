@@ -4,25 +4,18 @@
     <div class="page-header">
         <div class="page-header-contents">
             <h2>All Parts</h2>
-            <a href="/parts/new">New Part</a>
         </div>
         <hr>
     </div>
-    <div class="card-list part-card-list">
+    <div class="card-list card-list-column">
 
         {% for part in parts %}
 
         <a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/edit">
-            {% include 'components/part-card.html' %}
+            {% include 'components/part-card-row.html' %}
         </a>
         {% endfor %}
-        <a href="/parts/new">
-            <div class="card part-card new-instrument-card">
-                <p class="plus">&CirclePlus;
-                <p>
-                <form class="buttons-form"><button formaction="/parts/new">New</button></form>
-            </div>
-        </a>
+
     </div>
 </main>
 {% endblock content %}

@@ -8,6 +8,6 @@
     {% include 'components/widgets/completion.html' %}
     <form class="buttons-form">
         <button formaction="/songs/{{part.song.id}}/parts/{{ part.id }}/edit">Edit</button>
-        <button formaction="/songs/{{part.song.id}}/parts/{{ part.id }}">Delete</button>
+        <button formaction="/songs/{{part.song.id}}/parts/{{ part.id }}/delete">Delete</button>
     </form>
 </article>

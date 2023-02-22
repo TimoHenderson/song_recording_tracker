@@ -9,10 +9,10 @@
         <hr>
     </div>
 
-    <div class="card-list">
+    <div class="card-list card-list-column">
         {% for artist in artists %}
         <a href="/artists/{{ artist.id }}">
-            {% include '/components/artist-card.html' %}
+            {% include '/components/artist-card-row.html' %}
         </a>
         {% endfor %}
     </div>

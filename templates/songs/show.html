@@ -2,12 +2,15 @@
 {% block content %}
 <main>
     <div class="page-header">
-        <div class="page-header-contents">
-            {% include 'components/song-card.html' %}
+        <div class="page-header-contents page-header-card">
+            {% include 'components/song-card-row.html' %}
         </div>
-        <a href="/songs/{{ song.id }}/parts/new">New Part</a>
-        <a href="/songs/{{ song.id }}/edit">Edit</a>
-        <a href="/songs/{{ song.id }}/delete">Delete</a>
+        <div class="page-header-links">
+            <form><button formaction="/songs/{{ song.id }}/parts/new">New Part</button></form>
+            <form><button formaction="/songs/{{ song.id }}/edit">Edit Song</button></form>
+            <form><button formaction="/songs/{{ song.id }}/delete">Delete Song</button></form>
+
+        </div>
         <hr>
     </div>
 

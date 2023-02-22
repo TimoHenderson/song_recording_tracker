@@ -54,7 +54,7 @@ nav>div {
 
 .page-header-contents {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -62,7 +62,15 @@ nav>div {
 }
 
 .page-header-card {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
     justify-content: center;
+}
+
+.page-header-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 hr {
@@ -73,13 +81,14 @@ hr {
 /* #region card-list */
 .card-list {
     display: flex;
+    justify-content: start;
     flex-wrap: wrap;
-    width: 90%;
+    width: 95%;
     margin: auto;
     gap: 1rem;
 }
 
-.song-card-list {
+.card-list-column {
 
     flex-direction: column;
     justify-content: center;
@@ -113,17 +122,12 @@ hr {
     border-radius: 1rem;
 }
 
-.song-card {
+.row-card {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
 
-}
-
-.artist-card-row {
-    display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-content: space-between;
+    gap: 1rem;
+    /* justify-content: space-between; */
 }
 
 .row-card-col {
@@ -139,8 +143,14 @@ hr {
     justify-content: space-between;
 }
 
+.row-card-end {
+    align-items: center;
+    justify-content: space-between;
+}
+
 .row-card-middle>h3 {
     margin-top: 0;
+    text-decoration: underline;
 }
 
 
@@ -303,9 +313,11 @@ hr {
     border-width: 5px;
     background-color: black;
     padding: 0.3rem;
-
-
     box-sizing: border-box;
+}
+
+.instrument-icons-small {
+    font-size: 2rem;
 }
 
 .fake-button {

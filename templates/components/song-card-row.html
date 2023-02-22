@@ -1,0 +1,19 @@
+<div class="card row-card">
+    <div>
+        <h3>{{ song.title }}</h3>
+
+        <p>by {{ song.album.artist.name }}</p>
+        <p>{{ song.album.name }}</p>
+    </div>
+    <div class="row-card-col row-card-middle">
+        <h3>Song</h3>
+        {% set completion = song.get_completion() %}
+        {% include 'components/widgets/completion.html' %}
+    </div>
+    <div>
+        {% set element_name="Parts" %}
+        {% set num_elements=song.get_num_parts() %}
+        {% set elements=song.get_parts_status_percent() %}
+        {% include 'components/widgets/child-elements-meter.html' %}
+    </div>
+</div>

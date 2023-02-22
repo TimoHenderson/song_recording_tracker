@@ -1,0 +1,20 @@
+<article class="card row-card">
+    <div class="row-card-col">
+        <h3>{{ part.name }}</h3>
+
+    </div>
+    <div class="row-card-col row-card-middle">
+        <span class="instrument-icons instrument-icons-small">&#x{{ part.instrument.icon }};</span>
+        {{ part.instrument.name }}
+    </div>
+
+    <div class="row-card-col row-card-end">
+        {% set completion = part.status*20 %}
+        {% set hide_percent = True %}
+        {% set label = part.get_status_str() %}
+        {% include 'components/widgets/completion.html' %}
+        <form class="buttons-form">
+            <button formaction="/songs/{{part.song.id}}/parts/{{ part.id }}/edit">Edit</button>
+        </form>
+    </div>
+</article>

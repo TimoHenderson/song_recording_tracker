@@ -1,32 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
-<h2>New Part for {{ song.title }} by {{ song.artist }}</h2>
-<form action="/songs/{{ song.id }}/parts" method="post">
-    <input type="hidden" name="song_id" value="{{ song.id }}">
-    <div>
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name" required>
+<div class="page-header">
+    <div class="page-header-contents page-header-card">
+
+        {% include 'components/song-card-row.html' %}
     </div>
-    <div>
-        <label for="instrument">Instrument: </label>
-        <select name="instrument_id" id="instrument" required>
-            <option value="" disabled selected>Select..</option>
-            {% for instrument in instruments %}
-            <option value="{{ instrument.id }}">
-                {{ instrument.name }}
-            </option>
-            {% endfor %}
-        </select>
+    <hr>
+</div>
+<div class="card-list form-card-list">
+    <div class="card form-card">
+        <h2>New Part</h2>
+        <form class="form-card" action="/songs/{{ song.id }}/parts/" method="post">
+            <label for="name">Name: </label>
+            <input type="text" name="name" id="name" placeholder="Part Name" required>
+            <br>
+
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="instrument">Instrument: </label>
+
+                    <select name="instrument_id" id="instrument" required>
+                        {% for instrument in instruments %}
+                        <option value="{{ instrument.id }}">
+                            {{ instrument.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+
+                </div>
+                <div class="form-column">
+                    <label for="status">Status: </label>
+                    <select name="status" id="status">
+                        <option value="0">Not Started</option>
+                        <option value="1">Tracking Guides</option>
+                        <option value="2">Tracking Part</option>
+                        <option value="3">Doing Drop Ins</option>
+                        <option value="4">Comping </option>
+                        <option value="5">Take!</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            <label for="notes">Notes: </label>
+            <textarea name="notes" id="notes" cols="30" rows="10" value=""></textarea>
+            <br>
+            <div class="form-row">
+                <input type="submit" value="Create Part">
+            </div>
+        </form>
+
+        <form class="form-row" action="/songs/{{ song.id }}">
+            <input type="submit" value="Back To Song">
+        </form>
     </div>
-    <div>
-        <label for="notes">Notes: </label>
-        <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <input type="submit" value="Add Part">
-    </div>
-</form>
-<form action="/songs/{{ song.id }}">
-    <input type="submit" value="Cancel">
-</form>
+</div>
 {% endblock content %}
