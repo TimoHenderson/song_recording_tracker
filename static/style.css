@@ -120,6 +120,30 @@ hr {
 
 }
 
+.artist-card-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: space-between;
+}
+
+.row-card-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+
+}
+
+.row-card-middle {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.row-card-middle>h3 {
+    margin-top: 0;
+}
+
+
 .part-card {
     width: 10rem;
     display: flex;

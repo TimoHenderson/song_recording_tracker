@@ -1,16 +1,18 @@
-<div class="card song-card">
-    <div>
+<div class="card artist-card-row">
+    <div class="row-card-col">
         <h3>{{ artist.name }}</h3>
     </div>
 
-    {% set completion = artist.get_completion() %}
-    {% include 'components/widgets/completion.html' %}
+    <div class="row-card-col row-card-middle">
+        <h3>Artist</h3>
+        {% set completion = artist.get_completion() %}
+        {% include 'components/widgets/completion.html' %}
+    </div>
 
     {% set element_name = "Albums" %}
     {% set num_elements = artist.get_num_albums() %}
     {% set elements = artist.albums_completion %}
     {% include 'components/widgets/child-elements-meter.html' %}
-    <a href="/artists/{{ artist.id }}/edit">Edit</a>
-    <a href="/artists/{{ artist.id }}/delete">Delete</a>
+
 
 </div>
