@@ -54,10 +54,10 @@
                 <input type="submit" value="Update Part">
             </div>
         </form>
-        <form class="form-row" action="/songs/{{ part.song.id }}/delete">
+        <form class="form-row" action="/albums/{{part.song.album}}/songs/{{ part.song.id }}/delete">
             <input type="submit" value="Delete Part">
         </form>
-        <form class="form-row" action="/songs/{{ part.song.id }}">
+        <form class="form-row" action="/albums/{{ part.song.album.id }}/songs/{{ part.song.id }}">
             <input type="submit" value="Back To Song">
         </form>
     </div>

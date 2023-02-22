@@ -8,7 +8,7 @@
             <form action="/albums/{{ song.album.id }}/songs/{{ song.id }}/delete" method="post">
                 <input type="submit" value="Delete">
             </form>
-            <form action="/songs/{{ song.id }}">
+            <form action="/albums/{{ song.album.id }}/songs/{{ song.id }}">
                 <input type="submit" value="Cancel">
             </form>
         </div>

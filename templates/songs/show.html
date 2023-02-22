@@ -6,9 +6,11 @@
             {% include 'components/song-card-row.html' %}
         </div>
         <div class="page-header-links">
-            <form><button formaction="/songs/{{ song.id }}/parts/new">New Part</button></form>
-            <form><button formaction="/songs/{{ song.id }}/edit">Edit Song</button></form>
-            <form><button formaction="/songs/{{ song.id }}/delete">Delete Song</button></form>
+            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/parts/new">New Part</button>
+            </form>
+            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/edit">Edit Song</button></form>
+            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/delete">Delete Song</button>
+            </form>
         </div>
         <hr>
     </div>

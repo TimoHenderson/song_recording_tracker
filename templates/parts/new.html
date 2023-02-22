@@ -44,7 +44,7 @@
                 <input type="submit" value="Create Part">
             </div>
         </form>
-        <form class="form-row" action="/songs/{{ song.id }}">
+        <form class="form-row" action="/albums/{{ song.album.id }}/songs/{{ song.id }}">
             <input type="submit" value="Back To Song">
         </form>
     </div>

@@ -9,7 +9,7 @@
                 <input type="submit" value="Confirm Delete">
             </form>
 
-            <form action="/songs/{{ part.song.id}}">
+            <form action="/albums/{{part.song.album.id}}/songs/{{ part.song.id}}">
                 <input type="submit" value="Cancel">
             </form>
         </div>
