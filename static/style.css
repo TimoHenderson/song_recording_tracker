@@ -1,10 +1,15 @@
 /* #region body */
 :root {
-    --darkest: #2a2438;
+    --darkest: #13111a;
+    --darker: #24202e;
+    --dark: #312b3e;
+    --light: #474354;
+    --text-color: white;
+    /* --darkest: #2a2438;
     --darker: #352f44;
     --dark: #5c5470;
     --light: #dbd8e3;
-    --text-color: white;
+    --text-color: white; */
 }
 
 
@@ -26,10 +31,21 @@ header {
     background-color: var(--darkest);
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    border-style: ridge;
+    border-color: silver;
+    border-width: 3px;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 0;
 }
 
 nav {
+    border-style: ridge;
+    border-color: silver;
+    border-width: 3px;
+    border-left: 0;
+    border-right: 0;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -61,6 +77,13 @@ nav>div {
 
 }
 
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+
+
 .page-header-card {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
@@ -71,6 +94,12 @@ nav>div {
     display: flex;
     justify-content: center;
     gap: 2rem;
+}
+
+.page-header-home {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 hr {
@@ -94,6 +123,10 @@ hr {
     justify-content: center;
 }
 
+.not-reverse {
+    flex-direction: column;
+}
+
 .part-card-list {
     justify-content: center;
     flex-wrap: wrap;
@@ -112,7 +145,7 @@ hr {
 /* #endregion card-list */
 /* #region card */
 .card {
-    background-color: rgb(35, 35, 35);
+    background-color: rgb(21, 21, 21);
     padding-left: 1rem;
     padding-right: 1rem;
     padding: 1rem;
@@ -408,4 +441,13 @@ input {
 
 .invisible {
     opacity: 0;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--darkest);
+    text-align: center;
 }

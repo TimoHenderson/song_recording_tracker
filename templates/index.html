@@ -1,4 +1,42 @@
 {% extends 'base.html' %}
 {% block content %}
-Hello World!
+<main>
+    <div class="page-header">
+        <div class="page-header-contents page-header-home">
+            <h2>Welcome to the Recording Tracker</h2>
+            <p>Keep track of your audio recording projects!</p>
+            <p>Click the links below to get started</p>
+        </div>
+
+        <hr>
+    </div>
+    <div class="card-list card-list-column not-reverse">
+
+        <a href="/artists">
+            <div class="card center">
+                <h1>Artists</h1>
+            </div>
+        </a>
+        <a href="/albums">
+            <div class="card center">
+                <h1>Albums</h1>
+            </div>
+        </a>
+        <a href="/songs">
+            <div class="card center">
+                <h1>Songs</h1>
+            </div>
+        </a>
+        <a href="/parts">
+            <div class="card center">
+                <h1>Parts</h1>
+            </div>
+        </a>
+        <a href="/instruments">
+            <div class="card center">
+                <h1>Instruments</h1>
+            </div>
+        </a>
+    </div>
+</main>
 {% endblock content %}
