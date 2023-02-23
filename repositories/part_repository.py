@@ -86,21 +86,31 @@ def delete(id):
 def _build_parts(rows):
     # split rows into dictionaries with key song_id
     # make song_repository.select_for part
+    insts = {}
     songs = {}
     parts = []
+
     for part_dict in rows:
         song_id = part_dict["song_id"]
         if song_id not in songs.keys():
-            song = song_repository.select(song_id)
+            song = song_repository.select_for_parts(song_id)
             songs[song_id] = song
         else:
             song = songs[song_id]
-        parts.append(_build_part(part_dict, song))
+        song.parts_status.append(part_dict["status"])
+
+        inst_id = part_dict["instrument_id"]
+        if inst_id not in insts.keys():
+            inst = instrument_repository.select(inst_id)
+            insts[inst_id] = inst
+        else:
+            inst = insts[inst_id]
+
+        parts.append(_build_part(part_dict, song, inst))
     return parts
 
 
-def _build_part(row, song):
-    instrument = instrument_repository.select(row["instrument_id"])
+def _build_part(row, song, instrument):
     return Part(
         row["name"],
         row["status"],

@@ -34,6 +34,17 @@ def select(id):
     return song
 
 
+def select_for_parts(id):
+    song = None
+    sql = "SELECT * FROM songs WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        song = _build_song(row, False)
+    return song
+
+
 def select_all_with_album(album_id):
     songs = []
     sql = "SELECT * FROM songs WHERE album_id = %s"
@@ -86,7 +97,12 @@ def _calculate_song_completion(parts_status):
 
 
 # Builder
-def _build_song(row):
+def _build_song(row, get_parts_status=True):
     album = album_repository.select(row["album_id"])
-    parts_status = part_repository.select_all_status_with_song(row["id"])
+    parts_status = (
+        part_repository.select_all_status_with_song(row["id"])
+        if get_parts_status
+        else []
+    )
+
     return Song(row["title"], album, parts_status, row["notes"], row["id"])
