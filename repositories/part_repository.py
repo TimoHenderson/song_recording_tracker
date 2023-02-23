@@ -16,10 +16,11 @@ def save(part):
 
 # Read
 def select_all():
-
+    parts = []
     sql = "SELECT * FROM parts"
     results = run_sql(sql)
-    parts = _build_parts(results)
+    if results:
+        parts = _build_parts(results)
     return parts
 
 
@@ -29,8 +30,7 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)
     if results:
-        row = results[0]
-        part = _build_part(row)
+        part = _build_parts(results)[0]
     return part
 
 
@@ -93,20 +93,21 @@ def _build_parts(rows):
         else:
             parts_by_song_id[song_id].append(part_dict)
     pprint(parts_by_song_id.keys())
-    songs_by_id = {}
+    parts = []
     for song_id in parts_by_song_id.keys():
-        songs_by_id[song_id] = song_repository.select(song_id)
+        song = song_repository.select(song_id)
+        for part_dict in parts_by_song_id[song_id]:
+            parts.append(_build_part(part_dict, song))
+    return parts
 
-    pprint(songs_by_id)
-    breakpoint()
 
-    # instrument = instrument_repository.select(row["instrument_id"])
-    # song = song_repository.select(row["song_id"])
-    # return Part(
-    #     row["name"],
-    #     row["status"],
-    #     song,
-    #     instrument,
-    #     row["notes"],
-    #     row["id"],
-    # )
+def _build_part(row, song):
+    instrument = instrument_repository.select(row["instrument_id"])
+    return Part(
+        row["name"],
+        row["status"],
+        song,
+        instrument,
+        row["notes"],
+        row["id"],
+    )
