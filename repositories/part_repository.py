@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.part import Part
 import repositories.instrument_repository as instrument_repository
 import repositories.song_repository as song_repository
+from pprint import pprint
 
 
 # Create
@@ -15,12 +16,10 @@ def save(part):
 
 # Read
 def select_all():
-    parts = []
+
     sql = "SELECT * FROM parts"
     results = run_sql(sql)
-    for row in results:
-        part = _build_part(row)
-        parts.append(part)
+    parts = _build_parts(results)
     return parts
 
 
@@ -84,14 +83,30 @@ def delete(id):
 
 
 # Builder
-def _build_part(row):
-    instrument = instrument_repository.select(row["instrument_id"])
-    song = song_repository.select(row["song_id"])
-    return Part(
-        row["name"],
-        row["status"],
-        song,
-        instrument,
-        row["notes"],
-        row["id"],
-    )
+def _build_parts(rows):
+    # split rows into dictionaries with key song_id
+    parts_by_song_id = {}
+    for part_dict in rows:
+        song_id = part_dict["song_id"]
+        if song_id not in parts_by_song_id:
+            parts_by_song_id[song_id] = [part_dict]
+        else:
+            parts_by_song_id[song_id].append(part_dict)
+    pprint(parts_by_song_id.keys())
+    songs_by_id = {}
+    for song_id in parts_by_song_id.keys():
+        songs_by_id[song_id] = song_repository.select(song_id)
+
+    pprint(songs_by_id)
+    breakpoint()
+
+    # instrument = instrument_repository.select(row["instrument_id"])
+    # song = song_repository.select(row["song_id"])
+    # return Part(
+    #     row["name"],
+    #     row["status"],
+    #     song,
+    #     instrument,
+    #     row["notes"],
+    #     row["id"],
+    # )
