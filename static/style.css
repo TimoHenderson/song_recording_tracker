@@ -451,3 +451,15 @@ footer {
     background-color: var(--darkest);
     text-align: center;
 }
+
+@media (min-width: 720px) {
+    main {
+        width: 100%;
+
+    }
+
+    .card-list {
+        max-width: 800px;
+        margin: auto;
+    }
+}
