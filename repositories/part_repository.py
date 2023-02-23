@@ -84,8 +84,6 @@ def delete(id):
 
 # Builder
 def _build_parts(rows):
-    # split rows into dictionaries with key song_id
-    # make song_repository.select_for part
     insts = {}
     songs = {}
     parts = []

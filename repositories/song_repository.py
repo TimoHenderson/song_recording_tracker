@@ -17,9 +17,8 @@ def select_all():
     songs = []
     sql = "SELECT * FROM songs"
     results = run_sql(sql)
-    for row in results:
-        song = _build_song(row)
-        songs.append(song)
+    if results:
+        songs = _build_songs(results)
     return songs
 
 
@@ -29,8 +28,7 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)
     if results:
-        row = results[0]
-        song = _build_song(row)
+        song = _build_songs(results)[0]
     return song
 
 
@@ -40,8 +38,7 @@ def select_for_parts(id):
     values = [id]
     results = run_sql(sql, values)
     if results:
-        row = results[0]
-        song = _build_song(row, False)
+        song = _build_songs(results, False)[0]
     return song
 
 
@@ -96,9 +93,27 @@ def _calculate_song_completion(parts_status):
     return int(completion)
 
 
+def _build_songs(rows, get_parts_status=True):
+    albums = {}
+    songs = []
+
+    for song_dict in rows:
+        album_id = song_dict["album_id"]
+        if album_id not in albums.keys():
+            album = album_repository.select_for_songs(album_id)
+            albums[album_id] = album
+        else:
+            album = albums[album_id]
+        song = _build_song(song_dict, album, get_parts_status)
+        if get_parts_status:
+            album.song_completion = _calculate_song_completion(song.parts_status)
+        songs.append(song)
+    return songs
+
+
 # Builder
-def _build_song(row, get_parts_status=True):
-    album = album_repository.select(row["album_id"])
+def _build_song(row, album, get_parts_status=True):
+
     parts_status = (
         part_repository.select_all_status_with_song(row["id"])
         if get_parts_status
