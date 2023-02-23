@@ -8,6 +8,7 @@ from models.part import Part
 from models.instrument import Instrument
 from models.artist import Artist
 from models.album import Album
+import cProfile
 
 
 def print_songs():
@@ -50,4 +51,8 @@ def print_albums():
         print("No albums")
 
 
-breakpoint()
+cp = cProfile.Profile()
+cp.enable()
+print_songs()
+cp.disable()
+cp.print_stats()

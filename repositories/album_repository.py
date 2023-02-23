@@ -59,6 +59,17 @@ def select(id):
     return album
 
 
+def select_for_songs(id):
+    album = None
+    sql = "SELECT * FROM albums WHERE id = %s"
+    values = [id]
+    results = run_sql(sql, values)
+    if results:
+        row = results[0]
+        album = _build_album(row, False)
+    return album
+
+
 # Update
 def update(album):
     sql = "UPDATE albums SET (name,artist_id) = (%s,%s) WHERE id = %s"
@@ -92,8 +103,12 @@ def _calculate_album_completion(songs_completion):
     return completion
 
 
-def _build_album(row):
+def _build_album(row, get_songs_completion=True):
     artist = artist_repository.select(row["artist_id"])
-    songs_completion = song_repository.select_all_completion_with_album(row["id"])
+    songs_completion = (
+        song_repository.select_all_completion_with_album(row["id"])
+        if get_songs_completion
+        else []
+    )
     album = Album(row["name"], artist, songs_completion, row["id"])
     return album

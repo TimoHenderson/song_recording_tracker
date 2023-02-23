@@ -2,6 +2,7 @@ from db.run_sql import run_sql
 from models.part import Part
 import repositories.instrument_repository as instrument_repository
 import repositories.song_repository as song_repository
+from pprint import pprint
 
 
 # Create
@@ -18,9 +19,8 @@ def select_all():
     parts = []
     sql = "SELECT * FROM parts"
     results = run_sql(sql)
-    for row in results:
-        part = _build_part(row)
-        parts.append(part)
+    if results:
+        parts = _build_parts(results)
     return parts
 
 
@@ -30,8 +30,7 @@ def select(id):
     values = [id]
     results = run_sql(sql, values)
     if results:
-        row = results[0]
-        part = _build_part(row)
+        part = _build_parts(results)[0]
     return part
 
 
@@ -40,9 +39,8 @@ def select_all_with_song(song_id):
     sql = "SELECT * FROM parts WHERE song_id = %s"
     values = [song_id]
     results = run_sql(sql, values)
-    for row in results:
-        part = _build_part(row)
-        parts.append(part)
+    if results:
+        parts = _build_parts(results)
     return parts
 
 
@@ -84,9 +82,32 @@ def delete(id):
 
 
 # Builder
-def _build_part(row):
-    instrument = instrument_repository.select(row["instrument_id"])
-    song = song_repository.select(row["song_id"])
+def _build_parts(rows):
+    insts = {}
+    songs = {}
+    parts = []
+
+    for part_dict in rows:
+        song_id = part_dict["song_id"]
+        if song_id not in songs.keys():
+            song = song_repository.select_for_parts(song_id)
+            songs[song_id] = song
+        else:
+            song = songs[song_id]
+        song.parts_status.append(part_dict["status"])
+
+        inst_id = part_dict["instrument_id"]
+        if inst_id not in insts.keys():
+            inst = instrument_repository.select(inst_id)
+            insts[inst_id] = inst
+        else:
+            inst = insts[inst_id]
+
+        parts.append(_build_part(part_dict, song, inst))
+    return parts
+
+
+def _build_part(row, song, instrument):
     return Part(
         row["name"],
         row["status"],
