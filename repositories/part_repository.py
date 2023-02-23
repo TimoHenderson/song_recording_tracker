@@ -39,9 +39,8 @@ def select_all_with_song(song_id):
     sql = "SELECT * FROM parts WHERE song_id = %s"
     values = [song_id]
     results = run_sql(sql, values)
-    for row in results:
-        part = _build_part(row)
-        parts.append(part)
+    if results:
+        parts = _build_parts(results)
     return parts
 
 

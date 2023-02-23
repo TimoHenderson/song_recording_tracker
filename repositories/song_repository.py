@@ -47,9 +47,8 @@ def select_all_with_album(album_id):
     sql = "SELECT * FROM songs WHERE album_id = %s"
     values = [album_id]
     results = run_sql(sql, values)
-    for row in results:
-        song = _build_song(row)
-        songs.append(song)
+    if results:
+        songs = _build_songs(results)
     return songs
 
 
