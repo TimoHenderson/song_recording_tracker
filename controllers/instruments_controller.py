@@ -21,9 +21,13 @@ def show(id):
 
 # New
 @instruments_blueprint.route("/instruments/new")
-def new_instrument():
+@instruments_blueprint.route("/songs/<song_id>/parts/<part_id>/instruments/new")
+@instruments_blueprint.route("/songs/<song_id>/instruments/new")
+def new_instrument(song_id=None, part_id=None):
     icons = get_icons()
-    return render_template("instruments/new.html", icons=icons)
+    return render_template(
+        "instruments/new.html", icons=icons, song_id=song_id, part_id=part_id
+    )
 
 
 # Create
@@ -32,7 +36,13 @@ def create():
     form = request.form
     new_instrument = Instrument(form["name"], form["icon"])
     instrument_repository.save(new_instrument)
-    return redirect("/instruments")
+    if "song_id" in form and "part_id" in form:
+        url_string = f"/songs/{form['song_id']}/parts/{form['part_id']}"
+    elif "song_id" in form:
+        url_string = f"/songs/{form['song_id']}/parts/new"
+    else:
+        url_string = "/instruments"
+    return redirect(url_string)
 
 
 # Edit

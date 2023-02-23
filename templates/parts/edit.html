@@ -27,7 +27,7 @@
                         </option>
                         {% endfor %}
                     </select>
-
+                    <a class="fake-button" href="/songs/{{ song.id }}/parts/{{ part.id }}/instruments/new">New Inst.</a>
 
                 </div>
                 <div class="form-column">
@@ -48,7 +48,7 @@
             </div>
             <br>
             <label for="notes">Notes: </label>
-            <textarea name="notes" id="notes" cols="30" rows="10" value="{{ part.notes }}"></textarea>
+            <textarea name="notes" id="notes" cols="30" rows="10">{{ part.notes }}</textarea>
 
             <div class="form-row">
                 <input type="submit" value="Update Part">

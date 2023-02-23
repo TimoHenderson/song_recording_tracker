@@ -1,7 +1,0 @@
-{% extends 'base.html' %}
-{% block content %}
-<h2>Part of {{ song.title }}</h2>
-{% include 'components/part-card.html' %}
-<a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/edit">Edit</a>
-<a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/delete">Delete</a>
-{% endblock content %}

@@ -50,10 +50,22 @@ def edit(album_id, id):
 @songs_blueprint.route("/albums/<album_id>/songs/<id>/update", methods=["POST"])
 def update(album_id, id):
     form = request.form
-    album = album_repository.select(int(album_id))
-    song = Song(form["title"], album, form["notes"], id=id)
+    if "album_id" in form:
+        album_id = form["album_id"]
+    album = album_repository.select(album_id)
+    song = Song(form["title"], album, notes=form["notes"], id=id)
     song_repository.update(song)
     return redirect(f"/albums/{album_id}/songs/{id}")
+
+
+# @songs_blueprint.route("/albums/<album_id>/songs/<id>/updatenotes", methods=["POST"])
+# def update_notes(album_id, id):
+#     form = request.form
+#     song = song_repository.select(id)
+#     song.notes = form["notes"]
+#     print(song.notes)
+#     song_repository.update(song)
+#     return redirect(f"/albums/{album_id}/songs/{id}")
 
 
 # Delete Confirm

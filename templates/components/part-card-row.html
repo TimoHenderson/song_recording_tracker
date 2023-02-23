@@ -1,14 +1,16 @@
 <article class="card row-card">
     <div class="row-card-col">
         <h3>{{ part.name }}</h3>
+        <p>for {{part.song.title}}</p>
+        <p>by {{part.song.album.artist.name}}</p>
 
     </div>
-    <div class="row-card-col row-card-middle">
-        <span class="instrument-icons instrument-icons-small">&#x{{ part.instrument.icon }};</span>
+    <div class="row-card-col">
+        <span class="instrument-icons instrument-icons">&#x{{ part.instrument.icon }};</span>
         {{ part.instrument.name }}
     </div>
 
-    <div class="row-card-col row-card-end">
+    <div class="row-card-col">
         {% set completion = part.status*20 %}
         {% set hide_percent = True %}
         {% set label = part.get_status_str() %}

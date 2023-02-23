@@ -6,16 +6,30 @@
             {% include 'components/song-card-row.html' %}
         </div>
         <div class="page-header-links">
-            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/parts/new">New Part</button>
+            <form><button formaction="/artists/{{ song.album.artist.id }}/albums/{{ song.album.id }}">Album</button>
             </form>
             <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/edit">Edit Song</button></form>
+            <label class="fake-button" for="show-notes">Show Notes</label>
             <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/delete">Delete Song</button>
+            </form>
+            <form><button formaction="/songs/{{ song.id }}/parts/new">New Part</button>
             </form>
         </div>
         <hr>
     </div>
-
     <div class="card-list part-card-list">
+        <input type="checkbox" name="" id="show-notes" hidden>
+        <div class="card-list form-card-list notes-card">
+            <div class="card form-card">
+                <form class="form-card" action="/albums/{{song.album.id}}/songs/{{song.id}}/update" method="post">
+                    <input type="hidden" name="title" value="{{song.title}}">
+                    <textarea name="notes" id="" cols="30" rows="10">{{song.notes}}</textarea>
+                    <input type="submit" value="Save">
+                </form>
+            </div>
+        </div>
+
+
         {% for part in parts %}
         <a href="/songs/{{song.id}}/parts/{{part.id}}">
             {% include '/components/part-card.html' %}

@@ -90,7 +90,7 @@ hr {
 
 .card-list-column {
 
-    flex-direction: column;
+    flex-direction: column-reverse;
     justify-content: center;
 }
 
@@ -134,7 +134,7 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: start;
+    align-items: center;
 
 }
 
@@ -144,8 +144,8 @@ hr {
 }
 
 .row-card-end {
-    align-items: center;
-    justify-content: space-between;
+    align-items: baseline;
+    justify-content: space-evenly;
 }
 
 .row-card-middle>h3 {
@@ -397,6 +397,15 @@ input {
     text-align: center;
 }
 
+#show-notes+div.notes-card {
+    display: none;
+}
+
+#show-notes:checked+div.notes-card {
+    display: flex;
+
+}
+
 .invisible {
-    opacity: 0
+    opacity: 0;
 }

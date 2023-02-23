@@ -3,8 +3,17 @@
 
 <div class="page-header">
     <div class="page-header-contents page-header-card">
-        {% set artist = album.artist %}
-        {% include 'components/artist-card-row.html' %}
+
+        {% include 'components/album-card-row.html' %}
+    </div>
+    <div class="page-header-links">
+        <form><button formaction="/artists/{{ album.artist.id }}/albums/ {{ album.id }}">Back</button></form>
+        <form><button formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/edit">Edit Album</button>
+        </form>
+        <form><button formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">Delete
+                Album</button>
+        </form>
+        <form><button formaction="/albums/{{ album.id }}/songs/new">New Song</button></form>
     </div>
     <hr>
 </div>
@@ -18,9 +27,8 @@
             <label for="artist">Artist: </label>
             <select name="artist_id" id="artist" required>
                 {% for artist in artists %}
-                <option value="{{ artist.id }}" {% if album.artist.id==artist.id %} selected {% endif %}>{{
-                    artist.name
-                    }}
+                <option value="{{ artist.id }}" {% if album.artist.id==artist.id %} selected {% endif %}>
+                    {{artist.name}}
                 </option>
                 {% endfor %}
             </select>

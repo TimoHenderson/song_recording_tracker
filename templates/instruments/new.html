@@ -4,6 +4,12 @@
     <div class="card form-card">
         <h2>New Instrument</h2>
         <form class="form-card" action="/instruments" method="post">
+            {% if song_id %}
+            <input type="hidden" name="song_id" value="{{ song_id }}">
+            {% endif %}
+            {% if part_id %}
+            <input type="hidden" name="song_id" value="{{ part_id }}">
+            {% endif %}
             <label for="name">Name:</label>
             <input type="text" name="name" id="name" placeholder="Instrument Name" required>
             <br>

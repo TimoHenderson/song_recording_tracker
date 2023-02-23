@@ -36,7 +36,7 @@ def create(artist_id):
     artist = artist_repository.select(artist_id)
     new_album = Album(form["name"], artist)
     album_repository.save(new_album)
-    return redirect(f"/artists/<artist_id>/albums/<album_id>")
+    return redirect(f"/artists/{artist_id}/albums/{new_album.id}")
 
 
 # Edit
@@ -61,7 +61,7 @@ def update(artist_id, id):
 @albums_blueprint.route("/artists/<artist_id>/albums/<id>/delete")
 def confirm_delete(artist_id, id):
     album = album_repository.select(id)
-    return render_template(f"artists/{artist_id}albums/delete.html", album=album)
+    return render_template("albums/delete.html", album=album)
 
 
 # Actually Delete

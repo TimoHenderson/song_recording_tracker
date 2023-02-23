@@ -4,6 +4,12 @@
     <div class="page-header-contents page-header-card">
         {% include 'components/artist-card-row.html' %}
     </div>
+    <div class="page-header-links">
+        <form><button formaction="/artists/{{ artist.id }}">Back</button></form>
+        <form><button formaction="/artists/{{ artist.id }}/edit">Edit Artist</button></form>
+        <form><button formaction="/artists/{{ artist.id }}/delete">Delete Artist</button></form>
+        <form><button formaction="/artists/{{ artist.id }}/albums/new">New Album</button></form>
+    </div>
     <hr>
 </div>
 <div class="card-list form-card-list">

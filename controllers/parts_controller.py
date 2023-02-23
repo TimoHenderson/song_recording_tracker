@@ -32,9 +32,9 @@ def create(song_id):
     form = request.form
     song = song_repository.select(song_id)
     instrument = instrument_repository.select(form["instrument_id"])
-    new_part = Part(form["name"], 0, song, instrument, form["notes"])
+    new_part = Part(form["name"], form["status"], song, instrument, form["notes"])
     part_repository.save(new_part)
-    return redirect(f"/songs/{song_id}")
+    return redirect(f"/albums/{song.album.id}/songs/{song_id}")
 
 
 # Edit
@@ -68,12 +68,13 @@ def update(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/delete")
 def confirm_delete(song_id, id):
     part = part_repository.select(id)
-    song = song_repository.select(song_id)
+    song = part.song
     return render_template("parts/delete.html", part=part, song=song)
 
 
 # Actually Delete
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/delete", methods=["POST"])
 def delete(song_id, id):
+    song = song_repository.select(song_id)
     part_repository.delete(id)
-    return redirect("/songs/" + song_id)
+    return redirect(f"/albums/{song.album.id}/songs/{song.id}")
