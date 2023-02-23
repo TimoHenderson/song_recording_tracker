@@ -89,5 +89,4 @@ def _calculate_song_completion(parts_status):
 def _build_song(row):
     album = album_repository.select(row["album_id"])
     parts_status = part_repository.select_all_status_with_song(row["id"])
-
     return Song(row["title"], album, parts_status, row["notes"], row["id"])

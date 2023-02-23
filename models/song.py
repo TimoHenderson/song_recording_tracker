@@ -5,7 +5,6 @@ from models.album import Album
 
 @dataclass
 class Song:
-
     title: str
     album: Album
     parts_status: list[int] = field(default_factory=list)

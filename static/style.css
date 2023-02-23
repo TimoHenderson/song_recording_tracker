@@ -18,7 +18,10 @@ body {
     font-family: 'Architects Daughter';
     color: var(--text-color);
     background-color: var(--light);
+    margin-bottom: 80px;
 }
+
+main {}
 
 a {
     text-decoration: none;
