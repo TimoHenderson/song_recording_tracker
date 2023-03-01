@@ -119,9 +119,10 @@ nav>div {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 2rem;
-    padding-right: 2rem;
 
+    flex-direction: column;
+    width: 95%;
+    margin: auto;
 }
 
 .page-header-contents>h2 {
@@ -137,6 +138,8 @@ nav>div {
     padding-top: 1rem;
     padding-bottom: 0.5rem;
     justify-content: center;
+
+
 }
 
 .page-header-links {
@@ -521,5 +524,9 @@ footer {
 
     header {
         padding: 1.2rem;
+    }
+
+    nav {
+        width: 50%;
     }
 }
