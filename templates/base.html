@@ -18,21 +18,27 @@
 <body>
     <header>
         <h1>Recording Tracker</h1>
-        <nav>
-            <div>
-                <a href="/">Home</a>
-                <a href="/artists">Artists</a>
-                <a href="/albums">Albums</a>
-                <a href="/songs">Songs</a>
-                <a href="/parts">Parts</a>
-                <a href="/instruments">Instruments</a>
-            </div>
-        </nav>
     </header>
+
+
     {% block content %}
 
     {% endblock content %}
+    <input type="checkbox" name="" id="menu-trigger">
+    <nav>
 
+
+        <div>
+
+            <a href="/">Home</a>
+            <a href="/artists">Artists</a>
+            <a href="/albums">Albums</a>
+            <a href="/songs">Songs</a>
+            <a href="/parts">Parts</a>
+            <a href="/instruments">Instruments</a>
+        </div>
+    </nav>
+    <div id="menu-button"><label for="menu-trigger"><i class="fa-solid fa-bars fa-2x"></i></label></div>
 </body>
 
 <!-- <footer>
