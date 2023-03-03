@@ -70,41 +70,46 @@ header>label {
 }
 
 
-
-nav {
+.nav-pane {
     position: fixed;
-    font-size: 1.2rem;
     height: 100%;
+    width: 100%;
     top: 0;
     left: -1000px;
     transition: all 0.4s ease-in-out;
-    border-style: ridge;
-    border-color: silver;
-    border-width: 3px;
-    padding-left: 2rem;
-    padding-top: 4rem;
-    padding-bottom: 1rem;
-    width: 30%;
-
-    justify-content: flex-start;
-
-    background-color: var(--dark);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-#menu-trigger:checked+nav {
-    display: flex;
-    left: 0;
-
-}
-
-nav>div {
+nav {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     gap: 2rem;
     align-items: flex-start;
     padding: 0.8rem;
+    font-size: 1.2rem;
+    border-style: ridge;
+    border-color: silver;
+    border-width: 3px;
+    padding-left: 2rem;
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background-color: var(--dark);
 }
+
+.nav-pane>div {
+    background-color: var(--darkest);
+    opacity: 50%;
+}
+
+#menu-trigger:checked+div.nav-pane {
+    display: flex;
+    left: 0;
+}
+
+
 
 /* #endregion */
 /* #region page-header */
