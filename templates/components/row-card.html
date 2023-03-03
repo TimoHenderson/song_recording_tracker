@@ -8,15 +8,18 @@
 {% set item_name = item.name %}
 {% set item_parent_name = item.artist.name %}
 {% set children = item.songs_completion %}
-{% else %}
-
+{% elif type=="artist" %}
+{% set item_name = item.name %}
+{% set children = item.albums_completion %}
 {% endif %}
 <article>
     {% if type=='song' %}
     <a href="/albums/{{ item.album.id }}/songs/{{ item.id }}">
-        {% elif type=='album' %}    
-        <a href="/artists/{{ item.artist.id }}/albums/{{ item.id }}">
-        {% endif %}
+    {% elif type=='album' %}    
+    <a href="/artists/{{ item.artist.id }}/albums/{{ item.id }}">
+    {% elif type=='artist'%}
+    <a href="/artists/{{ item.id }}">    
+    {% endif %}
         <div class="card row-card">
             <div class="row-card-content">
                 <div class="row-card-col">
@@ -32,9 +35,9 @@
                     {% endif %}
                 </div>
                 <input class="card-menu-trigger trigger" type="radio" name="card-menu-trigger"
-                    id="menu-song-{{ item.id }}">
+                    id="menu-{{ type }}-{{ item.id }}">
                 <div class="row-card-col row-card-end">
-                    <label class="open-card-menu" for="menu-song-{{ item.id }}"><i
+                    <label class="open-card-menu" for="menu-{{ type }}-{{ item.id }}"><i
                             class="fa-solid fa-ellipsis-vertical fa-2x"></i></label>
                     <label for="no-card-menu" class="close-card-menu"><i class="fa-solid fa-ellipsis fa-2x"></i></label>
                 </div>

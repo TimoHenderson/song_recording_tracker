@@ -13,9 +13,9 @@
 
     <div class="card-list card-list-column">
         {% for artist in artists %}
-        <a href="/artists/{{ artist.id }}">
-            {% include '/components/artist-card-row.html' %}
-        </a>
+        {% with type="artist", item=artist %}
+        {% include '/components/row-card.html' %}
+        {% endwith %}
         {% endfor %}
     </div>
 </main>
