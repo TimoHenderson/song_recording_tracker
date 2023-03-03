@@ -23,7 +23,7 @@
 
     <div class="card-list card-list-column">
         {% for song in songs %}
-        {% with type='song',item = song %}
+        {% with type='song',item=song %}
         {% include 'components/row-card.html' %}
         {% endwith %}
         {% endfor %}

@@ -15,11 +15,9 @@
     </div>
     <div class="card-list card-list-column">
         {% for album in albums %}
-        <article>
-            <a href="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
-                {% include 'components/album-card-row.html' %}
-            </a>
-        </article>
+        {% with type="album", item=album %}
+        {% include 'components/row-card.html' %}
+        {% endwith %}
         {% endfor %}
     </div>
 </main>

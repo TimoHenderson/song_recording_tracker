@@ -4,13 +4,18 @@
 {% set item_parent_name = item.album.name %}
 {% set item_gparent_name = item.album.artist.name %}
 {% set children = item.get_parts_status_percent() %}
-
+{% elif type =="album"%}
+{% set item_name = item.name %}
+{% set item_parent_name = item.artist.name %}
+{% set children = item.songs_completion %}
 {% else %}
 
 {% endif %}
 <article>
     {% if type=='song' %}
-    <a href="albums/{{ item.album.id }}/songs/{{ item.id }}">
+    <a href="/albums/{{ item.album.id }}/songs/{{ item.id }}">
+        {% elif type=='album' %}    
+        <a href="/artists/{{ item.artist.id }}/albums/{{ item.id }}">
         {% endif %}
         <div class="card row-card">
             <div class="row-card-content">
@@ -18,16 +23,18 @@
                     {% include 'components/widgets/child-elements-meter.html' %}
                 </div>
                 <div class="row-card-col">
-                    {% if type == "song" %}
                     <h3>{{ item_name }}</h3>
+                    {% if type == "song" %}
                     <p>by {{ item_gparent_name }}</p>
+                    {% endif %}
+                    {%if type != "artist" %}
                     <p>{{ item_parent_name }}</p>
                     {% endif %}
                 </div>
                 <input class="card-menu-trigger trigger" type="radio" name="card-menu-trigger"
-                    id="menu-song-{{ song.id }}">
+                    id="menu-song-{{ item.id }}">
                 <div class="row-card-col row-card-end">
-                    <label class="open-card-menu" for="menu-song-{{ song.id }}"><i
+                    <label class="open-card-menu" for="menu-song-{{ item.id }}"><i
                             class="fa-solid fa-ellipsis-vertical fa-2x"></i></label>
                     <label for="no-card-menu" class="close-card-menu"><i class="fa-solid fa-ellipsis fa-2x"></i></label>
                 </div>
