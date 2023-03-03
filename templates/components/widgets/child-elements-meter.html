@@ -1,7 +1,9 @@
 <!-- requires element_name, num_elements and elements-list of ints in range 0-100-->
 <div class="child-elements-container">
-    <p>{{ element_name }} - {{ num_elements }}</p>
+    <!-- <p>{{ element_name }} - {{ num_elements }}</p> -->
+
     <div class="meter element-meters-container ">
+
         {% if elements %}
         {% for element in elements %}
         <div class="element-meter">

@@ -1,19 +1,28 @@
 <div class="card row-card">
-    <div class="row-card-col">
-        <h3>{{ song.title }}</h3>
+    <div class="row-card-content">
+        <div class="row-card-col">
+            {% set element_name=" Parts" %}
+            {% set num_elements=song.get_num_parts() %}
+            {% set elements=song.get_parts_status_percent() %}
+            {% include 'components/widgets/child-elements-meter.html' %}
+        </div>
+        <div class="row-card-col">
+            <h3>{{ song.title }}</h3>
+            <p>by {{ song.album.artist.name }}</p>
+            <p>{{ song.album.name }}</p>
+        </div>
+        <input class="card-menu-trigger trigger" type="radio" name="card-menu-trigger" id="menu-song-{{ song.id }}">
+        <div class="row-card-col row-card-end">
+            <label class="open-card-menu" for="menu-song-{{ song.id }}"><i
+                    class="fa-solid fa-ellipsis-vertical fa-2x"></i></label>
+            <label for="no-card-menu" class="close-card-menu"><i class="fa-solid fa-ellipsis fa-2x"></i></label>
+        </div>
+        <div class="card-menu">
+            <p>Hi</p>
+        </div>
+    </div>
 
-        <p>by {{ song.album.artist.name }}</p>
-        <p>{{ song.album.name }}</p>
-    </div>
-    <div class="row-card-col row-card-middle">
-        <h3>Song</h3>
-        {% set completion = song.get_completion() %}
-        {% include 'components/widgets/completion.html' %}
-    </div>
-    <div>
-        {% set element_name=" Parts" %}
-        {% set num_elements=song.get_num_parts() %}
-        {% set elements=song.get_parts_status_percent() %}
-        {% include 'components/widgets/child-elements-meter.html' %}
-    </div>
+
+
+
 </div>

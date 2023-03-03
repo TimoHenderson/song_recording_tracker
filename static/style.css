@@ -38,7 +38,7 @@ a {
 
 header {
     background-color: var(--darkest);
-    box-sizing: border-box;
+
     position: sticky;
     top: 3px;
     display: grid;
@@ -76,7 +76,7 @@ nav {
     font-size: 1.2rem;
     height: 100%;
     top: 0;
-    left: -500px;
+    left: -1000px;
     transition: all 0.4s ease-in-out;
     border-style: ridge;
     border-color: silver;
@@ -205,12 +205,18 @@ hr {
     border-color: silver;
     border-width: 3px;
     border-radius: 1rem;
+
 }
 
 .row-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-card-content {
     display: grid;
 
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 4fr 0.5fr;
     gap: 1rem;
     /* justify-content: space-between; */
 }
@@ -219,24 +225,65 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 
 }
 
-.row-card-middle {
+.row-card-col>h3,
+.row-card-col>p {
+    margin: 0;
+
+}
+
+.row-card-col>p {
+    font-size: 0.8rem;
+}
+
+/* .row-card-middle {
     align-items: center;
     justify-content: space-between;
-}
+} */
 
 .row-card-end {
-    align-items: baseline;
-    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
 }
 
 .row-card-middle>h3 {
     margin-top: 0;
     text-decoration: underline;
 }
+
+.trigger {
+    display: none;
+}
+
+.card-menu {
+    display: none;
+}
+
+.close-card-menu {
+    display: none;
+    padding: 0.5rem;
+}
+
+.open-card-menu {
+    padding: 0.5rem 1rem;
+}
+
+.card-menu-trigger:checked~div.card-menu {
+    display: block;
+
+}
+
+.card-menu-trigger:checked+div>label.open-card-menu {
+    display: none;
+}
+
+.card-menu-trigger:checked+div>label.close-card-menu {
+    display: block;
+}
+
 
 
 .part-card {
@@ -361,6 +408,7 @@ hr {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    /* width: 60px; */
 }
 
 .element-meters-container {
@@ -370,7 +418,8 @@ hr {
     width: 100%;
     gap: 2px;
     background-color: black;
-
+    width: 4rem;
+    height: 3rem;
 }
 
 .element-meter {
@@ -379,7 +428,8 @@ hr {
 
     width: 100%;
     margin: auto;
-    height: 60px;
+    /* height: 60px; */
+    height: 100%;
 
 }
 
@@ -493,6 +543,10 @@ input {
 
 .invisible {
     opacity: 0;
+}
+
+p.invisible {
+    margin: 0;
 }
 
 footer {
