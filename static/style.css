@@ -198,9 +198,10 @@ hr {
 /* #region card */
 .card {
     background-color: rgb(21, 21, 21);
-    padding-left: 1rem;
-    padding-right: 1rem;
     padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 0;
+
     border-style: ridge;
     border-color: silver;
     border-width: 3px;
@@ -265,10 +266,12 @@ hr {
 .close-card-menu {
     display: none;
     padding: 0.5rem;
+    padding-right: 1.5rem;
 }
 
 .open-card-menu {
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 2rem 0.5rem 1rem;
+
 }
 
 .card-menu-trigger:checked~div.card-menu {

@@ -23,11 +23,9 @@
 
     <div class="card-list card-list-column">
         {% for song in songs %}
-        <article>
-            <a href="/albums/{{ song.album.id }}/songs/{{ song.id }}">
-                {% include 'components/song-card-row.html' %}
-            </a>
-        </article>
+        {% with type='song',item = song %}
+        {% include 'components/row-card.html' %}
+        {% endwith %}
         {% endfor %}
     </div>
 </main>

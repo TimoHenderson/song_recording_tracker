@@ -1,16 +1,12 @@
-<!-- requires element_name, num_elements and elements-list of ints in range 0-100-->
+<!-- Requires children - list of ints in range 0-100-->
 <div class="child-elements-container">
-    <!-- <p>{{ element_name }} - {{ num_elements }}</p> -->
-
     <div class="meter element-meters-container ">
-
-        {% if elements %}
-        {% for element in elements %}
+        {% if children %}
+        {% for child in children %}
         <div class="element-meter">
             {% for i in range(10,110,10) %}
-            <div class="meter-chunk {% if element >=i %}meter-chunk-on{% endif %}"></div>
+            <div class="meter-chunk {% if child >=i %}meter-chunk-on{% endif %}"></div>
             {% endfor %}
-
         </div>
         {% endfor %}
         {% else %}
