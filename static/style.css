@@ -38,9 +38,9 @@ a {
 
 header {
     background-color: var(--darkest);
-
+    box-sizing: border-box;
     position: sticky;
-    top: 3px;
+    top: 0px;
     display: grid;
     justify-content: center;
     align-items: center;
@@ -72,13 +72,13 @@ header>label {
 
 .nav-pane {
     position: fixed;
-    height: 100%;
-    width: 100%;
+    height: 100dvh;
+    width: 100dvw;
     top: 0;
-    left: -1000px;
-    transition: all 0.4s ease-in-out;
+    left: -2000px;
+    transition: all 0.4s ease-out;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
 }
 
 nav {
@@ -92,16 +92,28 @@ nav {
     border-style: ridge;
     border-color: silver;
     border-width: 3px;
-    padding-left: 2rem;
-    padding-top: 4rem;
+    padding-left: 3rem;
+    padding-top: 6rem;
     padding-bottom: 1rem;
     width: 100%;
     background-color: var(--dark);
+    overflow-y: scroll;
 }
 
 .nav-pane>div {
     background-color: var(--darkest);
-    opacity: 50%;
+    opacity: 90%;
+}
+
+.nav-overlay {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-overlay>label {
+    padding: 25dvh 25dvw;
+    opacity: 0;
 }
 
 #menu-trigger:checked+div.nav-pane {
@@ -235,13 +247,20 @@ hr {
 
 }
 
-.row-card-col>h3,
-.row-card-col>p {
-    margin: 0;
-
+.row-card-col>p.instrument-icons {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
 }
 
-.row-card-col>p {
+.row-card-details>h4,
+.row-card-details>p {
+    margin: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.row-card-details>p {
     font-size: 0.8rem;
 }
 
@@ -372,8 +391,6 @@ hr {
     align-items: center;
     justify-content: flex-end;
 }
-
-
 
 .buttons-form>button {
 

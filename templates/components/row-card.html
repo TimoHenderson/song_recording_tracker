@@ -1,5 +1,11 @@
 <!-- Requires type as string and the element to be displayed -->
-{% if type == "song" %}
+{% if type=="part" %}
+{% set item_name = item.name %}
+{% set item_parent_name = item.song.title %}
+{% set item_gparent_name = item.song.album.name %}
+{% set item_ggparent_name = item.song.album.artist.name %}
+{% set children = [item.status*20] %}
+{% elif type == "song" %}
 {% set item_name = item.title %}
 {% set item_parent_name = item.album.name %}
 {% set item_gparent_name = item.album.artist.name %}
@@ -15,36 +21,45 @@
 <article>
     {% if type=='song' %}
     <a href="/albums/{{ item.album.id }}/songs/{{ item.id }}">
-    {% elif type=='album' %}    
-    <a href="/artists/{{ item.artist.id }}/albums/{{ item.id }}">
-    {% elif type=='artist'%}
-    <a href="/artists/{{ item.id }}">    
-    {% endif %}
-        <div class="card row-card">
-            <div class="row-card-content">
-                <div class="row-card-col">
-                    {% include 'components/widgets/child-elements-meter.html' %}
+        {% elif type=='album' %}
+        <a href="/artists/{{ item.artist.id }}/albums/{{ item.id }}">
+            {% elif type=='artist'%}
+            <a href="/artists/{{ item.id }}">
+                {% endif %}
+                <div class="card row-card">
+                    <div class="row-card-content">
+                        <div class="row-card-col">
+                            {% if type=="part" %}
+                            <p class="instrument-icons">&#x{{ item.instrument.icon }};</p>
+                            {% else %}
+                            {% include 'components/widgets/child-elements-meter.html' %}
+                            {% endif %}
+                        </div>
+                        <div class="row-card-col row-card-details">
+                            <h4>{{ item_name }}</h4>
+                            {% if type == "song" %}
+                            <p>by {{ item_gparent_name }}</p>
+                            {% endif %}
+                            {%if type != "artist" %}
+                            <p>{{ item_parent_name }}</p>
+                            {% endif %}
+                            {% if type == "part" %}
+                            <p>by {{ item_ggparent_name }}</p>
+                            {% endif %}
+
+                        </div>
+                        <input class="card-menu-trigger trigger" type="radio" name="card-menu-trigger"
+                            id="menu-{{ type }}-{{ item.id }}">
+                        <div class="row-card-col row-card-end">
+                            <label class="open-card-menu" for="menu-{{ type }}-{{ item.id }}"><i
+                                    class="fa-solid fa-ellipsis-vertical fa-2x"></i></label>
+                            <label for="no-card-menu" class="close-card-menu"><i
+                                    class="fa-solid fa-ellipsis fa-2x"></i></label>
+                        </div>
+                        <div class="card-menu">
+                            <p>Hi</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="row-card-col">
-                    <h3>{{ item_name }}</h3>
-                    {% if type == "song" %}
-                    <p>by {{ item_gparent_name }}</p>
-                    {% endif %}
-                    {%if type != "artist" %}
-                    <p>{{ item_parent_name }}</p>
-                    {% endif %}
-                </div>
-                <input class="card-menu-trigger trigger" type="radio" name="card-menu-trigger"
-                    id="menu-{{ type }}-{{ item.id }}">
-                <div class="row-card-col row-card-end">
-                    <label class="open-card-menu" for="menu-{{ type }}-{{ item.id }}"><i
-                            class="fa-solid fa-ellipsis-vertical fa-2x"></i></label>
-                    <label for="no-card-menu" class="close-card-menu"><i class="fa-solid fa-ellipsis fa-2x"></i></label>
-                </div>
-                <div class="card-menu">
-                    <p>Hi</p>
-                </div>
-            </div>
-        </div>
-    </a>
+            </a>
 </article>

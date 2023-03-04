@@ -3,7 +3,9 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents page-header-card">
-            {% include 'components/song-card-row.html' %}
+            {% with type='song',item=song %}
+            {% include 'components/row-card.html' %}
+            {% endwith %}
         </div>
         <div class="page-header-links">
             <form><button formaction="/artists/{{ song.album.artist.id }}/albums/{{ song.album.id }}">Album</button>
@@ -31,9 +33,9 @@
 
 
         {% for part in parts %}
-        <a href="/songs/{{song.id}}/parts/{{part.id}}">
-            {% include '/components/part-card.html' %}
-        </a>
+        {% with type="part", item=part %}
+        {% include 'components/row-card.html' %}
+        {% endwith %}
         {% endfor %}
     </div>
 </main>
