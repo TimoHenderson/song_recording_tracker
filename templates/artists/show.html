@@ -3,7 +3,9 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents page-header-card">
-            {% include '/components/artist-card-row.html' %}
+            {% with type="artist", item=artist %}
+            {% include 'components/row-card.html' %}
+            {% endwith %}
         </div>
         <div class="page-header-links">
             <form><button formaction="/artists">All Artists</button></form>
