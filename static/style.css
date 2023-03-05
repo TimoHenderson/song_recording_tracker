@@ -136,7 +136,7 @@ nav {
     align-items: center;
 
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     margin: auto;
 }
 
@@ -179,7 +179,7 @@ hr {
     display: flex;
     justify-content: start;
     flex-wrap: wrap;
-    width: 90%;
+    width: 95%;
     margin: auto;
     gap: 1rem;
 }
