@@ -30,11 +30,6 @@ a {
 
 /* #endregion */
 /* #region header */
-#menu-button {
-    position: fixed;
-    top: 1.5rem;
-    left: 1.5rem;
-}
 
 header {
     background-color: var(--darkest);
@@ -58,19 +53,18 @@ header>h1 {
     text-align: center;
 }
 
-header>label {
-    padding-left: 2rem;
-
+#menu-button {
+    position: fixed;
+    top: 1.2rem;
+    left: 1.5rem;
+    z-index: 2;
+    color: var(--text-color);
+    background: none;
+    border: none;
 }
 
-
-
-#menu-trigger {
-    display: none;
-}
-
-
-.nav-pane {
+#nav-pane {
+    z-index: 1;
     position: fixed;
     height: 100dvh;
     width: 100dvw;
@@ -100,7 +94,7 @@ nav {
     overflow-y: scroll;
 }
 
-.nav-pane>div {
+#nav-pane>div {
     background-color: var(--darkest);
     opacity: 90%;
 }
@@ -116,7 +110,7 @@ nav {
     opacity: 0;
 }
 
-#menu-trigger:checked+div.nav-pane {
+#nav-pane.show {
     display: flex;
     left: 0;
 }

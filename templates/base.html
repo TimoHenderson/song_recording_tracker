@@ -12,6 +12,7 @@
     <link href="{{ url_for('static', filename='img/favicon.ico') }}" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <title>Recording Tracker</title>
 </head>
 
@@ -19,26 +20,26 @@
     <header>
         <h1>Recording Tracker</h1>
     </header>
-
-    <input class="trigger" type="radio" name="card-menu-trigger" id="no-card-menu" checked>
-    {% block content %}
-
-    {% endblock content %}
-    <input type="checkbox" name="" id="menu-trigger">
-    <div class="nav-pane">
+    <button id="menu-button" name="menu-button"><i class="fa-solid fa-bars fa-2x"></i></button>
+    <div id="nav-pane">
         <nav>
-            <a href="/">Home</a>
-            <a href="/artists">Artists</a>
-            <a href="/albums">Albums</a>
-            <a href="/songs">Songs</a>
-            <a href="/parts">Parts</a>
-            <a href="/instruments">Instruments</a>
+            <a href="/" tabindex="-1">Home</a>
+            <a href="/artists" tabindex="-1">Artists</a>
+            <a href="/albums" tabindex="-1">Albums</a>
+            <a href="/songs" tabindex="-1">Songs</a>
+            <a href="/parts" tabindex="-1">Parts</a>
+            <a href="/instruments" tabindex="-1">Instruments</a>
         </nav>
         <div class="nav-overlay">
             <label for="menu-trigger">|</label>
         </div>
     </div>
-    <div id="menu-button"><label for="menu-trigger"><i class="fa-solid fa-bars fa-2x"></i></label></div>
+    <input class="trigger" type="radio" name="card-menu-trigger" id="no-card-menu" checked>
+    {% block content %}
+
+    {% endblock content %}
+
+
 </body>
 
 <!-- <footer>
