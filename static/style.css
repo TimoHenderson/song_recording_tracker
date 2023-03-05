@@ -216,7 +216,7 @@ hr {
     padding: 1rem;
     padding-left: 1rem;
     padding-right: 0;
-
+    padding-top: 0.5rem;
     border-style: ridge;
     border-color: silver;
     border-width: 3px;
@@ -227,6 +227,12 @@ hr {
 .row-card {
     display: flex;
     flex-direction: column;
+}
+
+.row-card h5 {
+    margin: 0;
+    text-align: center;
+    text-decoration: underline;
 }
 
 .row-card-content {
