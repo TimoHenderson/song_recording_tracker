@@ -28,6 +28,12 @@ a {
     color: var(--text-color)
 }
 
+.icon-button {
+    color: var(--text-color);
+    background: none;
+    border: none;
+}
+
 /* #endregion */
 /* #region header */
 
@@ -58,9 +64,7 @@ header>h1 {
     top: 1.2rem;
     left: 1.5rem;
     z-index: 2;
-    color: var(--text-color);
-    background: none;
-    border: none;
+
 }
 
 #nav-pane {
@@ -273,18 +277,15 @@ hr {
     text-decoration: underline;
 }
 
-.trigger {
-    display: none;
-}
+
 
 .card-menu {
     display: none;
 }
 
 .close-card-menu {
-    display: none;
     padding: 0.5rem;
-    padding-right: 1.5rem;
+    padding-right: 1.2rem;
 }
 
 .open-card-menu {
@@ -292,27 +293,9 @@ hr {
 
 }
 
-.card-menu-trigger:checked~div.card-menu {
+.card-menu.show {
     display: block;
 
-}
-
-.card-menu-trigger:checked+div>label.open-card-menu {
-    display: none;
-}
-
-.card-menu-trigger:checked+div>label.close-card-menu {
-    display: block;
-}
-
-
-
-.part-card {
-    width: 10rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
 }
 
 .instrument-card {
