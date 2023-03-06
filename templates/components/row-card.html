@@ -55,11 +55,11 @@
             <div class="card-menu">
                 {% if type == "album" %}
                 <button type="button" class="icon-button" formaction="/artists/{{ album.artist.id }}">
-                    <i class="fa-regular fa-circle-up fa-2x"></i>
+                    <i class="fa-regular fa-circle-up"></i>
                     <p>Artist</p>
                 </button>
                 <button type="button" class="icon-button modal-button">
-                    <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                    <i class="fa-solid fa-pen-to-square "></i>
                     <p>Edit Album</p>
                 </button>
                 <div class="modal">
@@ -93,13 +93,29 @@
                         </form>
                     </div>
                 </div>
-                <button type="button" class="icon-button"
-                    formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
-                    <i class="fa-regular fa-trash-can fa-2x"></i>
+                <button type="button" class="icon-button modal-button">
+                    <i class="fa-regular fa-trash-can "></i>
                     <p>Delete Album</p>
                 </button>
+                <div class="modal">
+                    <div class="card-list form-card-list">
+                        <div class="card card-form delete-form">
+                            <h2>Are you sure you want to delete?</h2>
+                            <p>{{ item_name }}</p>
+                            <div class="confirm-delete">
+                                <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
+                                    <input type="submit" value="Delete">
+                                </form>
+                                <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
+                                    <input type="submit" value="Cancel">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <button type="button" class="icon-button" formaction="/albums/{{ album.id }}/songs/new">
-                    <i class="fa-solid fa-plus fa-2x"></i>
+                    <i class="fa-solid fa-plus "></i>
                     <p>Add Song</p>
                 </button>
 
