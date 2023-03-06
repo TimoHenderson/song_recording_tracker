@@ -54,31 +54,55 @@
             </div>
             <div class="card-menu">
                 {% if type == "album" %}
-                <form>
-                    <button class="icon-button" formaction="/artists/{{ album.artist.id }}">
-                        <i class="fa-regular fa-circle-up fa-2x"></i>
-                        <p>Artist</p>
-                    </button>
-                </form>
-                <form>
-                    <button class="icon-button" formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/edit">
-                        <i class="fa-solid fa-pen-to-square fa-2x"></i>
-                        <p>Edit Album</p>
-                    </button>
-                </form>
-                <form>
-                    <button class="icon-button"
-                        formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
-                        <i class="fa-regular fa-trash-can fa-2x"></i>
-                        <p>Delete Album</p>
-                    </button>
-                </form>
-                <form>
-                    <button class="icon-button" formaction="/albums/{{ album.id }}/songs/new">
-                        <i class="fa-solid fa-plus fa-2x"></i>
-                        <p>Add Song</p>
-                    </button>
-                </form>
+                <button type="button" class="icon-button" formaction="/artists/{{ album.artist.id }}">
+                    <i class="fa-regular fa-circle-up fa-2x"></i>
+                    <p>Artist</p>
+                </button>
+                <button type="button" class="icon-button modal-button">
+                    <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                    <p>Edit Album</p>
+                </button>
+                <div class="modal">
+                    <div class="card form-card">
+                        <h2>Edit Album</h2>
+                        <form class="form-card" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/update"
+                            method="post">
+
+                            <label for="name">Name:</label>
+                            <input type="text" name="name" id="name" value="{{ album.name }}" required>
+                            <label for="artist">Artist: </label>
+                            <select name="artist_id" id="artist" required>
+                                {% for artist in artists %}
+                                <option value="{{ artist.id }}" {% if album.artist.id==artist.id %} selected {% endif
+                                    %}>
+                                    {{artist.name}}
+                                </option>
+                                {% endfor %}
+                            </select>
+
+                            <br>
+                            <div class="form-row">
+                                <input type="submit" value="Update Album">
+                            </div>
+                        </form>
+                        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
+                            <input type="submit" value="Delete Album">
+                        </form>
+                        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
+                            <input type="submit" value="Back To Album">
+                        </form>
+                    </div>
+                </div>
+                <button type="button" class="icon-button"
+                    formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
+                    <i class="fa-regular fa-trash-can fa-2x"></i>
+                    <p>Delete Album</p>
+                </button>
+                <button type="button" class="icon-button" formaction="/albums/{{ album.id }}/songs/new">
+                    <i class="fa-solid fa-plus fa-2x"></i>
+                    <p>Add Song</p>
+                </button>
+
 
                 {% endif %}
             </div>
