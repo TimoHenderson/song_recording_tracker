@@ -53,7 +53,34 @@
                         class="fa-solid fa-ellipsis-vertical fa-2x open-card-menu"></i></button>
             </div>
             <div class="card-menu">
-                <p>Hi</p>
+                {% if type == "album" %}
+                <form>
+                    <button class="icon-button" formaction="/artists/{{ album.artist.id }}">
+                        <i class="fa-regular fa-circle-up fa-2x"></i>
+                        <p>Artist</p>
+                    </button>
+                </form>
+                <form>
+                    <button class="icon-button" formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/edit">
+                        <i class="fa-solid fa-pen-to-square fa-2x"></i>
+                        <p>Edit Album</p>
+                    </button>
+                </form>
+                <form>
+                    <button class="icon-button"
+                        formaction="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
+                        <i class="fa-regular fa-trash-can fa-2x"></i>
+                        <p>Delete Album</p>
+                    </button>
+                </form>
+                <form>
+                    <button class="icon-button" formaction="/albums/{{ album.id }}/songs/new">
+                        <i class="fa-solid fa-plus fa-2x"></i>
+                        <p>Add Song</p>
+                    </button>
+                </form>
+
+                {% endif %}
             </div>
         </div>
     </div>
