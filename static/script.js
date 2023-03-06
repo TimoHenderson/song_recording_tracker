@@ -36,10 +36,12 @@ function handleMenuButton() {
 }
 
 function handleCardMenuButton(event) {
-    const cardMenus = document.querySelectorAll(".card-menu");
-    cardMenus.forEach(cardMenu => cardMenu.classList = "card-menu");
     const cardMenu = event.target.parentNode.parentNode.nextElementSibling;
     if (cardMenu.classList == "card-menu") {
+        const cardMenus = document.querySelectorAll(".card-menu");
+        cardMenus.forEach(cardMenu => cardMenu.classList = "card-menu");
+        const cardButtons = document.querySelectorAll(".close-card-menu");
+        cardButtons.forEach(cardButton => cardButton.classList = "fa-solid fa-ellipsis-vertical fa-2x open-card-menu")
         cardMenu.classList = "card-menu show";
         event.target.classList = "fa-solid fa-ellipsis fa-2x close-card-menu";
     } else {
