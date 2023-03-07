@@ -10,10 +10,9 @@
     <div class="card-list card-list-column">
 
         {% for part in parts %}
-
-        <a href="/songs/{{ part.song.id }}/parts/{{ part.id }}/edit">
-            {% include 'components/part-card-row.html' %}
-        </a>
+        {% with type='Part',item=part,show_parent_button=True %}
+        {% include 'components/row-card.html' %}
+        {% endwith %}
         {% endfor %}
 
     </div>

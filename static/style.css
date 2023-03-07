@@ -242,11 +242,21 @@ hr {
     /* justify-content: space-between; */
 }
 
-.row-card-col {
+/* .row-card-col {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+
+
+} */
+
+.row-card-col {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+    align-content: center;
+
 
 }
 
@@ -261,6 +271,7 @@ hr {
     margin: 0;
     white-space: nowrap;
     text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .row-card-details>p {

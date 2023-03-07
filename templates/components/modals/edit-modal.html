@@ -1,10 +1,10 @@
 <div class="modal">
     <div class="card form-card">
         <h2>Edit Album</h2>
-        <form class="form-card" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/update" method="post">
+        <form class="form-card" action="{{ link }}/update" method="post">
 
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="{{ album.name }}" required>
+            <input type="text" name="name" id="name" value="{{ item.name }}" required>
             <label for="artist">Artist: </label>
             <select name="artist_id" id="artist" required>
                 {% for artist in artists %}
@@ -19,11 +19,6 @@
                 <input type="submit" value="Update Album">
             </div>
         </form>
-        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}/delete">
-            <input type="submit" value="Delete Album">
-        </form>
-        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
-            <input type="submit" value="Back To Album">
-        </form>
+        <button class="close-modal" type="button">Cancel</button>
     </div>
 </div>

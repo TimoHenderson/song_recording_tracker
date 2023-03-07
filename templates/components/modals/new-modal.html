@@ -1,10 +1,19 @@
+{% if type=="Part" %}
+{% set new_link = "" %}
+{% elif type=="Song" %}
+{% set new_link = "/albums/"~item.album.id~"/songs" %}
+{% elif type=="Album" %}
+{% set new_link = "/artists/"~item.artist.id~"/albums" %}
+{% elif type=="Artist" %}
+{% set new_link = "/artists" %}
+{% endif %}
 <div class="modal">
     <div class="card form-card">
         <h2>New Song</h2>
-        <form class="form-card" action="/albums/{{album.id}}/songs" method="post">
+        <form class="form-card" action="{{ new_link }}" method="post">
             <label for="album">Album: </label>
             <div class="form-row">
-                {{ album.name }}
+                {{ item.name }}
             </div>
             <label for="title">Title: </label>
             <input type="text" name="title" id="title" required>
@@ -15,8 +24,6 @@
                 <input type="submit" value="Add New">
             </div>
         </form>
-        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
-            <input type="submit" value="Back To Album">
-        </form>
+        <button class="close-modal" type="button">Cancel</button>
     </div>
 </div>

@@ -3,15 +3,9 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents page-header-card">
-            {% with type="Artist", item=artist %}
+            {% with type="Artist", item=artist ,show_parent_button=True %}
             {% include 'components/row-card.html' %}
             {% endwith %}
-        </div>
-        <div class="page-header-links">
-            <form><button formaction="/artists">All Artists</button></form>
-            <form><button formaction="/artists/{{ artist.id }}/edit">Edit Artist</button></form>
-            <form><button formaction="/artists/{{ artist.id }}/delete">Delete Artist</button></form>
-            <form><button formaction="/artists/{{ artist.id }}/albums/new">New Album</button></form>
         </div>
         <hr>
     </div>

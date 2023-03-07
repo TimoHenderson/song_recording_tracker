@@ -1,27 +1,44 @@
-{% if type == "album" %}
-<button type="button" class="icon-button" formaction="/artists/{{ album.artist.id }}">
-    <i class="fa-regular fa-circle-up"></i>
-    <p>Artist</p>
-</button>
+{% if type=="Part" %}
+{% set parent_link = "/albums/"~item.song.album.id~"/songs/"~item.song.id %}
+{% set parent_type = "Song" %}
+{% elif type=="Song" %}
+{% set parent_link = "/artists/"~item.album.artist.id~"/albums/"~item.album.id %}
+{% set parent_type = "Album" %}
+{% set child_type ="Part" %}
+{% elif type=="Album" %}
+{% set parent_link = "/artists/"~item.artist.id %}
+{% set parent_type = "Artist" %}
+{% set child_type ="Song" %}
+{% elif type=="Artist" %}
+{% set parent_link = "/artists" %}
+{% set parent_type = "All Artists" %}
+{% set child_type ="Album" %}
+{% endif %}
 
+{% if show_parent_button %}
+<form>
+    <button class="icon-button" formaction="{{ parent_link }}">
+        <i class="fa-regular fa-circle-up"></i>
+        <p>{{parent_type}}</p>
+    </button>
+</form>
+{% endif %}
 <button type="button" class="icon-button modal-button">
     <i class="fa-solid fa-pen-to-square "></i>
-    <p>Edit Album</p>
+    <p>Edit {{ type }}</p>
 </button>
 {% include 'components/modals/edit-modal.html' %}
 
 <button type="button" class="icon-button modal-button">
     <i class="fa-regular fa-trash-can "></i>
-    <p>Delete Album</p>
+    <p>Delete {{ type }}</p>
 </button>
 {% include 'components/modals/delete-modal.html' %}
 
-
+{% if type != "Part" %}
 <button type="button" class="icon-button modal-button">
     <i class="fa-solid fa-plus "></i>
-    <p>Add Song</p>
+    <p>Add {{ child_type }}</p>
 </button>
 {% include 'components/modals/new-modal.html' %}
-
-
 {% endif %}

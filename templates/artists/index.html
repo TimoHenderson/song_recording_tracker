@@ -13,7 +13,7 @@
 
     <div class="card-list card-list-column">
         {% for artist in artists %}
-        {% with type="Artist", item=artist %}
+        {% with type="Artist", item=artist, show_parent_button=True %}
         {% include '/components/row-card.html' %}
         {% endwith %}
         {% endfor %}

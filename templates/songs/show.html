@@ -3,7 +3,7 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents page-header-card">
-            {% with type='Song',item=song %}
+            {% with type='Song',item=song, show_parent_button=True%}
             {% include 'components/row-card.html' %}
             {% endwith %}
         </div>

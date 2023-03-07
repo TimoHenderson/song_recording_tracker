@@ -9,7 +9,7 @@
     </div>
     <div class="card-list card-list-column">
         {% for album in albums %}
-        {% with type="Album", item=album %}
+        {% with type="Album", item=album,show_parent_button=True %}
         {% include 'components/row-card.html' %}
         {% endwith %}
         {% endfor %}
