@@ -9,18 +9,27 @@ document.addEventListener('DOMContentLoaded', () => {
     modalButtons.forEach(modalButton => modalButton.addEventListener("click", handleModalButton))
 
     const modals = document.querySelectorAll(".modal")
+    modals.forEach(modal => console.dir(modal))
     modals.forEach(modal => modal.addEventListener("click", handleClickOutside));
 })
 
 function handleClickOutside(event) {
-    event.target.classList = "modal";
-    document.body.style.removeProperty('overflow');
+    if (event.target.classList == "modal show") {
+        event.target.classList = "modal";
+        document.body.style.removeProperty('overflow');
+    }
 }
 
 function handleModalButton(event) {
-    const modal = event.target.parentNode.nextElementSibling;
+    let modal;
+    if (event.target.tagName === "BUTTON") {
+        modal = event.target.nextElementSibling;
+    } else {
+        modal = event.target.parentNode.nextElementSibling;
+    }
     modal.classList = "modal show";
     document.body.style.overflow = 'hidden';
+    modal.style.overflow = 'scroll';
 }
 
 function handleMenuButton() {

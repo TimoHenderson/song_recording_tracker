@@ -295,9 +295,15 @@ hr {
 
 .modal.show {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
+    padding: 20dvh 0;
+    box-sizing: border-box;
+
 }
+
+
 
 .card-menu {
     display: none;

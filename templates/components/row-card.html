@@ -98,26 +98,47 @@
                     <p>Delete Album</p>
                 </button>
                 <div class="modal">
-                    <div class="card-list form-card-list">
-                        <div class="card card-form delete-form">
-                            <h2>Are you sure you want to delete?</h2>
-                            <p>{{ item_name }}</p>
-                            <div class="confirm-delete">
-                                <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
-                                    <input type="submit" value="Delete">
-                                </form>
-                                <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
-                                    <input type="submit" value="Cancel">
-                                </form>
-                            </div>
+
+                    <div class="card card-form delete-form">
+                        <h2>Are you sure you want to delete?</h2>
+                        <p>{{ item_name }}</p>
+                        <div class="confirm-delete">
+                            <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
+                                <input type="submit" value="Delete">
+                            </form>
+                            <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
+                                <input type="submit" value="Cancel">
+                            </form>
                         </div>
                     </div>
                 </div>
 
-                <button type="button" class="icon-button" formaction="/albums/{{ album.id }}/songs/new">
+                <button type="button" class="icon-button modal-button">
                     <i class="fa-solid fa-plus "></i>
                     <p>Add Song</p>
                 </button>
+                <div class="modal">
+                    <div class="card form-card">
+                        <h2>New Song</h2>
+                        <form class="form-card" action="/albums/{{album.id}}/songs" method="post">
+                            <label for="album">Album: </label>
+                            <div class="form-row">
+                                {{ album.name }}
+                            </div>
+                            <label for="title">Title: </label>
+                            <input type="text" name="title" id="title" required>
+                            <br>
+                            <label for="notes">Notes: </label>
+                            <textarea name="notes" id="notes" cols="30" rows="10"></textarea>
+                            <div class="form-row">
+                                <input type="submit" value="Add New">
+                            </div>
+                        </form>
+                        <form class="form-row" action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
+                            <input type="submit" value="Back To Album">
+                        </form>
+                    </div>
+                </div>
 
 
                 {% endif %}
