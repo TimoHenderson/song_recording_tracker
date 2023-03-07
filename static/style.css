@@ -96,23 +96,16 @@ nav {
     width: 100%;
     background-color: var(--dark);
     overflow-y: scroll;
+    opacity: 100%;
 }
 
-#nav-pane>div {
-    background-color: var(--darkest);
-    opacity: 90%;
+#nav-pane {
+    background-color: rgba(0, 0, 0, 0.528);
+
+    width: 100dvw;
+    height: 100dvh;
 }
 
-.nav-overlay {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.nav-overlay>label {
-    padding: 25dvh 25dvw;
-    opacity: 0;
-}
 
 #nav-pane.show {
     display: flex;

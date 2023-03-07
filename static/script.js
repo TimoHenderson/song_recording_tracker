@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const menuButton = document.getElementById("menu-button");
+    const menuButton = document.querySelector("#menu-button");
     menuButton.addEventListener("click", handleMenuButton);
+    const navPane = document.querySelector("#nav-pane");
+    navPane.addEventListener("click", handleNavPane);
 
     const cardMenuButtons = document.querySelectorAll(".card-menu-button");
     cardMenuButtons.forEach(cardMenuButton => cardMenuButton.addEventListener("click", handleCardMenuButton));
@@ -45,10 +47,19 @@ function handleMenuButton() {
     if (navPane.className === "") {
         navPane.className = "show";
         links.forEach(link => link.tabIndex = 0);
+        document.body.style.overflow = 'hidden';
+        document.querySelector("nav").style.overflow = 'scroll';
     } else {
         navPane.className = "";
         links.forEach(link => link.tabIndex = -1);
+        document.body.style.removeProperty('overflow');
     }
+
+}
+
+function handleNavPane(event) {
+    event.target.classList = "";
+    document.body.style.removeProperty('overflow');
 }
 
 function handleCardMenuButton(event) {
