@@ -2,15 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuButton = document.getElementById("menu-button");
     menuButton.addEventListener("click", handleMenuButton);
 
-    const cardMenuButtons = document.querySelectorAll(".card-menu-button")
+    const cardMenuButtons = document.querySelectorAll(".card-menu-button");
     cardMenuButtons.forEach(cardMenuButton => cardMenuButton.addEventListener("click", handleCardMenuButton));
 
-    const modalButtons = document.querySelectorAll(".modal-button")
-    modalButtons.forEach(modalButton => modalButton.addEventListener("click", handleModalButton))
+    const modalButtons = document.querySelectorAll(".modal-button");
+    modalButtons.forEach(modalButton => modalButton.addEventListener("click", handleModalButton));
 
-    const modals = document.querySelectorAll(".modal")
-    modals.forEach(modal => console.dir(modal))
+    const modals = document.querySelectorAll(".modal");
     modals.forEach(modal => modal.addEventListener("click", handleClickOutside));
+
+    const closeModalButtons = document.querySelectorAll(".close-modal");
+    closeModalButtons.forEach(button => button.addEventListener("click", handleCloseModals))
 })
 
 function handleClickOutside(event) {
@@ -18,6 +20,11 @@ function handleClickOutside(event) {
         event.target.classList = "modal";
         document.body.style.removeProperty('overflow');
     }
+}
+
+function handleCloseModals(event) {
+    const openModals = document.querySelectorAll(".modal.show");
+    openModals.forEach(openModal => openModal.classList = "modal")
 }
 
 function handleModalButton(event) {

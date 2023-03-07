@@ -1,14 +1,12 @@
 <div class="modal">
     <div class="card card-form delete-form">
         <h2>Are you sure you want to delete?</h2>
-        <p>{{ item_name }}</p>
+        <h3>{{ item_name }}</h3>
         <div class="confirm-delete">
-            <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
+            <form action="{{ link }}/delete" method="post">
                 <input type="submit" value="Delete">
             </form>
-            <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
-                <input type="submit" value="Cancel">
-            </form>
+            <button class="close-modal" type="button">Cancel</button>
         </div>
     </div>
 </div>
