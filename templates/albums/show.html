@@ -3,7 +3,7 @@
 <main>
     <div class="page-header">
         <div class="page-header-contents page-header-card">
-            {% with type="album", item=album %}
+            {% with type="Album", item=album %}
             {% include 'components/row-card.html' %}
             {% endwith %}
         </div>
@@ -25,7 +25,7 @@
 
     <div class="card-list card-list-column">
         {% for song in songs %}
-        {% with type='song',item=song %}
+        {% with type='Song',item=song %}
         {% include 'components/row-card.html' %}
         {% endwith %}
         {% endfor %}

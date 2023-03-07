@@ -1,35 +1,36 @@
 <!-- Requires type as string and the element to be displayed -->
-{% if type=="part" %}
+{% if type=="Part" %}
 {% set item_name = item.name %}
 {% set item_parent_name = item.song.title %}
 {% set item_gparent_name = item.song.album.name %}
 {% set item_ggparent_name = item.song.album.artist.name %}
 {% set children = [item.status*20] %}
 {% set link = "/songs/"~item.song.id~"/parts/"~item.id %}
-{% elif type == "song" %}
+{% elif type == "Song" %}
 {% set item_name = item.title %}
 {% set item_parent_name = item.album.name %}
 {% set item_gparent_name = item.album.artist.name %}
 {% set children = item.get_parts_status_percent() %}
 {% set link = "/albums/"~item.album.id~"/songs/"~item.id %}
-{% elif type =="album"%}
+{% elif type =="Album"%}
 {% set item_name = item.name %}
 {% set item_parent_name = item.artist.name %}
 {% set children = item.songs_completion %}
 {% set link = "/artists/"~item.artist.id~"/albums/"~item.id %}
-{% elif type=="artist" %}
+{% elif type=="Artist" %}
 {% set item_name = item.name %}
 {% set children = item.albums_completion %}
 {% set link = "/artists/"~item.id %}
+
 {% endif %}
 <article>
     <div class="card row-card">
         <a href="{{ link }}">
-            <h5>{{ type.capitalize() }}</h5>
+            <h5>{{ type }}</h5>
         </a>
         <div class="row-card-content">
             <a href="{{ link }}" class="row-card-col">
-                {% if type=="part" %}
+                {% if type=="Part" %}
                 <p class="instrument-icons">&#x{{ item.instrument.icon }};</p>
                 {% else %}
                 {% include 'components/widgets/child-elements-meter.html' %}
@@ -38,13 +39,13 @@
 
             <a href="{{ link }}" class="row-card-col row-card-details">
                 <h4>{{ item_name }}</h4>
-                {% if type == "song" %}
+                {% if type == "Song" %}
                 <p>by {{ item_gparent_name }}</p>
                 {% endif %}
-                {%if type != "artist" %}
+                {%if type != "Artist" %}
                 <p>{{ item_parent_name }}</p>
                 {% endif %}
-                {% if type == "part" %}
+                {% if type == "Part" %}
                 <p>by {{ item_ggparent_name }}</p>
                 {% endif %}
             </a>
