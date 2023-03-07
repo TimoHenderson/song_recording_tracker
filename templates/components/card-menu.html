@@ -1,0 +1,27 @@
+{% if type == "album" %}
+<button type="button" class="icon-button" formaction="/artists/{{ album.artist.id }}">
+    <i class="fa-regular fa-circle-up"></i>
+    <p>Artist</p>
+</button>
+
+<button type="button" class="icon-button modal-button">
+    <i class="fa-solid fa-pen-to-square "></i>
+    <p>Edit Album</p>
+</button>
+{% include 'components/modals/edit-modal.html' %}
+
+<button type="button" class="icon-button modal-button">
+    <i class="fa-regular fa-trash-can "></i>
+    <p>Delete Album</p>
+</button>
+{% include 'components/modals/delete-modal.html' %}
+
+
+<button type="button" class="icon-button modal-button">
+    <i class="fa-solid fa-plus "></i>
+    <p>Add Song</p>
+</button>
+{% include 'components/modals/new-modal.html' %}
+
+
+{% endif %}

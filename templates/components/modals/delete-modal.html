@@ -1,0 +1,14 @@
+<div class="modal">
+    <div class="card card-form delete-form">
+        <h2>Are you sure you want to delete?</h2>
+        <p>{{ item_name }}</p>
+        <div class="confirm-delete">
+            <form action="/artists/{{ album.artist.id}}/albums/{{ album.id }}/delete" method="post">
+                <input type="submit" value="Delete">
+            </form>
+            <form action="/artists/{{ album.artist.id }}/albums/{{ album.id }}">
+                <input type="submit" value="Cancel">
+            </form>
+        </div>
+    </div>
+</div>
