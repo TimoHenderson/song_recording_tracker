@@ -5,7 +5,7 @@ from models.album import Album
 
 @dataclass
 class Song:
-    title: str
+    name: str
     album: Album
     parts_status: list[int] = field(default_factory=list)
     notes: str = ""

@@ -5,9 +5,9 @@ import repositories.album_repository as album_repository
 
 # Create
 def save(song):
-    sql = """INSERT INTO songs (title,album_id,notes) 
+    sql = """INSERT INTO songs (name,album_id,notes) 
             VALUES (%s,%s,%s) RETURNING id"""
-    values = [song.title, song.album.id, song.notes]
+    values = [song.name, song.album.id, song.notes]
     results = run_sql(sql, values)
     song.id = results[0]["id"]
 
@@ -59,8 +59,8 @@ def select_all_completion_with_album(album_id):
 
 # Update
 def update(song):
-    sql = "UPDATE songs SET (title, album_id, notes) = (%s, %s, %s) WHERE id = %s"
-    values = [song.title, song.album.id, song.notes, song.id]
+    sql = "UPDATE songs SET (name, album_id, notes) = (%s, %s, %s) WHERE id = %s"
+    values = [song.name, song.album.id, song.notes, song.id]
     run_sql(sql, values)
 
 
@@ -89,4 +89,4 @@ def _calculate_song_completion(parts_status):
 def _build_song(row):
     album = album_repository.select(row["album_id"])
     parts_status = part_repository.select_all_status_with_song(row["id"])
-    return Song(row["title"], album, parts_status, row["notes"], row["id"])
+    return Song(row["name"], album, parts_status, row["notes"], row["id"])

@@ -24,7 +24,7 @@
         <div class="card-list form-card-list notes-card">
             <div class="card form-card">
                 <form class="form-card" action="/albums/{{song.album.id}}/songs/{{song.id}}/update" method="post">
-                    <input type="hidden" name="title" value="{{song.title}}">
+                    <input type="hidden" name="name" value="{{song.name}}">
                     <textarea name="notes" id="" cols="30" rows="10">{{song.notes}}</textarea>
                     <input type="submit" value="Save">
                 </form>

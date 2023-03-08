@@ -20,8 +20,8 @@ class TestSong(unittest.TestCase):
             3,
         )
 
-    def test_has_title(self):
-        actual = self.song3.title
+    def test_has_name(self):
+        actual = self.song3.name
         expected = "SDKMN"
         self.assertEqual(actual, expected)
 

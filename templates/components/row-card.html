@@ -1,13 +1,13 @@
 <!-- Requires type as string and the element to be displayed -->
 {% if type=="Part" %}
 {% set item_name = item.name %}
-{% set song_name = item.song.title %}
+{% set song_name = item.song.name %}
 {% set album_name = item.song.album.name %}
 {% set artist_name = item.song.album.artist.name %}
 {% set children = [item.status*20] %}
 {% set link = "/songs/"~item.song.id~"/parts/"~item.id %}
 {% elif type == "Song" %}
-{% set item_name = item.title %}
+{% set item_name = item.name %}
 {% set album_name = item.album.name %}
 {% set artist_name = item.album.artist.name %}
 {% set children = item.get_parts_status_percent() %}

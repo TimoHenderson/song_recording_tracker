@@ -25,7 +25,7 @@ CREATE TABLE albums(
 
 CREATE TABLE songs(
     id SERIAL PRIMARY KEY,
-    title VARCHAR(255),
+    name VARCHAR(255),
     album_id INT REFERENCES albums(id),
     notes TEXT
 );

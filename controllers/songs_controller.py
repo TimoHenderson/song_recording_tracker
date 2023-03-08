@@ -33,7 +33,7 @@ def new(album_id):
 def create(album_id):
     form = request.form
     album = album_repository.select(album_id)
-    new_song = Song(form["title"], album, form["notes"])
+    new_song = Song(form["name"], album, form["notes"])
     song_repository.save(new_song)
     return redirect(f"/albums/{album_id}/songs/{new_song.id}")
 
@@ -53,7 +53,7 @@ def update(album_id, id):
     if "album_id" in form:
         album_id = form["album_id"]
     album = album_repository.select(album_id)
-    song = Song(form["title"], album, notes=form["notes"], id=id)
+    song = Song(form["name"], album, notes=form["notes"], id=id)
     song_repository.update(song)
     return redirect(f"/albums/{album_id}/songs/{id}")
 
