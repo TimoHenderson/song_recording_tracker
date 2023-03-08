@@ -47,7 +47,7 @@
 {% if type == "Part" or type=="Song" %}
 <form action="{{ link }}/update" method="post">
     <label for="notes">Notes: </label>
-    <textarea name="notes" id="notes" cols="30" rows="10" value=""></textarea>
+    <textarea name="notes" id="notes" cols="30" rows="10">{{item.notes}}</textarea>
     <div class="form-row">
         <input type="submit" value="Save Notes">
     </div>

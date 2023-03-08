@@ -49,19 +49,24 @@ def edit(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/update", methods=["POST"])
 def update(song_id, id):
     form = request.form
-    instrument = instrument_repository.select(form["instrument_id"])
+    print(form.keys())
+    print(form["notes"])
     song = song_repository.select(song_id)
-    part = Part(
-        form["name"],
-        form["status"],
-        song,
-        instrument,
-        form["notes"],
-        id,
-    )
+    if len(form.keys()) == 1 and form["notes"]:
+        part = part_repository.select(id)
+        part.notes = form["notes"]
+    else:
+        instrument = instrument_repository.select(form["instrument_id"])
+        part = Part(
+            form["name"],
+            form["status"],
+            song,
+            instrument,
+            form["notes"],
+            id,
+        )
     part_repository.update(part)
-
-    return redirect(f"/songs/{song_id}/parts/{id}")
+    return redirect(f"/albums/{song.album.id}/songs/{song_id}")
 
 
 # Delete Confirm
