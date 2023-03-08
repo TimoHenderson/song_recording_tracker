@@ -2,17 +2,20 @@
     <div class="card form-card">
         <h2>Edit {{ type }}</h2>
         <form class="form-card" action="{{ link }}/update" method="post">
-            {% if type=="Artist"%}
-            <label for="name">Name:</label>
-            <input type="text" name="name" id="name" value="{{ item.name }}" required>
-            <br>
-            {% else %}
-
+            {% if type!="Artist"%}
+            <label>Artist: {{ artist_name }}</label>
+            {% if type !="Album" %}
+            <label>Album: {{ album_name }}</label>
+            {% if type!="Song" %}
+            <label>Song: {{ song_name }}</label>
             {% endif %}
-
-            <label for="name">Name:</label>
+            {% endif %}
+            {% endif %}
+            <label for="name">{{ type }} Name:</label>
             <input type="text" name="name" id="name" value="{{ item.name }}" required>
             </select>
+
+
 
             <br>
             <div class="form-row">

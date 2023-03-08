@@ -1,7 +1,7 @@
 <!-- Requires type as string and the element to be displayed -->
 {% if type=="Part" %}
 {% set item_name = item.name %}
-{% set song_title = item.song.title %}
+{% set song_name = item.song.title %}
 {% set album_name = item.song.album.name %}
 {% set artist_name = item.song.album.artist.name %}
 {% set children = [item.status*20] %}
@@ -41,7 +41,7 @@
                 <h4>{{ item_name }}</h4>
                 {% if type != "Artist" %}
                 {% if type == "Part" %}
-                <p> {{ song_title }}</p>
+                <p> {{ song_name }}</p>
                 <p>by {{ artist_name }}</p>
                 {% else %}
                 <p>{{ album_name }}</p>
