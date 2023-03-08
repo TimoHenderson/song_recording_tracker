@@ -321,6 +321,14 @@ hr {
 
 .card-menu.show {
     grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem 0.5rem 0.5rem 0;
+}
+
+.card-menu-buttons {
     display: flex;
     justify-content: space-around;
     align-items: center;

@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect
 import repositories.song_repository as song_repository
 import repositories.part_repository as part_repository
 import repositories.album_repository as album_repository
+import repositories.instrument_repository as instrument_repository
 from models.song import Song
 
 songs_blueprint = Blueprint("songs", __name__)
@@ -18,7 +19,10 @@ def show_all():
 def show(album_id, id):
     parts = part_repository.select_all_with_song(id)
     song = song_repository.select(id)
-    return render_template("songs/show.html", song=song, parts=parts)
+    instruments = instrument_repository.select_all()
+    return render_template(
+        "songs/show.html", song=song, parts=parts, instruments=instruments
+    )
 
 
 # New

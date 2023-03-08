@@ -13,9 +13,42 @@
             {% endif %}
             <label for="name">{{ type }} Name:</label>
             <input type="text" name="name" id="name" value="{{ item.name }}" required>
-            </select>
+
+            {% if type == "Part" %}
+            <div class="form-row">
+                <div class="form-column">
+                    <label for="instrument">Instrument: </label>
+                    <select name="instrument_id" id="instrument" required>
+                        {% for instrument in instruments %}
+                        <option value="{{ instrument.id }}">
+                            {{ instrument.name }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                    <br>
+                    <a class="fake-button" href="/songs/{{ item.id }}/instruments/new">New Inst.</a>
+                </div>
+                <div class="form-column">
+                    <label for="status">Status: </label>
+                    <select name="status" id="status">
+                        <option value="0">Not Started</option>
+                        <option value="1">Tracking Guides</option>
+                        <option value="2">Tracking Part</option>
+                        <option value="3">Doing Drop Ins</option>
+                        <option value="4">Comping </option>
+                        <option value="5">Take!</option>
+                    </select>
+                </div>
+            </div>
+            <br>
+            {% endif %}
+            {% if type == "Part" or type=="Song" %}
 
 
+            <label for="notes">Notes: </label>
+            <textarea name="notes" id="notes" cols="30" rows="10" value=""></textarea>
+            <br>
+            {% endif %}
 
             <br>
             <div class="form-row">

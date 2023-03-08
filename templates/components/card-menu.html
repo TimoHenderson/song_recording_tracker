@@ -15,30 +15,42 @@
 {% set child_type ="Album" %}
 {% endif %}
 
-{% if show_parent_button %}
-<form>
-    <button class="icon-button" formaction="{{ parent_link }}">
-        <i class="fa-regular fa-circle-up"></i>
-        <p>{{parent_type}}</p>
+<div class="card-menu-buttons">
+    {% if show_parent_button %}
+    <form>
+        <button class="icon-button" formaction="{{ parent_link }}">
+            <i class="fa-regular fa-circle-up"></i>
+            <p>{{parent_type}}</p>
+        </button>
+    </form>
+    {% endif %}
+    <button type="button" class="icon-button modal-button">
+        <i class="fa-solid fa-pen-to-square "></i>
+        <p>Edit {{ type }}</p>
     </button>
+    {% include 'components/modals/edit-modal.html' %}
+
+    <button type="button" class="icon-button modal-button">
+        <i class="fa-regular fa-trash-can "></i>
+        <p>Delete {{ type }}</p>
+    </button>
+    {% include 'components/modals/delete-modal.html' %}
+
+    {% if type != "Part" %}
+    <button type="button" class="icon-button modal-button">
+        <i class="fa-solid fa-plus "></i>
+        <p>Add {{ child_type }}</p>
+    </button>
+    {% include 'components/modals/new-modal.html' %}
+    {% endif %}
+</div>
+{% if type == "Part" or type=="Song" %}
+<form action="{{ link }}/update" method="post">
+    <label for="notes">Notes: </label>
+    <textarea name="notes" id="notes" cols="30" rows="10" value=""></textarea>
+    <div class="form-row">
+        <input type="submit" value="Save Notes">
+    </div>
 </form>
-{% endif %}
-<button type="button" class="icon-button modal-button">
-    <i class="fa-solid fa-pen-to-square "></i>
-    <p>Edit {{ type }}</p>
-</button>
-{% include 'components/modals/edit-modal.html' %}
-
-<button type="button" class="icon-button modal-button">
-    <i class="fa-regular fa-trash-can "></i>
-    <p>Delete {{ type }}</p>
-</button>
-{% include 'components/modals/delete-modal.html' %}
-
-{% if type != "Part" %}
-<button type="button" class="icon-button modal-button">
-    <i class="fa-solid fa-plus "></i>
-    <p>Add {{ child_type }}</p>
-</button>
-{% include 'components/modals/new-modal.html' %}
+<br>
 {% endif %}

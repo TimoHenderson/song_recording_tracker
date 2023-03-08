@@ -7,16 +7,7 @@
             {% include 'components/row-card.html' %}
             {% endwith %}
         </div>
-        <div class="page-header-links">
-            <form><button formaction="/artists/{{ song.album.artist.id }}/albums/{{ song.album.id }}">Album</button>
-            </form>
-            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/edit">Edit Song</button></form>
-            <label class="fake-button" for="show-notes">Show Notes</label>
-            <form><button formaction="/albums/{{ song.album.id }}/songs/{{ song.id }}/delete">Delete Song</button>
-            </form>
-            <form><button formaction="/songs/{{ song.id }}/parts/new">New Part</button>
-            </form>
-        </div>
+
         <hr>
     </div>
     <div class="card-list part-card-list">
