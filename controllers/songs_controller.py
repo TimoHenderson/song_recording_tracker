@@ -57,9 +57,13 @@ def update(album_id, id):
     if "album_id" in form:
         album_id = form["album_id"]
     album = album_repository.select(album_id)
-    song = Song(form["name"], album, notes=form["notes"], id=id)
+    if len(form.keys()) == 1 and form["notes"]:
+        song = song_repository.select(id)
+        song.notes = form["notes"]
+    else:
+        song = Song(form["name"], album, notes=form["notes"], id=id)
     song_repository.update(song)
-    return redirect(f"/albums/{album_id}/songs/{id}")
+    return redirect(request.referrer)
 
 
 # @songs_blueprint.route("/albums/<album_id>/songs/<id>/updatenotes", methods=["POST"])

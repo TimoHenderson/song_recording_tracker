@@ -66,7 +66,7 @@ def update(song_id, id):
             id,
         )
     part_repository.update(part)
-    return redirect(f"/albums/{song.album.id}/songs/{song_id}")
+    return redirect(request.referrer)
 
 
 # Delete Confirm
