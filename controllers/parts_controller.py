@@ -49,8 +49,6 @@ def edit(song_id, id):
 @parts_blueprint.route("/songs/<song_id>/parts/<id>/update", methods=["POST"])
 def update(song_id, id):
     form = request.form
-    print(form.keys())
-    print(form["notes"])
     song = song_repository.select(song_id)
     if len(form.keys()) == 1 and form["notes"]:
         part = part_repository.select(id)
